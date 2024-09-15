@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Torque Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Torque</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="torque" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="N_m">N·m</option>
+        <option value="mN_m">mN·m</option>
+        <option value="kN_m">kN·m</option>
+        <option value="N_cm">N·cm</option>
+        <option value="lbf_in">lbf·in</option>
+        <option value="lbf_ft">lbf·ft</option>
+        <option value="dyn_cm">dyn·cm</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="N_m">N·m</option>
+        <option value="mN_m">mN·m</option>
+        <option value="kN_m">kN·m</option>
+        <option value="N_cm">N·cm</option>
+        <option value="lbf_in">lbf·in</option>
+        <option value="lbf_ft">lbf·ft</option>
+        <option value="dyn_cm">dyn·cm</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Temperature Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Temperature</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="temperature" />
+      <input type="number" id="value_in" value="20" />
+      <select id="unit_in">
+        <option value="C">°C</option>
+        <option value="K">K</option>
+        <option value="F">°F</option>
+        <option value="R">°R</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="C">°C</option>
+        <option value="K">K</option>
+        <option value="F">°F</option>
+        <option value="R">°R</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

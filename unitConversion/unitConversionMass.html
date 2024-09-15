@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mass Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Mass</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="mass" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="kg">kg</option>
+        <option value="mg">mg</option>
+        <option value="g">g</option>
+        <option value="t">t</option>
+        <option value="oz">oz</option>
+        <option value="lb">lb</option>
+        <option value="slug">slug</option>
+        <option value="tnsh">tn.sh</option>
+        <option value="tnl">tn.l</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="kg">kg</option>
+        <option value="mg">mg</option>
+        <option value="g">g</option>
+        <option value="t">t</option>
+        <option value="oz">oz</option>
+        <option value="lb">lb</option>
+        <option value="slug">slug</option>
+        <option value="tnsh">tn.sh</option>
+        <option value="tnl">tn.l</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

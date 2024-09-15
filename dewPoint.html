@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Dew Point</title>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <h1>Dew Point</h1>
+    <script src="js/dewPointIO.js"></script>
+    <script src="js/modules/coolProp.js"></script>
+    <script src="js/modules/unitConversion.js"></script>
+
+    <form>
+      Ambient Temperature:
+      <input type="number" id="T_amb" value="20" size="5" />
+      <select id="T_amb_unit">
+        <option value="C">°C</option>
+        <option value="K">K</option>
+        <option value="F">°F</option>
+        <option value="R">°R</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Relative Humidity:
+      <input type="number" id="phi" value="50" size="5"/>
+      %
+    </form>
+
+    <br />
+
+    <button type="button" onclick="dewPointIO()">Calculate</button>
+
+    <br />
+    <br />
+
+    <form>
+      Dew Point:
+      <input type="text" id="T_dew" value="50" size="10" readonly/>
+      <select id="T_dew_unit">
+        <option value="C">°C</option>
+        <option value="K">K</option>
+        <option value="F">°F</option>
+        <option value="R">°R</option>
+      </select>
+    </form>
+
+    <form>
+      Absolute Humidity
+      <input type="text" id="T_dew" value="50" size="10" readonly/>
+      <select id="T_dew_unit">
+      </select>
+    </form>
+
+    <form>
+      Water Vapor Pressure
+      <input type="text" id="T_dew" value="50" size="10" readonly/>
+      <select id="T_dew_unit">
+      </select>
+    </form>
+
+    <form>
+      Saturation Water Vapor Pressure
+      <input type="text" id="T_dew" value="50" size="10" readonly/>
+      <select id="T_dew_unit">
+      </select>
+    </form>
+
+    <form>
+      Wet Bulb Temperature
+      <input type="text" id="T_dew" value="50" size="10" readonly/>
+      <select id="T_dew_unit">
+      </select>
+    </form>
+
+  </body>
+</html>

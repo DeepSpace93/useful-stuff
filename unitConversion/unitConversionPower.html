@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Power Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Power</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="power" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="W">W</option>
+        <option value="nW">nW</option>
+        <option value="mW">mW</option>
+        <option value="kW">kW</option>
+        <option value="MW">MW</option>
+        <option value="GW">GW</option>
+        <option value="TW">TW</option>
+        <option value="PW">PW</option>
+        <option value="BTU$h">BTU/h</option>
+        <option value="PS">PS</option>
+        <option value="hp">hp</option>
+        <option value="RT">RT</option>
+        <option value="cal$h">cal/h</option>
+        <option value="kcal$h">kcal/h</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="W">W</option>
+        <option value="nW">nW</option>
+        <option value="mW">mW</option>
+        <option value="kW">kW</option>
+        <option value="MW">MW</option>
+        <option value="GW">GW</option>
+        <option value="TW">TW</option>
+        <option value="PW">PW</option>
+        <option value="BTU$h">BTU/h</option>
+        <option value="PS">PS</option>
+        <option value="hp">hp</option>
+        <option value="RT">RT</option>
+        <option value="cal$h">cal/h</option>
+        <option value="kcal$h">kcal/h</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

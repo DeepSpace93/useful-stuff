@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Gas Flow</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="./js/modules/unitConversion.js"></script>
+    <script src="./js/pipeGasFlowIO.js"></script>
+    <h1>Pipe Gas Flow</h1>
+
+    <table>
+      <form>
+        <tr>
+          <td colspan="4"><h2>Pipe / Duct Size</h2></td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="pipe_use" name="pipe_duct" checked />
+          </td>
+          <td>Pipe diameter</td>
+          <td>
+            <input type="number" id="d_pipe_val" value="10" size="5" />
+          </td>
+          <td>
+            <select id="d_pipe_unit">
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="m">m</option>
+              <option value="in">in</option>
+              <option value="ft">ft</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="duct_use" name="pipe_duct" checked />
+          </td>
+          <td>Duct size</td>
+          <td>
+            <input type="number" id="a_duct_val" value="10" size="5" />
+            x
+            <input type="number" id="b_duct_val" value="10" size="5" />
+          </td>
+          <td>
+            <select id="ab_duct_unit">
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="m">m</option>
+              <option value="in">in</option>
+              <option value="ft">ft</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Wall thickness</td>
+          <td>
+            <input type="number" id="t_pipe_duct_val" value="0" size="5" />
+          </td>
+          <td>
+            <select id="t_pipe_duct_unit">
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="m">m</option>
+              <option value="in">in</option>
+              <option value="ft">ft</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4"><h2>Reference Conditions</h2></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Temperature</td>
+          <td>
+            <input type="number" id="T_ref_val" value="20" />
+          </td>
+          <td>
+            <select id="T_ref_unit">
+              <option value="C">°C</option>
+              <option value="K">K</option>
+              <option value="F">°F</option>
+              <option value="R">°R</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Pressure</td>
+          <td>
+            <input type="number" id="p_ref_val" value="0" />
+          </td>
+          <td>
+            <select id="p_ref_unit">
+              <option value="Pa">Pa</option>
+              <option value="hPa">hpa</option>
+              <option value="kPa">kPa</option>
+              <option value="MPa">MPa</option>
+              <option value="mbar">mbar</option>
+              <option value="bar">bar</option>
+              <option value="mmHg">mmHg</option>
+              <option value="psi">psi</option>
+              <option value="mWC">mWC</option>
+              <option value="inWC">inWC</option>
+              <option value="inHg">inHg</option>
+              <option value="at">at</option>
+              <option value="atm">atm</option>
+            </select>
+            <select id="p_ref_abs">
+              <option value="rel">rel</option>
+              <option value="abs">abs</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Volumetric flow rate:</td>
+          <td>
+            <input type="number" id="vf_ref_val" value="1" />
+          </td>
+          <td>
+            <select id="vf_ref_unit">
+              <option value="m3$h">m³/h</option>
+              <option value="m3$min">m³/min</option>
+              <option value="m3$s">m³/s</option>
+              <option value="l$h">l/h</option>
+              <option value="l$min">l/min</option>
+              <option value="l$s">l/s</option>
+              <option value="ft$min">ft³/min</option>
+              <option value="gal$min">gal/min</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4"><h2>Operating Conditions</h2></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Temperature</td>
+          <td>
+            <input type="number" id="T_op_val" value="20" />
+          </td>
+          <td>
+            <select id="T_op_unit">
+              <option value="C">°C</option>
+              <option value="K">K</option>
+              <option value="F">°F</option>
+              <option value="R">°R</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Pressure</td>
+          <td>
+            <input type="number" id="p_op_val" value="0" />
+          </td>
+          <td>
+            <select id="p_op_unit">
+              <option value="Pa">Pa</option>
+              <option value="hPa">hpa</option>
+              <option value="kPa">kPa</option>
+              <option value="MPa">MPa</option>
+              <option value="mbar">mbar</option>
+              <option value="bar">bar</option>
+              <option value="mmHg">mmHg</option>
+              <option value="psi">psi</option>
+              <option value="mWC">mWC</option>
+              <option value="inWC">inWC</option>
+              <option value="inHg">inHg</option>
+              <option value="at">at</option>
+              <option value="atm">atm</option>
+            </select>
+            <select id="p_op_abs">
+              <option value="rel">rel</option>
+              <option value="abs">abs</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="c_use" name="c_vf" checked />
+          </td>
+          <td>Flow velocity</td>
+          <td>
+            <input type="text" id="c_op_val" value="5" readonly />
+          </td>
+          <td>
+            <select id="c_op_unit">
+              <option value="m$s">m/s</option>
+              <option value="km$h">km/h</option>
+              <option value="ft$s">ft/s</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="vf_use" name="c_vf" checked />
+          </td>
+          <td>Volumetric flow rate</td>
+          <td>
+            <input type="text" id="vf_op_val" readonly />
+          </td>
+          <td>
+            <select id="vf_op_unit">
+              <option value="m3$h">m³/h</option>
+              <option value="m3$min">m³/min</option>
+              <option value="m3$s">m³/s</option>
+              <option value="l$h">l/h</option>
+              <option value="l$min">l/min</option>
+              <option value="l$s">l/s</option>
+              <option value="ft$min">ft³/min</option>
+              <option value="gal$min">gal/min</option>
+            </select>
+          </td>
+        </tr>
+      </form>
+    </table>
+
+    <br />
+
+    <button type="button" onclick="pipeGasFlowIO('fhf')">Calculate Reference Conditions</button>
+    <br />
+    <br />
+    <button type="button" onclick="pipeGasFlowIO(5)">Calculate Operating Conditions</button>
+
+    <p><a href="index.html">Index</a></p>
+
+    <br />
+  </body>
+</html>

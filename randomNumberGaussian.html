@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Random Number Generator - Gaussian</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="./js/randomNumberGaussianIO.js"></script>
+    <script src="./js/modules/statistics.js"></script>
+
+    <h1>Random Number Generator - Gaussian</h1>
+
+    <form>
+      Mean:
+      <input type="number" id="mean_goal" value="0" />
+    </form>
+
+    <br />
+
+    <form>
+      Standard Deviation:
+      <input type="number" id="std_dev_goal" value="1" />
+    </form>
+
+    <br />
+
+    <form>
+      Number:
+      <input type="number" id="n" value="10" />
+    </form>
+
+    <br />
+
+    <form>
+      Delimiter:
+      <select id="delim">
+        <option value="newline">&#x21B2;</option>
+        <option value="space">&#x2423;</option>
+        <option value="pipe">|</option>
+        <option value="comma">,</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Arithmetic Mean Calculated:
+      <input type="text" id="arith_mean_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Median:
+      <input type="text" id="median_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Standard Deviation Calculated:
+      <input type="text" id="std_dev_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Min. Value:
+      <input type="text" id="min_calc" readonly />
+      Max. Value:
+      <input type="text" id="max_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      <input type="checkbox" id="sort_out" />
+      Sort numbers
+    </form>
+
+    <br />
+
+    <button type="button" onclick="randomNumberGaussianIO()">Generate</button>
+
+    <p><a href="index.html">Index</a></p>
+
+    <div id="rnd_out"></div>
+  </body>
+</html>

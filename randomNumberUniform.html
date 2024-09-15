@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Random Number Generator - Uniform</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="./js/randomNumberUniformIO.js"></script>
+    <script src="./js/modules/statistics.js"></script>
+
+    <h1>Random Number Generator - Uniform</h1>
+
+    <form>
+      Min:
+      <input type="number" id="min" value="0" />
+    </form>
+
+    <br />
+
+    <form>
+      Max:
+      <input type="number" id="max" value="1" />
+    </form>
+
+    <br />
+
+    <form>
+      Number:
+      <input type="number" id="n" value="10" />
+    </form>
+
+    <br />
+
+    <form>
+      Decimals:
+      <input type="number" id="decimals" size="3" min="0" value="5" />
+    </form>
+
+    <br />
+
+    <form>
+      Delimiter:
+      <select id="delim">
+        <option value="newline">&#x21B2;</option>
+        <option value="space">&#x2423;</option>
+        <option value="pipe">|</option>
+        <option value="comma">,</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Arithmetic Mean:
+      <input type="text" id="arith_mean_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Median:
+      <input type="text" id="median_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Min. Value:
+      <input type="text" id="min_calc" readonly />
+      Max. Value:
+      <input type="text" id="max_calc" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      <input type="checkbox" id="sort_out" />
+      Sort numbers
+    </form>
+
+    <br />
+
+    <button type="button" onclick="randomNumberUniformIO()">Generate</button>
+
+    <p><a href="index.html">Index</a></p>
+
+    <div id="rnd_out"></div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Density Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Density</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="density" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="kg$m3">kg/m³</option>
+        <option value="g$cm3">g/cm³</option>
+        <option value="g$l">g/l</option>
+        <option value="kg$l">kg/l</option>
+        <option value="lb$in3">lb/in³</option>
+        <option value="lb$ft3">lb/ft³</option>
+        <option value="slug$ft3">slug/ft³</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="kg$m3">kg/m³</option>
+        <option value="g$cm3">g/cm³</option>
+        <option value="g$l">g/l</option>
+        <option value="kg$l">kg/l</option>
+        <option value="lb$in3">lb/in³</option>
+        <option value="lb$ft3">lb/ft³</option>
+        <option value="slug$ft3">slug/ft³</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

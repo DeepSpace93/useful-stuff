@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Prime Factorization</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="./js/primeFactorizationIO.js"></script>
+
+    <h1>Prime Factorization</h1>
+
+    <form>
+      Integer:
+      <input type="number" id="int" value="0" />
+    </form>
+
+    <br />
+
+    <form>
+      Delimiter:
+      <select id="delim">
+        <option value="newline">&#x21B2</option>
+        <option value="space">&#x2423</option>
+        <option value="pipe">|</option>
+        <option value="comma">,</option>
+
+      </select>
+    </form>
+
+    <br />
+    <button type="button" onclick="primeFactorizationIO()">Factorize</button>
+
+    <p><a href="index.html">Index</a></p>
+
+    <div id="fac"></div>
+  </body>
+</html>

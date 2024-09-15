@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Energy Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Energy</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="energy" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="J">J</option>
+        <option value="mJ">mJ</option>
+        <option value="kJ">kJ</option>
+        <option value="MJ">MJ</option>
+        <option value="GJ">GJ</option>
+        <option value="TJ">TJ</option>
+        <option value="Wh">Wh</option>
+        <option value="kWh">kWh</option>
+        <option value="MWh">MWh</option>
+        <option value="GWh">GWh</option>
+        <option value="TWh">TWh</option>
+        <option value="SKE">SKE</option>
+        <option value="toe">toe</option>
+        <option value="cal">cal</option>
+        <option value="kcal">kcal</option>
+        <option value="erg">erg</option>
+        <option value="BTU">BTU</option>
+        <option value="eV">eV</option>
+        <option value="keV">keV</option>
+        <option value="MeV">MeV</option>
+        <option value="GeV">GeV</option>
+        <option value="TeV">TeV</option>
+        <option value="tTNT">t.TNT</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="J">J</option>
+        <option value="mJ">mJ</option>
+        <option value="kJ">kJ</option>
+        <option value="MJ">MJ</option>
+        <option value="GJ">GJ</option>
+        <option value="TJ">TJ</option>
+        <option value="Wh">Wh</option>
+        <option value="kWh">kWh</option>
+        <option value="MWh">MWh</option>
+        <option value="GWh">GWh</option>
+        <option value="TWh">TWh</option>
+        <option value="BTU">BTU</option>
+        <option value="cal">cal</option>
+        <option value="kcal">kcal</option>
+        <option value="erg">erg</option>
+        <option value="SKE">SKE</option>
+        <option value="toe">toe</option>
+        <option value="eV">eV</option>
+        <option value="keV">keV</option>
+        <option value="MeV">MeV</option>
+        <option value="GeV">GeV</option>
+        <option value="TeV">TeV</option>
+        <option value="tTNT">t.TNT</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

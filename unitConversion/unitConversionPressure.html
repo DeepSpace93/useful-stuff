@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Pressure Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Pressure</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="pressure" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="Pa">Pa</option>
+        <option value="hPa">hPa</option>
+        <option value="kPa">kPa</option>
+        <option value="MPa">MPa</option>
+        <option value="GPa">GPa</option>
+        <option value="mbar">mbar</option>
+        <option value="bar">bar</option>
+        <option value="mmHg">mmHg</option>
+        <option value="mTorr">mTorr</option>
+        <option value="Torr">Torr</option>
+        <option value="psi">psi</option>
+        <option value="mWC">mWC</option>
+        <option value="inWC">inWC</option>
+        <option value="inHg">inHg</option>
+        <option value="at">at</option>
+        <option value="atm">atm</option>
+      </select>
+      <select id="abs_in">
+        <option value="rel">rel</option>
+        <option value="abs">abs</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="Pa">Pa</option>
+        <option value="hPa">hPa</option>
+        <option value="kPa">kPa</option>
+        <option value="MPa">MPa</option>
+        <option value="GPa">GPa</option>
+        <option value="mbar">mbar</option>
+        <option value="bar">bar</option>
+        <option value="mmHg">mmHg</option>
+        <option value="mTorr">mTorr</option>
+        <option value="Torr">Torr</option>
+        <option value="psi">psi</option>
+        <option value="mWC">mWC</option>
+        <option value="inWC">inWC</option>
+        <option value="inHg">inHg</option>
+        <option value="at">at</option>
+        <option value="atm">atm</option>
+      </select>
+      <select id="abs_out">
+        <option value="rel">rel</option>
+        <option value="abs">abs</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

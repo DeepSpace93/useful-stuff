@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Drain Flow</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="./js/drainFlowIO.js"></script>
+    <script src="./js/modules/unitConversion.js"></script>
+    <script src="./js/modules/frictionFactor.js"></script>
+    <script src="./js/modules/geometry.js"></script>
+    <h1>Drain Flow</h1>
+    <!-- <h2>Medium</h2>
+    <form>
+      Liquids:
+      <select id="gasunit">
+        <option value="Water">Water</option>
+        <option value="Ethanol">Ethanol</option>
+      </select>
+      <button type="button" onclick="">Apply</button>
+      <br />
+      <br />
+      Gas:
+      <select id="c_unit">
+        <option value="Air">Air</option>
+        <option value="Nitrogen">Nitrogen</option>
+      </select>
+      <button type="button" onclick="">Apply</button>
+    </form> -->
+    <h2>Input</h2>
+
+    <form>
+      Density:
+      <input type="number" id="rho_val" value="1000" />
+      <select id="rho_unit">
+        <option value="kg$m3">kg/m³</option>
+        <option value="g$cm3">g/cm³</option>
+        <option value="g$l">g/l</option>
+        <option value="kg$l">kg/l</option>
+        <option value="lb$in3">lb/in³</option>
+        <option value="lb$ft3">lb/ft³</option>
+        <option value="slug$ft3">slug/ft³</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      <input type="radio" id="mu_use" name="viscosity" checked />
+      Dynamic viscosity:
+      <input type="number" id="mu_val" value="1" />
+      <select id="mu_unit">
+        <option value="mPa_s">mPa·s</option>
+        <option value="Pa_s">Pa·s</option>
+        <option value="cP">cP</option>
+        <option value="P">P</option>
+      </select>
+
+      <br />
+      <br />
+
+      <input type="radio" id="nu_use" name="viscosity" />
+      Kinematic viscosity:
+      <input type="number" id="nu_val" />
+      <select id="nu_unit">
+        <option value="mm2$s">mm²/s</option>
+        <option value="m2$s">m²/s</option>
+        <option value="cm2$s">cm²/s</option>
+        <option value="cSt">cSt</option>
+        <option value="St">St</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      <input type="radio" id="pipe_use" name="pipe_duct" checked />
+      Pipe diameter:
+      <input type="number" id="d_pipe_val" value="10" />
+      <select id="d_pipe_unit">
+        <option value="mm">mm</option>
+        <option value="cm">cm</option>
+        <option value="m">m</option>
+        <option value="in">in</option>
+        <option value="ft">ft</option>
+      </select>
+
+      <br />
+      <br />
+
+      <input type="radio" id="duct_use" name="pipe_duct" checked />
+      Duct size (W x H):
+      <input type="number" id="w_duct_val" value="5" size="10" />
+      x
+      <input type="number" id="h_duct_val" value="10" size="10" />
+      <select id="wh_duct_unit">
+        <option value="mm">mm</option>
+        <option value="cm">cm</option>
+        <option value="m">m</option>
+        <option value="in">in</option>
+        <option value="ft">ft</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Slope:
+      <input type="number" id="slope_val" value="1" />
+      <select id="slope_unit">
+        <option value="percent">%</option>
+        <option value="m$m">m/m</option>
+        <option value="permille">&permil;</option>
+        <option value="deg">deg</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Filling:
+      <input type="number" id="fill_val" value="10" />
+      <select id="fill_unit">
+        <option value="percent">%</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Roughness:
+      <input type="number" id="k_val" value="0.1" step="0.1" />
+      <select id="k_unit">
+        <option value="mm">mm</option>
+        <option value="um">µm</option>
+        <option value="thou">thou</option>
+        <option value="in">in</option>
+      </select>
+    </form>
+
+    <br />
+
+    <button type="button" onclick="drainFlowIO()">Calculate</button>
+
+    <br />
+    <h2>Output</h2>
+
+    <form>
+      Reynolds number:
+      <input type="text" id="re_val" size="5" readonly />
+      Iterations:
+      <input type="text" id="re_iter_val" size="2" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Friction coefficient:
+      <input type="text" id="f_val" size="6" readonly />
+      Iterations:
+      <input type="text" id="f_iter_val" size="2" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Flow regime:
+      <input type="text" id="reg_val" size="8" readonly />
+    </form>
+
+    <br />
+
+    <form>
+      Flow velocity:
+      <input type="text" id="c_val" readonly />
+      <select id="c_unit">
+        <option value="m$s">m/s</option>
+        <option value="km$h">km/h</option>
+        <option value="ft$s">ft/s</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Volume flow rate:
+      <input type="text" id="vf_val" readonly />
+      <select id="vf_unit">
+        <option value="m3$h">m³/h</option>
+        <option value="m3$min">m³/min</option>
+        <option value="m3$s">m³/s</option>
+        <option value="l$h">l/h</option>
+        <option value="l$min">l/min</option>
+        <option value="l$s">l/s</option>
+        <option value="ft$min">ft³/min</option>
+        <option value="gal$min">gal/min</option>
+      </select>
+    </form>
+
+    <br />
+
+    <form>
+      Mass flow rate:
+      <input type="text" id="mf_val" readonly />
+      <select id="mf_unit">
+        <option value="kg$h">kg/h</option>
+        <option value="kg$min">kg/min</option>
+        <option value="kg$s">kg/s</option>
+        <option value="g$h">g/h</option>
+        <option value="g$min">g/min</option>
+        <option value="g$s">g/s</option>
+      </select>
+    </form>
+
+    <p><a href="index.html">Index</a></p>
+  </body>
+</html>

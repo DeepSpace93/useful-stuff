@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Volume Flow Rate Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Volume Flow Rate</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="volume_flow_rate" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="m3$h">m³/h</option>
+        <option value="m3$min">m³/min</option>
+        <option value="m3$s">m³/s</option>
+        <option value="l$h">l/h</option>
+        <option value="l$min">l/min</option>
+        <option value="l$s">l/s</option>
+        <option value="ft$min">ft³/min</option>
+        <option value="gal$min">gal/min</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="m3$h">m³/h</option>
+        <option value="m3$min">m³/min</option>
+        <option value="m3$s">m³/s</option>
+        <option value="l$h">l/h</option>
+        <option value="l$min">l/min</option>
+        <option value="l$s">l/s</option>
+        <option value="ft$min">ft³/min</option>
+        <option value="gal$min">gal/min</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

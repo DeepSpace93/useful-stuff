@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Mass Flow Rate Unit Conversion</title>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <script src="../js/unitConversionIO.js"></script>
+    <script src="../js/modules/unitConversion.js"></script>
+    <h1>Unit Conversion</h1>
+    <h2>Mass Flow Rate</h2>
+    <form>
+      Precision:
+      <input
+        type="number"
+        id="precision"
+        size="3"
+        min="-1"
+        value="5"
+        step="1"
+      />
+    </form>
+    <br />
+    <form>
+      <input type="hidden" id="quantity" value="mass_flow_rate" />
+      <input type="number" id="value_in" value="1" />
+      <select id="unit_in">
+        <option value="kg$h">kg/h</option>
+        <option value="kg$min">kg/min</option>
+        <option value="kg$s">kg/s</option>
+        <option value="g$h">g/h</option>
+        <option value="g$min">g/min</option>
+        <option value="g$s">g/s</option>
+        <option value="lb$h">lb/h</option>
+        <option value="lb$min">lb/min</option>
+        <option value="lb$s">lb/s</option>
+      </select>
+      =
+      <input type="text" id="value_out" readonly />
+      <select id="unit_out">
+        <option value="kg$h">kg/h</option>
+        <option value="kg$min">kg/min</option>
+        <option value="kg$s">kg/s</option>
+        <option value="g$h">g/h</option>
+        <option value="g$min">g/min</option>
+        <option value="g$s">g/s</option>
+        <option value="lb$h">lb/h</option>
+        <option value="lb$min">lb/min</option>
+        <option value="lb$s">lb/s</option>
+      </select>
+    </form>
+    <br />
+    <button type="button" onclick="unitConversionIO()">Convert</button>
+    <p><a href="../index.html">Index</a></p>
+  </body>
+</html>

@@ -71,7 +71,7 @@ function convertDensity(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
-function convertDynViscosity(valueIn, unitIn, unitOut) {
+function convertDynamicViscosity(valueIn, unitIn, unitOut) {
   const convFactors = {
     Pa_s: 1,
     mPa_s: 1000,
@@ -165,7 +165,7 @@ function convertFrequencyPeriod(valueIn, unitIn, unitOut) {
   }
 }
 
-function convertKinViscosity(valueIn, unitIn, unitOut) {
+function convertKinematicViscosity(valueIn, unitIn, unitOut) {
   const convFactors = {
     m2$s: 1,
     mm2$s: 1e6,
@@ -476,7 +476,7 @@ function convertVolume(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
-function convertVolumeFlowRate(valueIn, unitIn, unitOut) {
+function convertVolumetricFlowRate(valueIn, unitIn, unitOut) {
   const convFactors = {
     m3$s: 1,
     m3$min: 60,

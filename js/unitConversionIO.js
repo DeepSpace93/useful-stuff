@@ -20,8 +20,8 @@ function unitConversionIO() {
     case "density":
       valueOut = convertDensity(valueIn, unitIn, unitOut);
       break;
-    case "dyn_viscosity":
-      valueOut = convertDynViscosity(valueIn, unitIn, unitOut);
+    case "dynamic_viscosity":
+      valueOut = convertDynamicViscosity(valueIn, unitIn, unitOut);
       break;
     case "energy":
       valueOut = convertEnergy(valueIn, unitIn, unitOut);
@@ -32,8 +32,8 @@ function unitConversionIO() {
     case "force":
       valueOut = convertForce(valueIn, unitIn, unitOut);
       break;
-    case "kin_viscosity":
-      valueOut = convertKinViscosity(valueIn, unitIn, unitOut);
+    case "kinematic_viscosity":
+      valueOut = convertKinematicViscosity(valueIn, unitIn, unitOut);
       break;
     case "length":
       valueOut = convertLength(valueIn, unitIn, unitOut);
@@ -70,8 +70,8 @@ function unitConversionIO() {
     case "volume":
       valueOut = convertVolume(valueIn, unitIn, unitOut);
       break;
-    case "volume_flow_rate":
-      valueOut = convertVolumeFlowRate(valueIn, unitIn, unitOut);
+    case "volumetric_flow_rate":
+      valueOut = convertVolumetricFlowRate(valueIn, unitIn, unitOut);
       break;
   }
 

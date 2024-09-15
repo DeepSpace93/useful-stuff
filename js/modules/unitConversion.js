@@ -119,7 +119,10 @@ function convertForce(valueIn, unitIn, unitOut) {
     lbf: 1 / 4.4482216152605,
     kp: 1 / 9.80665,
     dyn: 1e5,
-    pdl: 1/0.138254954376,
+    pdl: 1 / 0.138254954376,
+    tfm: 1 / 9.80665e3,
+    tfsh: 1 / 8.896443230521e3,
+    tfl: 1 / 9.96401641818352e3,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

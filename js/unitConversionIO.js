@@ -75,12 +75,16 @@ function unitConversionIO() {
       break;
   }
 
-  if (precision > 0) {
-    valueOut = valueOut.toPrecision(precision);
+  if (precision < 0) {
+    valueOut = valueOut.toPrecision(-precision);
   }
 
-  if (precision < 0) {
+  if (precision == 0) {
     valueOut = valueOut.toExponential();
+  }
+
+  if (precision > 0) {
+    valueOut = valueOut.toFixed(precision);
   }
 
   document.getElementById("value_out").value = valueOut;

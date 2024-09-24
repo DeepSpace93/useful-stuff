@@ -152,7 +152,7 @@ function pressureDropIO() {
   let dp = dp$l * l;
 
   // calculation - zeta coefficient
-  let zeta = (f * d) / l;
+  let zeta = (f * l) / d;
 
   // calculation - power dissipation
   let pow_loss = vf * dp;

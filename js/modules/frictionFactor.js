@@ -3,7 +3,7 @@ function reynolds(c, nu, d) {
 }
 
 function fLaminar(re) {
-  return [64 / re, 0];
+  return [64 / re, 0, 0];
 }
 
 function fColebrookWhite(k, d, re) {
@@ -20,7 +20,7 @@ function fColebrookWhite(k, d, re) {
     i++;
   }
 
-  return [f, i];
+  return [f, i, 0];
 }
 
 function fTransition(k, d, re) {

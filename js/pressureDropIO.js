@@ -16,7 +16,7 @@ function pressureDropIO() {
   }
 
   if (vfUse) {
-    vf = convertVolumeFlowRate(
+    vf = convertVolumetricFlowRate(
       parseFloat(document.getElementById("vf_val").value),
       document.getElementById("vf_unit").value,
       "m3$s"
@@ -51,7 +51,7 @@ function pressureDropIO() {
   let mu, nu;
 
   if (muUse) {
-    mu = convertDynViscosity(
+    mu = convertDynamicViscosity(
       parseFloat(document.getElementById("mu_val").value),
       document.getElementById("mu_unit").value,
       "Pa_s"
@@ -59,7 +59,7 @@ function pressureDropIO() {
   }
 
   if (nuUse) {
-    nu = convertKinViscosity(
+    nu = convertKinematicViscosity(
       parseFloat(document.getElementById("nu_val").value),
       document.getElementById("nu_unit").value,
       "m2$s"
@@ -84,166 +84,132 @@ function pressureDropIO() {
     "m"
   );
 
-  // convert into other inputs and display
+  // convert into other quantities
   let a = (Math.PI / 4) * d ** 2;
 
   if (cUse) {
-    //flow velocity given
+    // flow velocity given
     vf = a * c;
     mf = a * c * rho;
     mfx = c * rho;
-
-    document.getElementById("vf_val").value = convertVolumeFlowRate(
-      vf,
-      "m3$s",
-      document.getElementById("vf_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mf_val").value = convertMassFlowRate(
-      mf,
-      "kg$s",
-      document.getElementById("mf_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mfx_val").value = convertMassFlux(
-      mfx,
-      "kg$m2$s",
-      document.getElementById("mfx_unit").value
-    ).toPrecision(5);
   }
 
   if (vfUse) {
-    //volume flow rate given
+    // volumetric flow rate given
     c = vf / a;
     mf = a * c * rho;
     mfx = c * rho;
-
-    document.getElementById("c_val").value = convertVelocity(
-      c,
-      "m$s",
-      document.getElementById("c_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mf_val").value = convertMassFlowRate(
-      mf,
-      "kg$s",
-      document.getElementById("mf_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mfx_val").value = convertMassFlux(
-      mfx,
-      "kg$m2$s",
-      document.getElementById("mfx_unit").value
-    ).toPrecision(5);
   }
 
   if (mfUse) {
-    //mass flow rate given
+    // mass flow rate given
     c = mf / (a * rho);
     vf = a * c;
     mfx = c * rho;
-
-    document.getElementById("c_val").value = convertVelocity(
-      c,
-      "m$s",
-      document.getElementById("c_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("vf_val").value = convertVolumeFlowRate(
-      vf,
-      "m3$s",
-      document.getElementById("vf_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mfx_val").value = convertMassFlux(
-      mfx,
-      "kg$m2$s",
-      document.getElementById("mfx_unit").value
-    ).toPrecision(5);
   }
 
   if (mfxUse) {
-    //mass flux given
+    // mass flux given
     c = mfx / rho;
     vf = a * c;
     mf = a * c * rho;
-
-    document.getElementById("c_val").value = convertVelocity(
-      c,
-      "m$s",
-      document.getElementById("c_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("vf_val").value = convertVolumeFlowRate(
-      vf,
-      "m3$s",
-      document.getElementById("vf_unit").value
-    ).toPrecision(5);
-
-    document.getElementById("mf_val").value = convertMassFlowRate(
-      mf,
-      "kg$s",
-      document.getElementById("mf_unit").value
-    ).toPrecision(5);
   }
 
   if (muUse) {
+    // dynamic viscosity given
     nu = mu / rho;
-
-    document.getElementById("nu_val").value = convertKinViscosity(
-      nu,
-      "m2$s",
-      document.getElementById("nu_unit").value
-    ).toPrecision(5);
   }
 
   if (nuUse) {
+    // kinematic viscosity given
     mu = nu * rho;
-
-    document.getElementById("mu_val").value = convertDynViscosity(
-      mu,
-      "Pa_s",
-      document.getElementById("mu_unit").value
-    ).toPrecision(5);
   }
-
-  document.getElementById("a_val").value = a.toPrecision(5);
 
   // calculation - Reynolds number
   let re = reynolds(c, nu, d);
 
   // calculation - friction factor
-  let f, regime;
+  let f, iter, regime;
   if (re < 2300) {
     // laminar flow
-    f = fLaminar(re);
+    [f, iter] = fLaminar(re);
     regime = "laminar";
   } else if (re > 4000) {
     // turbulent flow
-    f = fColebrookWhite(k, d, re);
+    [f, iter] = fColebrookWhite(k, d, re);
     regime = "turbulent";
   } else {
     // transitional flow
-    f = fTransition(k, d, re);
-    regime = "trans. (" + f[2].toFixed(2) + ")";
+    let bf; // blending factor
+    [f, iter, bf] = fTransition(k, d, re);
+    regime = "transient (" + bf.toFixed(2) + ")";
   }
 
-  // calculation - pressure drop (Darcy–Weisbach)
-  let dp$l = (f[0] * rho * c ** 2) / (2 * d);
+  // calculation - relative pressure drop (Darcy–Weisbach)
+  let dp$l = (f * rho * c ** 2) / (2 * d);
+
+  // calculation - absolute pressure drop
   let dp = dp$l * l;
 
+  // calculation - zeta coefficient
+  let zeta = (f * d) / l;
+
   // calculation - power dissipation
-  let P_loss = vf * dp;
+  let pow_loss = vf * dp;
 
   // data output
+
+  document.getElementById("c_val").value = convertVelocity(
+    c,
+    "m$s",
+    document.getElementById("c_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("vf_val").value = convertVolumetricFlowRate(
+    vf,
+    "m3$s",
+    document.getElementById("vf_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("mf_val").value = convertMassFlowRate(
+    mf,
+    "kg$s",
+    document.getElementById("mf_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("mfx_val").value = convertMassFlux(
+    mfx,
+    "kg$m2$s",
+    document.getElementById("mfx_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("nu_val").value = convertKinematicViscosity(
+    nu,
+    "m2$s",
+    document.getElementById("nu_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("mu_val").value = convertDynamicViscosity(
+    mu,
+    "Pa_s",
+    document.getElementById("mu_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("a_val").value = convertArea(
+    a,
+    "m2",
+    document.getElementById("a_unit").value
+  ).toPrecision(5);
+
   if (re >= 1e5) {
     document.getElementById("re_val").value = re.toPrecision(2);
   } else {
     document.getElementById("re_val").value = Math.round(re);
   }
 
-  document.getElementById("f_val").value = f[0].toFixed(5);
-  document.getElementById("f_iter_val").value = f[1];
+  document.getElementById("f_val").value = f.toFixed(5);
+  document.getElementById("zeta_val").value = zeta.toFixed(8);
+  document.getElementById("f_iter_val").value = iter;
   document.getElementById("reg_val").value = regime;
 
   document.getElementById("dp$l_val").value = dp$l.toFixed(0);
@@ -257,8 +223,8 @@ function pressureDropIO() {
   ).toPrecision(5);
 
   document.getElementById("P_loss_val").value = convertPower(
-    P_loss,
+    pow_loss,
     "W",
-    document.getElementById("P_loss_unit").value,
+    document.getElementById("P_loss_unit").value
   ).toPrecision(5);
 }

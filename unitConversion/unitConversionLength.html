@@ -23,7 +23,7 @@
     <br />
     <form>
       <input type="hidden" id="quantity" value="length" />
-      <input type="number" id="value_in" value="1" />
+      <input type="text" id="value_in" value="1" />
       <select id="unit_in">
         <option value="m">m</option>
         <option value="um">µm</option>
@@ -57,6 +57,13 @@
     </form>
     <br />
     <button type="button" onclick="unitConversionIO()">Convert</button>
+    <ul>
+      <li>1 in = 1000 thou</li>
+      <li>1 ft = 12 in</li>
+      <li>1 yd = 3 ft</li>
+      <li>1 mi = 1760 yd</li>
+      <li>1 NM = 1852 m</li>
+    </ul>
     <p><a href="../index.html">Index</a></p>
   </body>
 </html>

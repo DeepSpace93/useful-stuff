@@ -1,6 +1,7 @@
 function unitConversionIO() {
   let quantity = document.getElementById("quantity").value;
   let round = document.getElementById("round").checked;
+  let sci = document.getElementById("sci").checked;
   let decimals = parseInt(document.getElementById("decimals").value);
   let valueIn = parseFloat(document.getElementById("value_in").value);
   let unitIn = document.getElementById("unit_in").value;
@@ -76,9 +77,16 @@ function unitConversionIO() {
       break;
   }
 
-  if (round) {
-
+  if (round && !sci) {
     valueOut = valueOut.toFixed(decimals);
+  }
+
+  if (!round && sci) {
+    valueOut = valueOut.toExponential()
+  }
+
+  if (round && sci) {
+    valueOut = valueOut.toExponential(decimals)
   }
 
   document.getElementById("value_out").value = valueOut;

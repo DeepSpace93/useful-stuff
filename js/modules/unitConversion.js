@@ -268,6 +268,7 @@ function convertPressure(valueIn, unitIn, unitOut, absIn, absOut) {
     GPa: 1e-9,
     mbar: 1e-2,
     bar: 1e-5,
+    uHg: 1 / 0.133322,
     mmHg: 1 / 133.322,
     mTorr: 760000 / 101325,
     Torr: 760 / 101325,

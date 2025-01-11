@@ -489,8 +489,12 @@ function convertVolumetricFlowRate(valueIn, unitIn, unitOut) {
     l$s: 1 / 1e-3,
     l$min: 60 / 1e-3,
     l$h: 3600 / 1e-3,
-    ft$min: 60 / 0.3048 ** 3, //CFM
+    ft3$s: 1 / 0.3048 ** 3, //CFS
+    ft3$min: 60 / 0.3048 ** 3, //CFM
+    ft3$h: 3600 / 0.3048 ** 3, //CFH
+    gal$s: 1 / 3.785411784e-3, //GPS
     gal$min: 60 / 3.785411784e-3, //GPM
+    gal$h: 3600 / 3.785411784e-3, //GPH
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

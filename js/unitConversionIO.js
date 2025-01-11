@@ -1,6 +1,7 @@
 function unitConversionIO() {
   let quantity = document.getElementById("quantity").value;
-  let precision = parseInt(document.getElementById("precision").value);
+  let round = document.getElementById("round").checked;
+  let decimals = parseInt(document.getElementById("decimals").value);
   let valueIn = parseFloat(document.getElementById("value_in").value);
   let unitIn = document.getElementById("unit_in").value;
   let unitOut = document.getElementById("unit_out").value;
@@ -75,16 +76,9 @@ function unitConversionIO() {
       break;
   }
 
-  if (precision < 0) {
-    valueOut = valueOut.toPrecision(-precision);
-  }
+  if (round) {
 
-  if (precision == 0) {
-    valueOut = valueOut.toExponential();
-  }
-
-  if (precision > 0) {
-    valueOut = valueOut.toFixed(precision);
+    valueOut = valueOut.toFixed(decimals);
   }
 
   document.getElementById("value_out").value = valueOut;

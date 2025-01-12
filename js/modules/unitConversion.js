@@ -47,6 +47,14 @@ function convertCharge(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
+function convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    $K: 1,
+    $E6K: 1e6,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+}
+
 function convertCurrent(valueIn, unitIn, unitOut) {
   const convFactors = {
     A: 1,

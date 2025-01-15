@@ -1,4 +1,5 @@
 function drainFlowIO() {
+
   // data input and unit conversion to SI units
 
   let rho = convertDensity(
@@ -13,7 +14,7 @@ function drainFlowIO() {
   let mu, nu;
 
   if (muUse) {
-    mu = convertDynViscosity(
+    mu = convertDynamicViscosity(
       parseFloat(document.getElementById("mu_val").value),
       document.getElementById("mu_unit").value,
       "Pa_s"
@@ -22,7 +23,7 @@ function drainFlowIO() {
   }
 
   if (nuUse) {
-    nu = convertKinViscosity(
+    nu = convertKinematicViscosity(
       parseFloat(document.getElementById("nu_val").value),
       document.getElementById("nu_unit").value,
       "m2$s"
@@ -124,16 +125,22 @@ function drainFlowIO() {
   let mf = vf * rho;
 
   // data output
-  document.getElementById("nu_val").value = convertKinViscosity(
+  document.getElementById("nu_val").value = convertKinematicViscosity(
     nu,
     "m2$s",
     document.getElementById("nu_unit").value
   ).toPrecision(5);
 
-  document.getElementById("mu_val").value = convertDynViscosity(
+  document.getElementById("mu_val").value = convertDynamicViscosity(
     mu,
     "Pa_s",
     document.getElementById("mu_unit").value
+  ).toPrecision(5);
+
+  document.getElementById("a_flow_val").value = convertArea(
+    aFlow,
+    "m2",
+    document.getElementById("a_flow_unit").value
   ).toPrecision(5);
 
   document.getElementById("re_val").value = Math.round(re);
@@ -148,7 +155,7 @@ function drainFlowIO() {
     document.getElementById("c_unit").value
   ).toPrecision(5);
 
-  document.getElementById("vf_val").value = convertVolumeFlowRate(
+  document.getElementById("vf_val").value = convertVolumetricFlowRate(
     vf,
     "m3$s",
     document.getElementById("vf_unit").value
@@ -158,5 +165,6 @@ function drainFlowIO() {
     mf,
     "kg$s",
     document.getElementById("mf_unit").value
-  ).toPrecision(5);
+  ).toPrecision(5); 
+
 }

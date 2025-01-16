@@ -1,3 +1,8 @@
+function circArea1(r) {
+  //calculate area of circle with given radius (r)
+  return (Math.PI * r ** 2);
+}
+
 function circSegArea1(r, h) {
   //calculate area of circular segment with given radius (r) and height (h, sagitta)
   return (
@@ -18,5 +23,3 @@ function circSegArc1(r, h) {
     return 2 * r * Math.PI - (2 * r * Math.asin(circSegChord1(r, h) / (2 * r)));
   }
 }
-
-console.log(circSegArc1(1, 1.99));

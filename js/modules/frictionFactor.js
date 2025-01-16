@@ -9,7 +9,7 @@ function fLaminar(re) {
 function fColebrookWhite(k, d, re) {
   let i = 0;
   let err = 1;
-  let f = 0.01;
+  let f = 0.1 * (1.46 * k / d + 100 / re) ** (1 / 4); // f initialization
   let f_new;
 
   while (err > 1e-6 && i < 100) {

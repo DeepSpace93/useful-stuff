@@ -34,7 +34,7 @@
           Density:
         </td>
         <td>
-          <input type="number" id="rho_val" value="1000" size="12" />
+          <input type="number" id="rho_val" value="1000" step="10" size="12" />
         </td>
         <td>
           <select id="rho_unit">
@@ -56,7 +56,7 @@
         <td>
           Dynamic viscosity:
         </td>
-        <td> <input type="number" id="mu_val" value="1" size="12"/>
+        <td> <input type="number" id="mu_val" value="1" step="0.1" size="12" />
         </td>
         <td>
           <select id="mu_unit">
@@ -75,7 +75,7 @@
           Kinematic viscosity:
         </td>
         <td>
-          <input type="number" id="nu_val" value="1" size="12"/>
+          <input type="number" id="nu_val" value="1" step="0.1" size="12" />
         </td>
         <td>
           <select id="nu_unit">
@@ -95,7 +95,7 @@
           Pipe diameter:
         </td>
         <td>
-          <input type="number" id="d_pipe_val" value="10" size="12"/>
+          <input type="number" id="d_pipe_val" value="10" size="12" />
         </td>
         <td>
           <select id="d_pipe_unit">
@@ -109,14 +109,14 @@
       </tr>
       <tr>
         <td>
-          <input type="radio" id="duct_use" name="pipe_duct" checked />
+          <input type="radio" id="duct_use" name="pipe_duct" />
         </td>
         <td>
           Duct size (W x H):
         </td>
         <td>
-          <input type="number" id="w_duct_val" value="5" size="4"/>
-          <input type="number" id="h_duct_val" value="10" size="4"/>
+          <input type="number" id="w_duct_val" value="5" size="4" />
+          <input type="number" id="h_duct_val" value="10" size="4" />
         </td>
         <td>
           <select id="wh_duct_unit">
@@ -135,7 +135,7 @@
           Slope:
         </td>
         <td>
-          <input type="number" id="slope_val" value="1" step="0.5" size="12"/>
+          <input type="number" id="slope_val" value="1" step="0.5" size="12" />
         </td>
         <td>
           <select id="slope_unit">
@@ -150,10 +150,10 @@
         <td>
         </td>
         <td>
-          Filling:
+          Filling height:
         </td>
         <td>
-          <input type="number" id="fill_val" value="10" step="5" size="12"/>
+          <input type="number" id="fill_val" value="10" step="5" min="5" max="100" size="12" />
         </td>
         <td>
           <select id="fill_unit">
@@ -168,7 +168,7 @@
           Roughness:
         </td>
         <td>
-          <input type="number" id="k_val" value="0.1" step="0.1" size="12"/>
+          <input type="number" id="k_val" value="0.1" step="0.1" size="12" />
         </td>
         <td>
 
@@ -210,6 +210,25 @@
             <option value="ft2">ft²</option>
             <option value="yd2">yd²</option>
           </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Fill cross-section:
+        </td>
+        <td>
+          <input type="text" id="a_fill_val" size="12" readonly />
+        </td>
+        <td>
+          %
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Relative Roughness:
+        </td>
+        <td>
+          <input type="text" id="k$d_val" size="12" readonly />
         </td>
       </tr>
       <tr>

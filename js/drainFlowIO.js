@@ -48,7 +48,7 @@ function drainFlowIO() {
   let pipeUse = document.getElementById("pipe_use").checked;
   let ductUse = document.getElementById("duct_use").checked;
 
-  let aFlow, pWet, dHyd;
+  let aFlow, pWet, dHyd, csFill;
 
   if (pipeUse) {
     let dPipe = convertLength(
@@ -61,6 +61,7 @@ function drainFlowIO() {
     aFlow = circSegArea1(dPipe / 2, fill * dPipe); // flow area
     pWet = circSegArc1(dPipe / 2, fill * dPipe); // wetted perimeter
     dHyd = (4 * aFlow) / pWet; // hydraulic diameter
+    csFill = aFlow/circArea1(dPipe/2);
   }
 
   if (ductUse) {
@@ -83,6 +84,7 @@ function drainFlowIO() {
       pWet = wDuct + 2 * hDuct * fill; // wetted perimeter partially filled duct
     }
     dHyd = (4 * aFlow) / pWet; // hydraulic diameter
+    csFill = fill;
   }
 
   // parameter for iteration
@@ -143,7 +145,11 @@ function drainFlowIO() {
     document.getElementById("a_flow_unit").value
   ).toPrecision(5);
 
-  document.getElementById("re_val").value = Math.round(re);
+  document.getElementById("a_fill_val").value = (csFill*100).toPrecision(5);
+
+  document.getElementById("k$d_val").value = (k/dHyd).toFixed(5);
+
+  document.getElementById("re_val").value = re.toFixed(0);
   document.getElementById("re_iter_val").value = i;
   document.getElementById("f_val").value = f[0].toFixed(5);
   document.getElementById("f_iter_val").value = f_iter_acc;

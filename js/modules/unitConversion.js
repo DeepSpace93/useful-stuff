@@ -200,6 +200,7 @@ function convertLength(valueIn, unitIn, unitOut) {
     in: 1 / 0.0254,
     ft: 1 / 0.3048,
     yd: 1 / 0.9144,
+    furlong: 1 / 201.168,
     mi: 1 / 1609.344,
     NM: 1 / 1852,
   };

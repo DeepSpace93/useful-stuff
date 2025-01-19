@@ -48,7 +48,7 @@ function drainFlowIO() {
   let pipeUse = document.getElementById("pipe_use").checked;
   let ductUse = document.getElementById("duct_use").checked;
 
-  let aFlow, pWet, dHyd, csFill;
+  let hFill, aFlow, pWet, dHyd, csFill;
 
   if (pipeUse) {
     let dPipe = convertLength(
@@ -58,8 +58,9 @@ function drainFlowIO() {
     );
 
     // calculation - Gemometry
-    aFlow = circSegArea1(dPipe / 2, fill * dPipe); // flow area
-    pWet = circSegArc1(dPipe / 2, fill * dPipe); // wetted perimeter
+    hFill = fill * dPipe;
+    aFlow = circSegArea1(dPipe / 2, hFill); // flow area
+    pWet = circSegArc1(dPipe / 2, hFill); // wetted perimeter
     dHyd = (4 * aFlow) / pWet; // hydraulic diameter
     csFill = aFlow/circArea1(dPipe/2);
   }
@@ -77,11 +78,12 @@ function drainFlowIO() {
     );
 
     // calculation - Gemometry
-    aFlow = wDuct * hDuct * fill; // flow area
+    hFill = fill * hDuct;
+    aFlow = wDuct * hFill; // flow area
     if (fill == 1) {
       pWet = 2 * wDuct + 2 * hDuct; // wetted perimeter full duct
     } else {
-      pWet = wDuct + 2 * hDuct * fill; // wetted perimeter partially filled duct
+      pWet = wDuct + 2 * hFill; // wetted perimeter partially filled duct
     }
     dHyd = (4 * aFlow) / pWet; // hydraulic diameter
     csFill = fill;
@@ -122,6 +124,9 @@ function drainFlowIO() {
     i++;
   }
 
+  // calculation of Forude number
+  let fr = c/(Math.sqrt(9.81 * hFill));
+  
   // calculation - volumetric and mass flow rate
   let vf = aFlow * c;
   let mf = vf * rho;
@@ -153,6 +158,7 @@ function drainFlowIO() {
   document.getElementById("re_iter_val").value = i;
   document.getElementById("f_val").value = f[0].toFixed(5);
   document.getElementById("f_iter_val").value = f_iter_acc;
+  document.getElementById("fr_val").value = fr.toFixed(5);
   document.getElementById("reg_val").value = regime;
 
   document.getElementById("c_val").value = convertVelocity(

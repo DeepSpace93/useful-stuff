@@ -34,7 +34,7 @@
           Density:
         </td>
         <td>
-          <input type="number" id="rho_val" value="1000" step="10" size="12" />
+          <input type="number" id="rho_val" value="1000" step="10" min="0" size="12" />
         </td>
         <td>
           <select id="rho_unit">
@@ -56,7 +56,7 @@
         <td>
           Dynamic viscosity:
         </td>
-        <td> <input type="number" id="mu_val" value="1" step="0.1" size="12" />
+        <td> <input type="number" id="mu_val" value="1" step="0.1" min="0" size="12" />
         </td>
         <td>
           <select id="mu_unit">
@@ -75,7 +75,7 @@
           Kinematic viscosity:
         </td>
         <td>
-          <input type="number" id="nu_val" value="1" step="0.1" size="12" />
+          <input type="number" id="nu_val" value="1" step="0.1" min="0" size="12" />
         </td>
         <td>
           <select id="nu_unit">
@@ -95,7 +95,7 @@
           Pipe diameter:
         </td>
         <td>
-          <input type="number" id="d_pipe_val" value="10" size="12" />
+          <input type="number" id="d_pipe_val" value="10" min="0" size="12" />
         </td>
         <td>
           <select id="d_pipe_unit">
@@ -115,8 +115,8 @@
           Duct size (W x H):
         </td>
         <td>
-          <input type="number" id="w_duct_val" value="5" size="4" />
-          <input type="number" id="h_duct_val" value="10" size="4" />
+          <input type="number" id="w_duct_val" value="5" min="0" size="4" />
+          <input type="number" id="h_duct_val" value="10" min="0" size="4" />
         </td>
         <td>
           <select id="wh_duct_unit">
@@ -135,7 +135,7 @@
           Slope:
         </td>
         <td>
-          <input type="number" id="slope_val" value="1" step="0.5" size="12" />
+          <input type="number" id="slope_val" value="1" step="0.5" min="0" max="100" size="12" />
         </td>
         <td>
           <select id="slope_unit">
@@ -168,7 +168,7 @@
           Roughness:
         </td>
         <td>
-          <input type="number" id="k_val" value="0.1" step="0.1" size="12" />
+          <input type="number" id="k_val" value="0.1" step="0.1" min="0" size="12" />
         </td>
         <td>
 
@@ -257,6 +257,14 @@
         </td>
         <td>
           <input type="text" id="f_iter_val" size="2" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Froude number:
+        </td>
+        <td>
+          <input type="text" id="fr_val" size="12" readonly />
         </td>
       </tr>
       <tr>

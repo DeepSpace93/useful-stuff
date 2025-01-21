@@ -283,6 +283,7 @@ function convertPressure(valueIn, unitIn, unitOut, absIn, absOut) {
     Torr: 760 / 101325,
     psi: 1 / 6894.757293168, //lbf/inch²
     mWC: 1 / 9806.65,
+    mmWC: 1000 / 9806.65,
     inWC: 1 / 249.0889,
     inHg: 1 / 3386.389,
     at: 1 / 98066.5, //kgf/cm²

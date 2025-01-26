@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Reference Conditions Converter</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script src="./js/modules/unitConversion.js"></script>
+  <script src="./js/referenceConditionsIO.js"></script>
+  <h1>Reference Conditions Converter</h1>
+
+  <form>
+    <table>
+      <tr>
+        <td colspan="3">
+          <h2>Reference Conditions</h2>
+        </td>
+      </tr>
+      <tr>
+        <td>Temperature</td>
+        <td>
+          <input type="number" id="T_ref_val" value="20" />
+        </td>
+        <td>
+          <select id="T_ref_unit">
+            <option value="C">°C</option>
+            <option value="K">K</option>
+            <option value="F">°F</option>
+            <option value="R">°R</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Pressure</td>
+        <td>
+          <input type="number" id="p_ref_val" value="1" />
+        </td>
+        <td>
+          <select id="p_ref_unit">
+            <option value="bar">bar</option>
+            <option value="Pa">Pa</option>
+            <option value="hPa">hpa</option>
+            <option value="kPa">kPa</option>
+            <option value="MPa">MPa</option>
+            <option value="mbar">mbar</option>
+            <option value="mmHg">mmHg</option>
+            <option value="psi">psi</option>
+            <option value="mWC">mWC</option>
+            <option value="inWC">inWC</option>
+            <option value="inHg">inHg</option>
+            <option value="at">at</option>
+            <option value="atm">atm</option>
+          </select>
+          <select id="p_ref_abs">
+            <option value="abs">abs</option>
+            <option value="rel">rel</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Volumetric flow rate:</td>
+        <td>
+          <input type="number" id="vf_ref_val" value="1" />
+        </td>
+        <td>
+          <select id="vf_ref_unit">
+            <option value="m3$h">m³/h</option>
+            <option value="m3$min">m³/min</option>
+            <option value="m3$s">m³/s</option>
+            <option value="l$h">l/h</option>
+            <option value="l$min">l/min</option>
+            <option value="l$s">l/s</option>
+            <option value="ft$min">ft³/min</option>
+            <option value="gal$min">gal/min</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <button type="button" onclick="referencConditionsIO(1)">Calculate Reference Conditions</button>
+  <form>
+    <table>
+      <td colspan="3">
+        <h2>Operating Conditions</h2>
+      </td>
+      </tr>
+      <tr>
+        <td>Temperature</td>
+        <td>
+          <input type="number" id="T_op_val" value="20" />
+        </td>
+        <td>
+          <select id="T_op_unit">
+            <option value="C">°C</option>
+            <option value="K">K</option>
+            <option value="F">°F</option>
+            <option value="R">°R</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Pressure</td>
+        <td>
+          <input type="number" id="p_op_val" value="0" />
+        </td>
+        <td>
+          <select id="p_op_unit">
+            <option value="bar">bar</option>
+            <option value="Pa">Pa</option>
+            <option value="hPa">hpa</option>
+            <option value="kPa">kPa</option>
+            <option value="MPa">MPa</option>
+            <option value="mbar">mbar</option>
+            <option value="mmHg">mmHg</option>
+            <option value="psi">psi</option>
+            <option value="mWC">mWC</option>
+            <option value="inWC">inWC</option>
+            <option value="inHg">inHg</option>
+            <option value="at">at</option>
+            <option value="atm">atm</option>
+          </select>
+          <select id="p_op_abs">
+            <option value="rel">rel</option>
+            <option value="abs">abs</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Volumetric flow rate</td>
+        <td>
+          <input type="number" id="vf_op_val" />
+        </td>
+        <td>
+          <select id="vf_op_unit">
+            <option value="m3$h">m³/h</option>
+            <option value="m3$min">m³/min</option>
+            <option value="m3$s">m³/s</option>
+            <option value="l$h">l/h</option>
+            <option value="l$min">l/min</option>
+            <option value="l$s">l/s</option>
+            <option value="ft$min">ft³/min</option>
+            <option value="gal$min">gal/min</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <button type="button" onclick="referencConditionsIO(2)">Calculate Operating Conditions</button>
+
+  <br />
+  <br />
+  Standard conditions (STP): 273.15 K = 0 C; 100000 Pa = 1 bar
+  <br />
+  Normal conditions: 273.15 K = 0 C; 101325 Pa = 1.01325 bar = 1 atm
+  <br />
+  Lab conditions: 293.15 K = 20 C; 101325 Pa = 1.01325 bar = 1 atm
+  <br />
+  <p><a href="index.html">Index</a></p>
+
+</body>
+
+</html>

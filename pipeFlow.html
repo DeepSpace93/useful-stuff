@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Pipe Flow</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script src="./js/modules/unitConversion.js"></script>
+  <script src="./js/pipeFlowIO.js"></script>
+  <h1>Pipe Flow</h1>
+
+  <form>
+    <table>
+      <tr>
+        <td>Pipe diameter</td>
+        <td>
+          <input type="number" id="d_pipe_val" value="10"/>
+        </td>
+        <td>
+          <select id="d_pipe_unit">
+            <option value="mm">mm</option>
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+            <option value="in">in</option>
+            <option value="ft">ft</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Pipe area</td>
+        <td>
+          <input type="text" id="a_pipe_val" readonly/>
+        </td>
+        <td>
+          <select id="a_pipe_unit">
+            <option value="mm2">mm²</option>
+            <option value="cm2">cm²</option>
+            <option value="dm2">dm²</option>
+            <option value="m2">m²</option>
+            <option value="in2">in²</option>
+            <option value="ft2">ft²</option>
+            <option value="yd2">yd²</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Volumetric flow rate:</td>
+        <td>
+          <input type="number" id="vf_val" value="1" />
+        </td>
+        <td>
+          <select id="vf_unit">
+            <option value="m3$h">m³/h</option>
+            <option value="m3$min">m³/min</option>
+            <option value="m3$s">m³/s</option>
+            <option value="l$h">l/h</option>
+            <option value="l$min">l/min</option>
+            <option value="l$s">l/s</option>
+            <option value="ft$min">ft³/min</option>
+            <option value="gal$min">gal/min</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Flow velocity</td>
+        <td>
+          <input type="text" id="c_val" value="5" readonly />
+        </td>
+        <td>
+          <select id="c_unit">
+            <option value="m$s">m/s</option>
+            <option value="km$h">km/h</option>
+            <option value="ft$s">ft/s</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <br />
+
+  <button type="button" onclick="pipeFlowIO(1)">Size Pipe</button>
+  <button type="button" onclick="pipeFlowIO(2)">Calculate Flow</button>
+  <button type="button" onclick="pipeFlowIO(3)">Calculate Velocity</button>
+
+  <p><a href="index.html">Index</a></p>
+
+  <br />
+</body>
+
+</html>

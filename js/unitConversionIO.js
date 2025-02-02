@@ -28,6 +28,9 @@ function unitConversionIO() {
     case "energy":
       valueOut = convertEnergy(valueIn, unitIn, unitOut);
       break;
+    case "fraction":
+      valueOut = convertFraction(valueIn, unitIn, unitOut);
+      break;
     case "frequency_period":
       valueOut = convertFrequencyPeriod(valueIn, unitIn, unitOut);
       break;

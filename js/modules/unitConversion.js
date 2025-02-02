@@ -177,6 +177,18 @@ function convertFrequencyPeriod(valueIn, unitIn, unitOut) {
   }
 }
 
+function convertFraction(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    unit: 1,
+    percent: 1e2,
+    permille: 1e3,
+    ppm: 1e6,
+    ppb: 1e9,
+    ppt: 1e12,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+}
+
 function convertKinematicViscosity(valueIn, unitIn, unitOut) {
   const convFactors = {
     m2$s: 1,
@@ -378,6 +390,22 @@ function convertSlope(valueIn, unitIn, unitOut) {
     case "deg":
       return (180 * Math.atan(slope)) / Math.PI;
   }
+}
+
+function convertSpecificEnergy(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    J$kg: 1,
+    kJ$kg: 1e-3,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+}
+
+function convertSpecificEntropy(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    J$kg$K: 1,
+    kJ$kg$K: 1e-3,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
 function convertSubstanceAmount(valueIn, unitIn, unitOut) {

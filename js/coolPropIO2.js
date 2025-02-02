@@ -1,39 +1,127 @@
 function coolPropIO() {
 
   // data input and unit conversion to SI units
-  const fluid = document.getElementById("fluid").value;
 
-  const TIn = convertTemperature(
-    parseFloat(document.getElementById("T_in").value),
-    document.getElementById("T_unit_in").value,
-    "K"
-  );
+  let in1, in2, val1, val2;
 
-  const pIn = convertPressure(
-    parseFloat(document.getElementById("p_in").value),
-    document.getElementById("p_unit_in").value,
-    "Pa",
-    document.getElementById("p_abs_in").value,
-    "abs"
-  );
+  let fluid = document.getElementById("fluid").value;
 
-  // calculations by CoolProp
-  const TOut = Module.PropsSI("T", "T", TIn, "P", pIn, fluid);
-  const pOut = Module.PropsSI("P", "T", TIn, "P", pIn, fluid);
-  const phaseIdx = Module.PropsSI("PHASE", "T", TIn, "P", pIn, fluid);
-  const uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
-  const hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
-  const sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
-  const rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
-  const cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
-  const cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
-  const muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
-  const lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
+  if (document.getElementById("T_use1").checked) {
+    in1 = "T";
+    val1 = convertTemperature(
+      parseFloat(document.getElementById("T").value),
+      document.getElementById("T_unit").value,
+      "K"
+    );
+  }
 
-  // convert phase Index to phase name
+  if (document.getElementById("T_use2").checked) {
+    in2 = "T";
+    val2 = convertTemperature(
+      parseFloat(document.getElementById("T").value),
+      document.getElementById("T_unit").value,
+      "K"
+    );
+  }
+
+  if (document.getElementById("p_use1").checked) {
+    in1 = "P";
+    val1 = convertPressure(
+      parseFloat(document.getElementById("p").value),
+      document.getElementById("p_unit").value,
+      "Pa",
+      document.getElementById("p_abs").value,
+      "abs"
+    );
+  }
+
+  if (document.getElementById("p_use2").checked) {
+    in2 = "P";
+    val2 = convertPressure(
+      parseFloat(document.getElementById("p").value),
+      document.getElementById("p_unit").value,
+      "Pa",
+      document.getElementById("p_abs").value,
+      "abs"
+    );
+  }
+
+  if (document.getElementById("u_use1").checked) {
+    in1 = "U";
+    val1 = convertSpecificEnergy(
+      parseFloat(document.getElementById("u").value),
+      document.getElementById("u_unit").value,
+      "J$kg"
+    );
+  }
+
+  if (document.getElementById("u_use2").checked) {
+    in2 = "U";
+    val2 = convertSpecificEnergy(
+      parseFloat(document.getElementById("u").value),
+      document.getElementById("u_unit").value,
+      "J$kg"
+    );
+  }
+
+  if (document.getElementById("h_use1").checked) {
+    in1 = "H";
+    val1 = convertSpecificEnergy(
+      parseFloat(document.getElementById("h").value),
+      document.getElementById("h_unit").value,
+      "J$kg"
+    );
+  }
+
+  if (document.getElementById("h_use2").checked) {
+    in2 = "H";
+    val2 = convertSpecificEnergy(
+      parseFloat(document.getElementById("h").value),
+      document.getElementById("h_unit").value,
+      "J$kg"
+    );
+  }
+
+  if (document.getElementById("s_use1").checked) {
+    in1 = "S";
+    val1 = convertSpecificEntropy(
+      parseFloat(document.getElementById("s").value),
+      document.getElementById("s_unit").value,
+      "J$kg$K"
+    );
+  }
+
+  if (document.getElementById("s_use2").checked) {
+    in2 = "S";
+    val2 = convertSpecificEntropy(
+      parseFloat(document.getElementById("s").value),
+      document.getElementById("s_unit").value,
+      "J$kg$K"
+    );
+  }
+
+  if (document.getElementById("q_use1").checked) {
+    in1 = "Q";
+    val1 = convertFraction(
+      parseFloat(document.getElementById("q").value),
+      document.getElementById("q_unit").value,
+      "unit"
+    );
+  }
+
+  if (document.getElementById("q_use2").checked) {
+    in2 = "Q";
+    val2 = convertFraction(
+      parseFloat(document.getElementById("q").value),
+      document.getElementById("q_unit").value,
+      "unit"
+    );
+  }
+
+  // calculations by CoolProp and Output
+
   let phase = "undefined";
-
-  switch (phaseIdx) {
+  switch (Module.PropsSI("PHASE", in1, val1, in2, val2, fluid)) {
     case 0:
       phase = "liquid";
       break;
@@ -54,6 +142,67 @@ function coolPropIO() {
       break;
   }
 
+  document.getElementById("phase").value = phase;
+
+  document.getElementById("T").value = convertTemperature(
+    Module.PropsSI("T", in1, val1, in2, val2, fluid),
+    "K",
+    document.getElementById("T_unit").value
+  );
+
+  document.getElementById("p").value = convertPressure(
+    Module.PropsSI("P", in1, val1, in2, val2, fluid),
+    "Pa",
+    document.getElementById("p_unit").value,
+    "abs",
+    document.getElementById("p_abs").value
+  );
+
+  document.getElementById("u").value = convertSpecificEnergy(
+    Module.PropsSI("U", in1, val1, in2, val2, fluid),
+    "J$kg",
+    document.getElementById("u_unit").value
+  );
+
+  document.getElementById("h").value = convertSpecificEnergy(
+    Module.PropsSI("H", in1, val1, in2, val2, fluid),
+    "J$kg",
+    document.getElementById("h_unit").value
+  );
+
+  document.getElementById("s").value = convertSpecificEntropy(
+    Module.PropsSI("S", in1, val1, in2, val2, fluid),
+    "J$kg$K",
+    document.getElementById("s_unit").value
+  );
+
+  document.getElementById("q").value = convertFraction(
+    Module.PropsSI("Q", in1, val1, in2, val2, fluid),
+    "unit",
+    document.getElementById("q_unit").value
+  );
+
+  document.getElementById("v").value = Module.PropsSI("Q", "T", 300, "P", 1e5, fluid);
+
+  /*
+
+  const TOut = Module.PropsSI("T", "T", TIn, "P", pIn, fluid);
+  const pOut = Module.PropsSI("P", "T", TIn, "P", pIn, fluid);
+
+  const uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
+  const hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
+  const sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
+  const rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
+  const cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
+  const cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
+  const muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
+  const lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
+
+  // convert phase Index to phase name
+
+
+
+
   // calculate specific volume
   const vOut = 1 / rhoOut;
 
@@ -67,19 +216,9 @@ function coolPropIO() {
   const PrOut = nuOut / aOut;
 
   // convert units and output calculated values
-  document.getElementById("T_out").value = convertTemperature(
-    TOut,
-    "K",
-    document.getElementById("T_unit_out").value
-  );
 
-  document.getElementById("p_out").value = convertPressure(
-    pOut,
-    "Pa",
-    document.getElementById("p_unit_out").value,
-    "abs",
-    document.getElementById("p_abs_out").value
-  );
+
+
 
   document.getElementById("phase").value = phase;
 
@@ -121,8 +260,8 @@ function coolPropIO() {
 
   document.getElementById("lambda_out").value = lambdaOut;
 
-  document.getElementById("a_out").value = aOut*1e6;
+  document.getElementById("a_out").value = aOut * 1e6;
 
   document.getElementById("Pr_out").value = PrOut;
-
+ */
 }

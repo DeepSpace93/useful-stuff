@@ -7,7 +7,7 @@
 </head>
 
 <body>
-  <script src="js/coolPropIO.js"></script>
+  <script src="js/coolPropIO2.js"></script>
   <script src="js/modules/coolProp.js"></script>
   <script src="js/modules/unitConversion.js"></script>
 
@@ -23,10 +23,11 @@
         <td>
         </td>
         <td>
-          Fluid:
+          Fluid
         </td>
         <td>
           <select id="fluid">
+            <option value="Water">Water</option>
             <option value="1-Butene">1-Butene</option>
             <option value="Acetone">Acetone</option>
             <option value="Air">Air</option>
@@ -148,20 +149,19 @@
             <option value="SulfurHexafluoride">SulfurHexafluoride</option>
             <option value="Toluene">Toluene</option>
             <option value="trans-2-Butene">trans-2-Butene</option>
-            <option value="Water">Water</option>
             <option value="Xenon">Xenon</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="radio" id="T_use" name="in_1" checked />
+          <input type="radio" id="T_use1" name="in_1" />
         </td>
         <td>
-          <input type="radio" id="T_use" name="in_2" />
+          <input type="radio" id="T_use2" name="in_2" checked />
         </td>
         <td>
-          Temperature:
+          Temperature
         </td>
         <td>
           <input type="number" id="T" value="20" />
@@ -177,13 +177,13 @@
       </tr>
       <tr>
         <td>
-          <input type="radio" id="p_use" name="in_1" />
+          <input type="radio" id="p_use1" name="in_1" checked />
         </td>
         <td>
-          <input type="radio" id="p_use" name="in_2" checked />
+          <input type="radio" id="p_use2" name="in_2" />
         </td>
         <td>
-          Pressure:
+          Pressure
         </td>
         <td>
           <input type="number" id="p" value="0" />
@@ -207,7 +207,7 @@
             <option value="at">at</option>
             <option value="atm">atm</option>
           </select>
-          <select id="p_abs_in">
+          <select id="p_abs">
             <option value="rel">rel</option>
             <option value="abs">abs</option>
           </select>
@@ -215,13 +215,13 @@
       </tr>
       <tr>
         <td>
-          <input type="radio" id="u_use" name="in_1" />
+          <input type="radio" id="u_use1" name="in_1" />
         </td>
         <td>
-          <input type="radio" id="u_use" name="in_2" />
+          <input type="radio" id="u_use2" name="in_2" />
         </td>
         <td>
-          Spec. int. energy:
+          Spec. int. energy
         </td>
         <td>
           <input type="number" id="u" />
@@ -229,18 +229,19 @@
         <td>
           <select id="u_unit">
             <option value="kJ$kg">kJ/kg</option>
+            <option value="J$kg">J/kg</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="radio" id="h_use" name="in_1" />
+          <input type="radio" id="h_use1" name="in_1" />
         </td>
         <td>
-          <input type="radio" id="h_use" name="in_2" />
+          <input type="radio" id="h_use2" name="in_2" />
         </td>
         <td>
-          Spec. enthalpy:
+          Spec. enthalpy
         </td>
         <td>
           <input type="number" id="h" />
@@ -248,18 +249,19 @@
         <td>
           <select id="h_unit">
             <option value="kJ$kg">kJ/kg</option>
+            <option value="J$kg">J/kg</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="radio" id="s_use" name="in_1" />
+          <input type="radio" id="s_use1" name="in_1" />
         </td>
         <td>
-          <input type="radio" id="s_use" name="in_2" />
+          <input type="radio" id="s_use2" name="in_2" />
         </td>
         <td>
-          Spec. entropy:
+          Spec. entropy
         </td>
         <td>
           <input type="number" id="s" />
@@ -267,72 +269,86 @@
         <td>
           <select id="s_unit">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
+            <option value="J$kg$K">J/(kg·K)</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          <input type="radio" id="q_use" name="in_1" />
+          <input type="radio" id="q_use1" name="in_1" />
         </td>
         <td>
-          <input type="radio" id="q_use" name="in_2" />
+          <input type="radio" id="q_use2" name="in_2" />
         </td>
         <td>
           Vapor quality
         </td>
         <td>
-          <input type="number" id="q" />
+          <input type="number" id="q" step="0.1" min="0" max="1" size="18" />
         </td>
         <td>
           <select id="q_unit">
-            <option value="1">1</option>
+            <option value="unit">1</option>
+            <option value="percent">%</option>
           </select>
         </td>
       </tr>
-    </table>
-  </form>
-
-  <br />
-
-  <button type="button" onclick="coolPropIO()">Calculate</button>
-
-  <h2>Output</h2>
-
-  <form>
-    <table>
       <tr>
+        <td>
+        </td>
+        <td>
+        </td>
         <td>
           Phase
         </td>
         <td>
           <input type="text" id="phase" readonly />
         </td>
+        <td>
+        </td>
       </tr>
       <tr>
+        <td>
+        </td>
+        <td>
+        </td>
         <td>
           Density
         </td>
         <td>
-          <input type="text" id="rho_out" readonly />
+          <input type="text" id="rho" readonly />
         </td>
         <td>
-          <select id="rho_unit_out">
+          <select id="rho_unit">
             <option value="kg$m3">kg/m³</option>
           </select>
+        </td>
+        <td>
+        </td>
+      </tr>
+      <tr>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td>
+          Specific Volume
+        </td>
+        <td>
+          <input type="text" id="v" readonly />
+        </td>
+        <td>
+          <select id="v_unit">
+            <option value="m3$kg">m³/kg</option>
+          </select>
+        </td>
+        <td>
         </td>
       </tr>
     </table>
   </form>
 
-  Specific Volume:
-  <form>
-    <input type="text" id="v_out" readonly />
-    <select id="v_unit_out">
-      <option value="m3$kg">m³/kg</option>
-    </select>
-  </form>
-
-  Specific Heat at Constant Volume:
+  <!--  Specific Heat at Constant Volume:
   <form>
     <input type="text" id="cv_out" readonly />
     <select id="cv_unit_out">
@@ -387,6 +403,8 @@
 
   Surface Tension
   <p><a href="index.html">Index</a></p>
-</body>
+</body> -->
+
+  <button type="button" onclick="coolPropIO()">Calculate</button>
 
 </html>

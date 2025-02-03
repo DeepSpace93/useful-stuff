@@ -118,8 +118,51 @@ function coolPropIO() {
     );
   }
 
-  // calculations by CoolProp and Output
+  // calculate temperature
+  document.getElementById("T").value = convertTemperature(
+    Module.PropsSI("T", in1, val1, in2, val2, fluid),
+    "K",
+    document.getElementById("T_unit").value
+  );
 
+  // calculate pressure
+  document.getElementById("p").value = convertPressure(
+    Module.PropsSI("P", in1, val1, in2, val2, fluid),
+    "Pa",
+    document.getElementById("p_unit").value,
+    "abs",
+    document.getElementById("p_abs").value
+  );
+
+  // calculate specific internal energy
+  document.getElementById("u").value = convertSpecificEnergy(
+    Module.PropsSI("U", in1, val1, in2, val2, fluid),
+    "J$kg",
+    document.getElementById("u_unit").value
+  );
+
+  // calculate specific enthalpy
+  document.getElementById("h").value = convertSpecificEnergy(
+    Module.PropsSI("H", in1, val1, in2, val2, fluid),
+    "J$kg",
+    document.getElementById("h_unit").value
+  );
+
+  // calculate specific entropy
+  document.getElementById("s").value = convertSpecificHeat(
+    Module.PropsSI("S", in1, val1, in2, val2, fluid),
+    "J$kg$K",
+    document.getElementById("s_unit").value
+  );
+
+  // calculate specific vapor quality
+  document.getElementById("q").value = convertFraction(
+    Module.PropsSI("Q", in1, val1, in2, val2, fluid),
+    "unit",
+    document.getElementById("q_unit").value
+  );
+
+  // calculate phase
   let phase = "undefined";
   switch (Module.PropsSI("PHASE", in1, val1, in2, val2, fluid)) {
     case 0:
@@ -144,55 +187,39 @@ function coolPropIO() {
 
   document.getElementById("phase").value = phase;
 
-  document.getElementById("T").value = convertTemperature(
-    Module.PropsSI("T", in1, val1, in2, val2, fluid),
-    "K",
-    document.getElementById("T_unit").value
+
+  // calculate density
+  let rho = Module.PropsSI("D", in1, val1, in2, val2, fluid);
+  document.getElementById("rho").value = convertDensitySpecificVolume(
+    rho,
+    "kg$m3",
+    document.getElementById("rho_unit").value
   );
 
-  document.getElementById("p").value = convertPressure(
-    Module.PropsSI("P", in1, val1, in2, val2, fluid),
-    "Pa",
-    document.getElementById("p_unit").value,
-    "abs",
-    document.getElementById("p_abs").value
+  // calculate specific volume
+  document.getElementById("v").value = convertDensitySpecificVolume(
+    rho,
+    "kg$m3",
+    document.getElementById("v_unit").value
   );
 
-  document.getElementById("u").value = convertSpecificEnergy(
-    Module.PropsSI("U", in1, val1, in2, val2, fluid),
-    "J$kg",
-    document.getElementById("u_unit").value
-  );
-
-  document.getElementById("h").value = convertSpecificEnergy(
-    Module.PropsSI("H", in1, val1, in2, val2, fluid),
-    "J$kg",
-    document.getElementById("h_unit").value
-  );
-
-  document.getElementById("s").value = convertSpecificEntropy(
-    Module.PropsSI("S", in1, val1, in2, val2, fluid),
+  // calculate specific heat at constant volume
+  document.getElementById("cv").value = convertSpecificHeat(
+    Module.PropsSI("CVMASS", in1, val1, in2, val2, fluid),
     "J$kg$K",
-    document.getElementById("s_unit").value
+    document.getElementById("cv_unit").value
   );
 
-  document.getElementById("q").value = convertFraction(
-    Module.PropsSI("Q", in1, val1, in2, val2, fluid),
-    "unit",
-    document.getElementById("q_unit").value
+  // calculate specific heat at constant volume
+  document.getElementById("cp").value = convertSpecificHeat(
+    Module.PropsSI("CPMASS", in1, val1, in2, val2, fluid),
+    "J$kg$K",
+    document.getElementById("cp_unit").value
   );
-
-  document.getElementById("v").value = Module.PropsSI("Q", "T", 300, "P", 1e5, fluid);
 
   /*
 
-  const TOut = Module.PropsSI("T", "T", TIn, "P", pIn, fluid);
-  const pOut = Module.PropsSI("P", "T", TIn, "P", pIn, fluid);
 
-  const uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
-  const hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
-  const sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
-  const rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
   const cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
   const cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
   const muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
@@ -202,9 +229,6 @@ function coolPropIO() {
 
 
 
-
-  // calculate specific volume
-  const vOut = 1 / rhoOut;
 
   // calculate kinematic viscosity
   const nuOut = muOut / rhoOut;

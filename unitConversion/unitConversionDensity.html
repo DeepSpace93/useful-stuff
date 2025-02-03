@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Density Unit Conversion</title>
+  <title>Density and Specific Volume Unit Conversion</title>
   <meta charset="UTF-8" />
 </head>
 
@@ -10,12 +10,12 @@
   <script src="../js/unitConversionIO.js"></script>
   <script src="../js/modules/unitConversion.js"></script>
   <h1>Unit Conversion</h1>
-  <h2>Density</h2>
+  <h2>Density and Specific Volume</h2>
   <form>
     <input type="checkbox" id="round" />
     Round
     to
-    <input type="number" id="decimals" size="1" min="0" value="5" step="1" />
+    <input type="number" id="decimals" size="1" min="0" value="2" step="1" />
     decimals.
     <br />
     <input type="checkbox" id="sci" />
@@ -33,6 +33,13 @@
       <option value="lb$in3">lb/in³</option>
       <option value="lb$ft3">lb/ft³</option>
       <option value="slug$ft3">slug/ft³</option>
+      <option value="m3$kg">m³/kg</option>
+      <option value="cm3$g">cm³/g</option>
+      <option value="l$g">l/g</option>
+      <option value="l$kg">l/kg</option>
+      <option value="in3$lb">in³/lb</option>
+      <option value="ft3$lb">ft³/lb</option>
+      <option value="ft3$slug">ft³/slug</option>
     </select>
     =
     <input type="text" id="value_out" readonly />
@@ -44,6 +51,13 @@
       <option value="lb$in3">lb/in³</option>
       <option value="lb$ft3">lb/ft³</option>
       <option value="slug$ft3">slug/ft³</option>
+      <option value="m3$kg">m³/kg</option>
+      <option value="cm3$g">cm³/g</option>
+      <option value="l$g">l/g</option>
+      <option value="l$kg">l/kg</option>
+      <option value="in3$lb">in³/lb</option>
+      <option value="ft3$lb">ft³/lb</option>
+      <option value="ft3$slug">ft³/slug</option>
     </select>
   </form>
   <br />

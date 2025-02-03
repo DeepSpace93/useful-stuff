@@ -39,7 +39,7 @@ function pressureDropIO() {
     );
   }
 
-  let rho = convertDensity(
+  let rho = convertDensitySpecificVolume(
     parseFloat(document.getElementById("rho_val").value),
     document.getElementById("rho_unit").value,
     "kg$m3"

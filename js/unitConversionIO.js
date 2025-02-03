@@ -20,7 +20,7 @@ function unitConversionIO() {
       valueOut = convertCharge(valueIn, unitIn, unitOut);
       break;
     case "density":
-      valueOut = convertDensity(valueIn, unitIn, unitOut);
+      valueOut = convertDensitySpecificVolume(valueIn, unitIn, unitOut);
       break;
     case "dynamic_viscosity":
       valueOut = convertDynamicViscosity(valueIn, unitIn, unitOut);

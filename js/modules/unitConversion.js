@@ -66,8 +66,8 @@ function convertCurrent(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
-function convertDensity(valueIn, unitIn, unitOut) {
-  const convFactors = {
+function convertDensitySpecificVolume(valueIn, unitIn, unitOut) {
+  const convFactorsDensity = {
     kg$m3: 1,
     g$cm3: 1 / 1000,
     g$l: 1,
@@ -76,7 +76,30 @@ function convertDensity(valueIn, unitIn, unitOut) {
     lb$ft3: 1 / 16.01846337396,
     slug$ft3: 1 / 515.3788199999872,
   };
-  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+
+  const convFactorsSpecificVolume = {
+    m3$kg: 1,
+    cm3$g: 1000,
+    l$g: 1,
+    l$kg: 1000,
+    in3$lb: 27679.90471,
+    ft3$lb: 16.01846337396,
+    ft3$slug: 515.3788199999872,
+  };
+
+  let value_kg$m3;
+
+  if (unitIn in convFactorsSpecificVolume) {
+    value_kg$m3 = 1 / ((valueIn * convFactorsSpecificVolume["m3$kg"]) / convFactorsSpecificVolume[unitIn]);
+  } else {
+    value_kg$m3 = (valueIn * convFactorsDensity["kg$m3"]) / convFactorsDensity[unitIn];
+  }
+
+  if (unitOut in convFactorsSpecificVolume) {
+    return (((1 / value_kg$m3) * convFactorsSpecificVolume[unitOut]) / convFactorsSpecificVolume["m3$kg"]);
+  } else {
+    return ((value_kg$m3 * convFactorsDensity[unitOut]) / convFactorsDensity["kg$m3"]);
+  }
 }
 
 function convertDynamicViscosity(valueIn, unitIn, unitOut) {
@@ -400,7 +423,7 @@ function convertSpecificEnergy(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
-function convertSpecificEntropy(valueIn, unitIn, unitOut) {
+function convertSpecificHeat(valueIn, unitIn, unitOut) {
   const convFactors = {
     J$kg$K: 1,
     kJ$kg$K: 1e-3,

@@ -1,13 +1,9 @@
 function primeFactorizationIO() {
-  const int = parseInt(document.getElementById("int").value);
+
+  const val = parseInt(document.getElementById("int").value);
   const delim = document.getElementById("delim").value;
 
-  let fac = [];
-
-  for (let i = 1; i < int; i++) {
-    fac.push(i);
-  }
-
+  let fac = primeFactorization(val);
   let facOut;
 
   switch (delim) {

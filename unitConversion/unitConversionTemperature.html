@@ -4,6 +4,23 @@
 <head>
   <title>Temperature Unit Conversion</title>
   <meta charset="UTF-8" />
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid black;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 5px;
+      padding-right: 5px;
+      text-align: center;
+    }
+
+    table {
+      border-collapse: collapse;
+
+    }
+  </style>
 </head>
 
 <body>
@@ -44,7 +61,43 @@
   <button type="button" onclick="unitConversionIO()">Convert</button>
   <p><a href="../index.html">Index</a></p>
   <br />
-  <img src="../img/UnitConversion_Temperature.png" />
+  <table>
+    <tr>
+      <th>to\from</th>
+      <th>°C</th>
+      <th>K</th>
+      <th>°F</th>
+      <th>°R</th>
+    </tr>
+    <tr>
+      <th>°C</th>
+      <td>1</td>
+      <td>K − 273.15</td>
+      <td>5/9(°F − 32)</td>
+      <td>5/9(°R − 491.67)</td>
+    </tr>
+    <tr>
+      <th>K</th>
+      <td>°C + 273.15</td>
+      <td>1</td>
+      <td>5/9(°F + 459.67)</td>
+      <td>5/9°R</td>
+    </tr>
+    <tr>
+      <th>°F</th>
+      <td>9/5°C + 32</td>
+      <td>9/5K − 459.67</td>
+      <td>1</td>
+      <td>°R − 459.67</td>
+    </tr>
+    <tr>
+      <th>°R</th>
+      <td>9/5°C + 491.67</td>
+      <td>9/5K</td>
+      <td>°F + 459.67</td>
+      <td>1</td>
+    </tr>
+  </table>
 </body>
 
 </html>

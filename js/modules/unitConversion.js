@@ -61,10 +61,12 @@ function convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut) {
 function convertCurrent(valueIn, unitIn, unitOut) {
   const convFactors = {
     A: 1,
-    nA: 1e6,
+    nA: 1e9,
+    uA: 1e6,
     mA: 1e3,
     kA: 1e-3,
     MA: 1e-6,
+    e$s: 6.241509074e18,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Coefficient of Thermal Expansion Unit Conversion</title>
+  <title>Current Unit Conversion</title>
   <meta charset="UTF-8" />
 </head>
 
@@ -10,7 +10,7 @@
   <script src="../js/unitConversionIO.js"></script>
   <script src="../js/modules/unitConversion.js"></script>
   <h1>Unit Conversion</h1>
-  <h2>Coefficient of Thermal Expansion</h2>
+  <h2>Current</h2>
   <form>
     <input type="checkbox" id="round" checked />
     Round
@@ -23,23 +23,27 @@
   </form>
   <br />
   <form>
-    <input type="hidden" id="quantity" value="coefficient_of_thermal_expansion" />
+    <input type="hidden" id="quantity" value="current" />
     <input type="number" id="value_in" value="1" />
     <select id="unit_in">
-      <option value="$K">1/K</option>
-      <option value="$R">1/°R</option>
-      <option value="mm$m$K">mm/(m·K)</option>
-      <option value="um$m$K">µm/(m·K)</option>
-      <option value="$E6K">1E-6/K</option>
+      <option value="A">A</option>
+      <option value="nA">nA</option>
+      <option value="uA">µA</option>
+      <option value="mA">mA</option>
+      <option value="kA">kA</option>
+      <option value="MA">MA</option>
+      <option value="e$s">e/s</option>
     </select>
     =
     <input type="text" id="value_out" readonly />
     <select id="unit_out">
-      <option value="$K">1/K</option>
-      <option value="$R">1/°R</option>
-      <option value="mm$m$K">mm/(m·K)</option>
-      <option value="um$m$K">µm/(m·K)</option>
-      <option value="$E6K">1E-6/K</option>
+      <option value="A">A</option>
+      <option value="nA">nA</option>
+      <option value="uA">µA</option>
+      <option value="mA">mA</option>
+      <option value="kA">kA</option>
+      <option value="MA">MA</option>
+      <option value="e$s">e/s</option>
     </select>
   </form>
   <br />

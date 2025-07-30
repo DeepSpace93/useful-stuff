@@ -25,7 +25,10 @@ function unitConversionIO() {
     case "coefficient_of_thermal_expansion":
       valueOut = convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut);
       break;
-    case "density":
+    case "current":
+      valueOut = convertCurrent(valueIn, unitIn, unitOut);
+      break;
+    case "density_specific_volume":
       valueOut = convertDensitySpecificVolume(valueIn, unitIn, unitOut);
       break;
     case "dynamic_viscosity":

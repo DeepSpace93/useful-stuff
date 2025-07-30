@@ -22,6 +22,9 @@ function unitConversionIO() {
     case "charge":
       valueOut = convertCharge(valueIn, unitIn, unitOut);
       break;
+    case "coefficient_of_thermal_expansion":
+      valueOut = convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut);
+      break;
     case "density":
       valueOut = convertDensitySpecificVolume(valueIn, unitIn, unitOut);
       break;

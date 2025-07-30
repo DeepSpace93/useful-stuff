@@ -50,6 +50,9 @@ function convertCharge(valueIn, unitIn, unitOut) {
 function convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut) {
   const convFactors = {
     $K: 1,
+    $R: 5/9,
+    mm$m$K: 1e3,
+    um$m$K: 1e6,
     $E6K: 1e6,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];

@@ -1,0 +1,7 @@
+{
+    "editor.occurrencesHighlight": "off",
+    "editor.selectionHighlight": false,
+    "editor.matchBrackets": "never",
+    "editor.occurrencesHighlightDelay": 1000,
+    "editor.quickSuggestionsDelay": 3000
+}

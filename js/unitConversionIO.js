@@ -16,6 +16,9 @@ function unitConversionIO() {
     case "angle":
       valueOut = convertAngle(valueIn, unitIn, unitOut);
       break;
+    case "capacitance":
+      valueOut = convertCapacitance(valueIn, unitIn, unitOut);
+      break;
     case "charge":
       valueOut = convertCharge(valueIn, unitIn, unitOut);
       break;

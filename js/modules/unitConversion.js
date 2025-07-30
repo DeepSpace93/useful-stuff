@@ -166,6 +166,7 @@ function convertFrequencyPeriod(valueIn, unitIn, unitOut) {
     GHz: 1e-9,
     THz: 1e-12,
     rad$s: 2 * Math.PI,
+    deg$s: 360,
     rpm: 60,
   };
 

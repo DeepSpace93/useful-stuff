@@ -58,6 +58,9 @@ function unitConversionIO() {
     case "mass_flow_rate":
       valueOut = convertMassFlowRate(valueIn, unitIn, unitOut);
       break;
+    case "mass_flux":
+      valueOut = convertMassFlux(valueIn, unitIn, unitOut);
+      break;
     case "power":
       valueOut = convertPower(valueIn, unitIn, unitOut);
       break;

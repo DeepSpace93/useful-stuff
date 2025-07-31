@@ -54,8 +54,8 @@ function coolPropIO() {
       break;
   }
 
-  // calculate specific volume
-  const vOut = 1 / rhoOut;
+  // calculate heat capacity ratio
+  const gammaOut = cpOut / cvOut;
 
   // calculate kinematic viscosity
   const nuOut = muOut / rhoOut;
@@ -67,20 +67,6 @@ function coolPropIO() {
   const PrOut = nuOut / aOut;
 
   // convert units and output calculated values
-  document.getElementById("T_out").value = convertTemperature(
-    TOut,
-    "K",
-    document.getElementById("T_unit_out").value
-  );
-
-  document.getElementById("p_out").value = convertPressure(
-    pOut,
-    "Pa",
-    document.getElementById("p_unit_out").value,
-    "abs",
-    document.getElementById("p_abs_out").value
-  );
-
   document.getElementById("phase").value = phase;
 
   document.getElementById("u_out").value = uOut / 1e3;
@@ -89,31 +75,25 @@ function coolPropIO() {
 
   document.getElementById("s_out").value = sOut / 1e3;
 
-  document.getElementById("rho_out").value = convertDensity(
+  document.getElementById("rho_out").value = convertDensitySpecificVolume(
     rhoOut,
     "kg$m3",
     document.getElementById("rho_unit_out").value
   );
 
-  document.getElementById("v_out").value = vOut;
-
   document.getElementById("cv_out").value = cvOut / 1e3;
 
   document.getElementById("cp_out").value = cpOut / 1e3;
 
-  document.getElementById("mu_out").value = convertDynViscosity(
+  document.getElementById("gamma_out").value = gammaOut;
+
+  document.getElementById("mu_out").value = convertDynamicViscosity(
     muOut,
     "Pa_s",
     document.getElementById("mu_unit_out").value
   );
 
-  document.getElementById("nu_out").value = convertKinViscosity(
-    nuOut,
-    "m2$s",
-    document.getElementById("nu_unit_out").value
-  );
-
-  document.getElementById("nu_out").value = convertKinViscosity(
+  document.getElementById("nu_out").value = convertKinematicViscosity(
     nuOut,
     "m2$s",
     document.getElementById("nu_unit_out").value
@@ -121,7 +101,7 @@ function coolPropIO() {
 
   document.getElementById("lambda_out").value = lambdaOut;
 
-  document.getElementById("a_out").value = aOut*1e6;
+  document.getElementById("a_out").value = aOut * 1e6;
 
   document.getElementById("Pr_out").value = PrOut;
 

@@ -18,8 +18,6 @@ function coolPropIO() {
   );
 
   // calculations by CoolProp
-  const TOut = Module.PropsSI("T", "T", TIn, "P", pIn, fluid);
-  const pOut = Module.PropsSI("P", "T", TIn, "P", pIn, fluid);
   const phaseIdx = Module.PropsSI("PHASE", "T", TIn, "P", pIn, fluid);
   const uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
   const hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);

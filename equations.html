@@ -4,8 +4,16 @@
 <head>
     <title>Solids</title>
     <meta charset="UTF-8" />
-
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            chtml: {
+                displayAlign: 'left'   // Align equations to the left
+            }
+        };
+    </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
@@ -21,6 +29,12 @@
         \dot{Q} = \frac{Q}{t}
         \]
     </p>
+
+    <h2>Reynolds number</h2>
+    \[
+    Re = \frac{\rho\,u\,L_{c}}{\mu} = \frac{G\,L_{c}}{\mu} = \frac{u\,L_{c}}{\nu}
+    \]
+
     <p><a href="index.html">Index</a></p>
 </body>
 

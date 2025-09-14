@@ -437,6 +437,46 @@ function convertSpecificHeat(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
+function convertSpecificResistanceConductance(valueIn, unitIn, unitOut) {
+  const convFactorsResistance = {
+    Ohm_m: 1,
+    uOhm_m: 1e6,
+    mOhm_m: 1e3,
+    Ohm_mm2$m: 1e6,
+  };
+
+  const convFactorsConductance = {
+    S$m: 1,
+    uS$m: 1e6,
+    mS$m: 1e3,
+    kS$m: 1e-3,
+    MS$m: 1e-6,
+  };
+
+  let valueOhm;
+
+  if (unitIn in convFactorsConductance) {
+    valueOhm =
+      1 /
+      ((valueIn * convFactorsConductance["S$m"]) /
+        convFactorsConductance[unitIn]);
+  } else {
+    valueOhm =
+      (valueIn * convFactorsResistance["Ohm_m"]) / convFactorsResistance[unitIn];
+  }
+
+  if (unitOut in convFactorsConductance) {
+    return (
+      ((1 / valueOhm) * convFactorsConductance[unitOut]) /
+      convFactorsConductance["S$m"]
+    );
+  } else {
+    return (
+      (valueOhm * convFactorsResistance[unitOut]) / convFactorsResistance["Ohm_m"]
+    );
+  }
+}
+
 function convertSubstanceAmount(valueIn, unitIn, unitOut) {
   const convFactors = {
     mol: 1,

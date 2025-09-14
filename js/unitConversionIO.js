@@ -75,6 +75,9 @@ function unitConversionIO() {
     case "slope":
       valueOut = convertSlope(valueIn, unitIn, unitOut);
       break;
+    case "specific_resistance_conductance":
+      valueOut = convertSpecificResistanceConductance(valueIn, unitIn, unitOut);
+      break;
     case "temperature":
       valueOut = convertTemperature(valueIn, unitIn, unitOut);
       break;

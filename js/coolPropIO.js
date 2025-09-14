@@ -30,6 +30,7 @@ function coolPropIO() {
 	let cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
 	let muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
 	let lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
+	let csOut = Module.PropsSI("A", "T", TIn, "P", pIn, fluid);
 
 	// convert phase Index to phase name
 	let phase = "undefined";
@@ -143,5 +144,12 @@ function coolPropIO() {
 
 	// Prandtl number
 	document.getElementById("Pr_out").value = PrOut.toFixed(decimals);
+
+	// speed of sound
+	document.getElementById("cs_out").value = convertVelocity(
+		csOut,
+		"m$s",
+		document.getElementById("cs_unit_out").value
+	).toFixed(decimals);;
 
 }

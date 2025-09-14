@@ -453,36 +453,36 @@ function convertSpecificResistanceConductance(valueIn, unitIn, unitOut) {
     MS$m: 1e-6,
   };
 
-  let valueOhm;
+  let valueOhm_m;
 
   if (unitIn in convFactorsConductance) {
-    valueOhm =
+    valueOhm_m =
       1 /
       ((valueIn * convFactorsConductance["S$m"]) /
         convFactorsConductance[unitIn]);
   } else {
-    valueOhm =
+    valueOhm_m =
       (valueIn * convFactorsResistance["Ohm_m"]) / convFactorsResistance[unitIn];
   }
 
   if (unitOut in convFactorsConductance) {
     return (
-      ((1 / valueOhm) * convFactorsConductance[unitOut]) /
+      ((1 / valueOhm_m) * convFactorsConductance[unitOut]) /
       convFactorsConductance["S$m"]
     );
   } else {
     return (
-      (valueOhm * convFactorsResistance[unitOut]) / convFactorsResistance["Ohm_m"]
+      (valueOhm_m * convFactorsResistance[unitOut]) / convFactorsResistance["Ohm_m"]
     );
   }
 }
 
-function convertSubstanceAmount(valueIn, unitIn, unitOut) {
+function convertAmountOfSubstance(valueIn, unitIn, unitOut) {
   const convFactors = {
     mol: 1,
     mmol: 1e3,
     kmol: 1e-3,
-    N: 6.02214076e23,
+    Na: 6.02214076e23,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

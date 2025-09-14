@@ -10,11 +10,14 @@ function unitConversionIO() {
   let valueOut = 666;
 
   switch (quantity) {
-    case "area":
-      valueOut = convertArea(valueIn, unitIn, unitOut);
-      break;
     case "angle":
       valueOut = convertAngle(valueIn, unitIn, unitOut);
+      break;
+    case "amount_of_substance":
+      valueOut = convertAmountOfSubstance(valueIn, unitIn, unitOut);
+      break;
+    case "area":
+      valueOut = convertArea(valueIn, unitIn, unitOut);
       break;
     case "capacitance":
       valueOut = convertCapacitance(valueIn, unitIn, unitOut);

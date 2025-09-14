@@ -1,3 +1,13 @@
+function convertAmountOfSubstance(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    mol: 1,
+    mmol: 1e3,
+    kmol: 1e-3,
+    Na: 6.02214076e23,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+}
+
 function convertAngle(valueIn, unitIn, unitOut) {
   const convFactors = {
     rad: 1,
@@ -50,7 +60,7 @@ function convertCharge(valueIn, unitIn, unitOut) {
 function convertCoefficientOfThermalExpansion(valueIn, unitIn, unitOut) {
   const convFactors = {
     $K: 1,
-    $R: 5/9,
+    $R: 5 / 9,
     mm$m$K: 1e3,
     um$m$K: 1e6,
     $E6K: 1e6,
@@ -429,7 +439,7 @@ function convertSpecificEnergy(valueIn, unitIn, unitOut) {
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
-function convertSpecificHeat(valueIn, unitIn, unitOut) {
+function convertSpecificHeatCapacity(valueIn, unitIn, unitOut) {
   const convFactors = {
     J$kg$K: 1,
     kJ$kg$K: 1e-3,
@@ -477,16 +487,6 @@ function convertSpecificResistanceConductance(valueIn, unitIn, unitOut) {
   }
 }
 
-function convertAmountOfSubstance(valueIn, unitIn, unitOut) {
-  const convFactors = {
-    mol: 1,
-    mmol: 1e3,
-    kmol: 1e-3,
-    Na: 6.02214076e23,
-  };
-  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
-}
-
 function convertTemperature(valueIn, unitIn, unitOut) {
   let tempK = 0;
 
@@ -517,6 +517,17 @@ function convertTemperature(valueIn, unitIn, unitOut) {
     case "R":
       return (9 / 5) * tempK;
   }
+}
+
+function convertThermalDiffusivity(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    m2$s: 1,
+    mm2$s: 1e6,
+    cm2$s: 1e4,
+    cSt: 1e6,
+    St: 1e4,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
 
 function convertTime(valueIn, unitIn, unitOut) {

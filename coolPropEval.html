@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>CoolProp</title>
+  <title>CoolProp Evaluation</title>
   <meta charset="utf-8" />
 </head>
 
@@ -10,6 +10,13 @@
   <script src="js/coolPropIO.js"></script>
   <script src="js/modules/coolProp.js"></script>
   <script src="js/modules/unitConversion.js"></script>
+  <h1>CoolProp Evaluation</h1>
+
+  <form>
+    Round to
+    <input type="number" id="decimals" size="1" min="0" value="2" step="1" />
+    decimals.
+  </form>
 
   <h2>Input</h2>
   <form>
@@ -20,12 +27,18 @@
         </td>
         <td>
           <select id="fluid">
-            <option value="Water">Water</option>
-            <option value="1-Butene">1-Butene</option>
-            <option value="Acetone">Acetone</option>
             <option value="Air">Air</option>
             <option value="Ammonia">Ammonia</option>
             <option value="Argon">Argon</option>
+            <option value="CarbonDioxide">CarbonDioxide</option>
+            <option value="Helium">Helium</option>
+            <option value="Methane">Methane</option>
+            <option value="Hydrogen">Hydrogen</option>
+            <option value="Nitrogen">Nitrogen</option>
+            <option value="Oxygen">Oxygen</option>
+            <option value="Water">Water</option>
+            <option value="1-Butene">1-Butene</option>
+            <option value="Acetone">Acetone</option>
             <option value="Benzene">Benzene</option>
             <option value="CarbonDioxide">CarbonDioxide</option>
             <option value="CarbonMonoxide">CarbonMonoxide</option>
@@ -49,9 +62,7 @@
             <option value="EthyleneOxide">EthyleneOxide</option>
             <option value="Fluorine">Fluorine</option>
             <option value="HeavyWater">HeavyWater</option>
-            <option value="Helium">Helium</option>
-            <option value="HFE143m">HFE143m</option>
-            <option value="Hydrogen">Hydrogen</option>
+            <option value="HFE143m">HFE143m</option>            
             <option value="HydrogenChloride">HydrogenChloride</option>
             <option value="HydrogenSulfide">HydrogenSulfide</option>
             <option value="IsoButane">IsoButane</option>
@@ -64,7 +75,6 @@
             <option value="MD3M">MD3M</option>
             <option value="MD4M">MD4M</option>
             <option value="MDM">MDM</option>
-            <option value="Methane">Methane</option>
             <option value="Methanol">Methanol</option>
             <option value="MethylLinoleate">MethylLinoleate</option>
             <option value="MethylLinolenate">MethylLinolenate</option>
@@ -84,13 +94,11 @@
             <option value="n-Undecane">n-Undecane</option>
             <option value="Neon">Neon</option>
             <option value="Neopentane">Neopentane</option>
-            <option value="Nitrogen">Nitrogen</option>
             <option value="NitrousOxide">NitrousOxide</option>
             <option value="Novec649">Novec649</option>
             <option value="o-Xylene">o-Xylene</option>
             <option value="OrthoDeuterium">OrthoDeuterium</option>
             <option value="OrthoHydrogen">OrthoHydrogen</option>
-            <option value="Oxygen">Oxygen</option>
             <option value="p-Xylene">p-Xylene</option>
             <option value="ParaDeuterium">ParaDeuterium</option>
             <option value="ParaHydrogen">ParaHydrogen</option>
@@ -226,6 +234,7 @@
         <td>
           <select id="u_unit_out">
             <option value="kJ$kg">kJ/kg</option>
+            <option value="J$kg">J/kg</option>
           </select>
         </td>
       </tr>
@@ -239,6 +248,7 @@
         <td>
           <select id="h_unit_out">
             <option value="kJ$kg">kJ/kg</option>
+            <option value="J$kg">J/kg</option>
           </select>
         </td>
       </tr>
@@ -253,6 +263,7 @@
         <td>
           <select id="s_unit_out">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
+            <option value="J$kg$K">J/(kg·K)</option>
           </select>
         </td>
       </tr>
@@ -266,12 +277,25 @@
         <td>
           <select id="rho_unit_out">
             <option value="kg$m3">kg/m³</option>
+            <option value="g$cm3">g/cm³</option>
+            <option value="g$l">g/l</option>
+            <option value="kg$l">kg/l</option>
+            <option value="lb$in3">lb/in³</option>
+            <option value="lb$ft3">lb/ft³</option>
+            <option value="slug$ft3">slug/ft³</option>
+            <option value="m3$kg">m³/kg</option>
+            <option value="cm3$g">cm³/g</option>
+            <option value="l$g">l/g</option>
+            <option value="l$kg">l/kg</option>
+            <option value="in3$lb">in³/lb</option>
+            <option value="ft3$lb">ft³/lb</option>
+            <option value="ft3$slug">ft³/slug</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          Specific Heat at Constant Volume:
+          Spec. Heat at Const. Volume:
         </td>
         <td>
           <input type="text" id="cv_out" readonly />
@@ -279,12 +303,13 @@
         <td>
           <select id="cv_unit_out">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
+            <option value="J$kg$K">J/(kg·K)</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          Specific Heat at Constant Pressure
+          Spec. Heat at Const. Pressure
         </td>
         <td>
           <input type="text" id="cp_out" readonly />
@@ -292,12 +317,13 @@
         <td>
           <select id="cp_unit_out">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
+            <option value="J$kg$K">J/(kg·K)</option>
           </select>
         </td>
       </tr>
       <tr>
         <td>
-          Heat capacity ratio:
+          Ratio of Specific Heats:
         </td>
         <td>
           <input type="text" id="gamma_out" readonly />
@@ -313,6 +339,9 @@
         <td>
           <select id="mu_unit_out">
             <option value="mPa_s">mPa·s</option>
+            <option value="Pa_s">Pa·s</option>
+            <option value="cP">cP</option>
+            <option value="P">P</option>
           </select>
         </td>
       </tr>
@@ -326,6 +355,10 @@
         <td>
           <select id="nu_unit_out">
             <option value="mm2$s">mm²/s</option>
+            <option value="m2$s">m²/s</option>
+            <option value="cm2$s">cm²/s</option>
+            <option value="cSt">cSt</option>
+            <option value="St">St</option>
           </select>
         </td>
       </tr>
@@ -352,6 +385,8 @@
         <td>
           <select id="a_unit_out">
             <option value="mm2$s">mm²/s</option>
+            <option value="m2$s">m²/s</option>
+            <option value="cm2$s">cm²/s</option>
           </select>
         </td>
       </tr>

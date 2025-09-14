@@ -1,106 +1,147 @@
 function coolPropIO() {
 
-  // data input and unit conversion to SI units
-  const fluid = document.getElementById("fluid").value;
+	// decimals results are rounded to
+	let decimals = parseInt(document.getElementById("decimals").value);
 
-  const TIn = convertTemperature(
-    parseFloat(document.getElementById("T_in").value),
-    document.getElementById("T_unit_in").value,
-    "K"
-  );
+	// data input and unit conversion to SI units
+	let fluid = document.getElementById("fluid").value;
 
-  const pIn = convertPressure(
-    parseFloat(document.getElementById("p_in").value),
-    document.getElementById("p_unit_in").value,
-    "Pa",
-    document.getElementById("p_abs_in").value,
-    "abs"
-  );
+	let TIn = convertTemperature(
+		parseFloat(document.getElementById("T_in").value),
+		document.getElementById("T_unit_in").value,
+		"K"
+	);
 
-  // calculations by CoolProp
-  const phaseIdx = Module.PropsSI("PHASE", "T", TIn, "P", pIn, fluid);
-  const uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
-  const hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
-  const sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
-  const rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
-  const cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
-  const cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
-  const muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
-  const lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
+	let pIn = convertPressure(
+		parseFloat(document.getElementById("p_in").value),
+		document.getElementById("p_unit_in").value,
+		"Pa",
+		document.getElementById("p_abs_in").value,
+		"abs"
+	);
 
-  // convert phase Index to phase name
-  let phase = "undefined";
+	// calculations by CoolProp
+	let phaseIdx = Module.PropsSI("PHASE", "T", TIn, "P", pIn, fluid);
+	let uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
+	let hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
+	let sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
+	let rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
+	let cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
+	let cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
+	let muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
+	let lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
 
-  switch (phaseIdx) {
-    case 0:
-      phase = "liquid";
-      break;
-    case 1:
-      phase = "supercritical";
-      break;
-    case 2:
-      phase = "supercritical-gas";
-      break;
-    case 3:
-      phase = "supercritical-liquid";
-      break;
-    case 5:
-      phase = "gas";
-      break;
-    case 6:
-      phase = "two-phase";
-      break;
-  }
+	// convert phase Index to phase name
+	let phase = "undefined";
 
-  // calculate heat capacity ratio
-  const gammaOut = cpOut / cvOut;
+	switch (phaseIdx) {
+		case 0:
+			phase = "liquid";
+			break;
+		case 1:
+			phase = "supercritical";
+			break;
+		case 2:
+			phase = "supercritical-gas";
+			break;
+		case 3:
+			phase = "supercritical-liquid";
+			break;
+		case 5:
+			phase = "gas";
+			break;
+		case 6:
+			phase = "two-phase";
+			break;
+	}
 
-  // calculate kinematic viscosity
-  const nuOut = muOut / rhoOut;
+	// calculate heat capacity ratio
+	let gammaOut = cpOut / cvOut;
 
-  // calculate thermal diffusivity
-  const aOut = lambdaOut / (rhoOut * cpOut);
+	// calculate kinematic viscosity
+	let nuOut = muOut / rhoOut;
 
-  // calculate Prandtl number
-  const PrOut = nuOut / aOut;
+	// calculate thermal diffusivity
+	let aOut = lambdaOut / (rhoOut * cpOut);
 
-  // convert units and output calculated values
-  document.getElementById("phase").value = phase;
+	// calculate Prandtl number
+	let PrOut = nuOut / aOut;
 
-  document.getElementById("u_out").value = uOut / 1e3;
+	// convert units and output calculated values
 
-  document.getElementById("h_out").value = hOut / 1e3;
+	// phase name
+	document.getElementById("phase").value = phase;
 
-  document.getElementById("s_out").value = sOut / 1e3;
+	// specific internal energy
+	document.getElementById("u_out").value = convertSpecificEnergy(
+		uOut,
+		"J$kg",
+		document.getElementById("u_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("rho_out").value = convertDensitySpecificVolume(
-    rhoOut,
-    "kg$m3",
-    document.getElementById("rho_unit_out").value
-  );
+	// specific enthalpy
+	document.getElementById("h_out").value = convertSpecificEnergy(
+		hOut,
+		"J$kg",
+		document.getElementById("h_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("cv_out").value = cvOut / 1e3;
+	// specific entropy
+	document.getElementById("s_out").value = convertSpecificHeatCapacity(
+		sOut,
+		"J$kg$K",
+		document.getElementById("s_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("cp_out").value = cpOut / 1e3;
+	// density and specific volume
+	document.getElementById("rho_out").value = convertDensitySpecificVolume(
+		rhoOut,
+		"kg$m3",
+		document.getElementById("rho_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("gamma_out").value = gammaOut;
+	// specific heat capacity at constant volume
+	document.getElementById("cv_out").value = convertSpecificHeatCapacity(
+		cvOut,
+		"J$kg$K",
+		document.getElementById("cv_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("mu_out").value = convertDynamicViscosity(
-    muOut,
-    "Pa_s",
-    document.getElementById("mu_unit_out").value
-  );
+	// specific heat capacity at constant pressure
+	document.getElementById("cp_out").value = convertSpecificHeatCapacity(
+		cpOut,
+		"J$kg$K",
+		document.getElementById("cp_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("nu_out").value = convertKinematicViscosity(
-    nuOut,
-    "m2$s",
-    document.getElementById("nu_unit_out").value
-  );
+	// ratio of specific heats
+	document.getElementById("gamma_out").value = gammaOut.toFixed(decimals);
 
-  document.getElementById("lambda_out").value = lambdaOut;
+	// dynamic viscosity
+	document.getElementById("mu_out").value = convertDynamicViscosity(
+		muOut,
+		"Pa_s",
+		document.getElementById("mu_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("a_out").value = aOut * 1e6;
+	// kinematic viscosity
+	document.getElementById("nu_out").value = convertKinematicViscosity(
+		nuOut,
+		"m2$s",
+		document.getElementById("nu_unit_out").value
+	).toFixed(decimals);
 
-  document.getElementById("Pr_out").value = PrOut;
+	// thermal conductivity
+	document.getElementById("lambda_out").value = lambdaOut.toFixed(decimals);
+
+	// thermal diffusivity
+	document.getElementById("a_out").value = convertThermalDiffusivity(
+		aOut,
+		"m2$s",
+		document.getElementById("a_unit_out").value
+	).toFixed(decimals);;
+
+	// Prandtl number
+	document.getElementById("Pr_out").value = PrOut.toFixed(decimals);
 
 }

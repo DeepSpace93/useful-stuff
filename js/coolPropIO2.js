@@ -149,7 +149,7 @@ function coolPropIO() {
   );
 
   // calculate specific entropy
-  document.getElementById("s").value = convertSpecificHeat(
+  document.getElementById("s").value = convertSpecificHeatCapacity(
     Module.PropsSI("S", in1, val1, in2, val2, fluid),
     "J$kg$K",
     document.getElementById("s_unit").value
@@ -204,14 +204,14 @@ function coolPropIO() {
   );
 
   // calculate specific heat at constant volume
-  document.getElementById("cv").value = convertSpecificHeat(
+  document.getElementById("cv").value = convertSpecificHeatCapacity(
     Module.PropsSI("CVMASS", in1, val1, in2, val2, fluid),
     "J$kg$K",
     document.getElementById("cv_unit").value
   );
 
   // calculate specific heat at constant volume
-  document.getElementById("cp").value = convertSpecificHeat(
+  document.getElementById("cp").value = convertSpecificHeatCapacity(
     Module.PropsSI("CPMASS", in1, val1, in2, val2, fluid),
     "J$kg$K",
     document.getElementById("cp_unit").value

@@ -13,6 +13,14 @@
   <script src="js/modules/unitConversion.js"></script>
 
   <form>
+    Round to
+    <input type="number" id="decimals" min="0" max="10" value="2" step="1" />
+    decimals.
+  </form>
+
+  <h2>Input</h2>
+
+  <form>
     <table>
       <tr>
         <td></td>
@@ -22,9 +30,9 @@
         <td>
           <select id="fluid">
             <option value="Water">Water</option>
+            <option value="Air">Air</option>
             <option value="1-Butene">1-Butene</option>
             <option value="Acetone">Acetone</option>
-            <option value="Air">Air</option>
             <option value="Ammonia">Ammonia</option>
             <option value="Argon">Argon</option>
             <option value="Benzene">Benzene</option>
@@ -156,7 +164,7 @@
           Temperature:
         </td>
         <td>
-          <input type="number" id="T" value="20"/>
+          <input type="number" id="T" value="20" />
         </td>
         <td>
           <select id="T_unit">
@@ -211,6 +219,8 @@
 
   <button type="button" onclick="saturationIO()">Calculate</button>
 
+  <h2>Output</h2>
+
   <table>
     <tr>
       <td></td>
@@ -221,52 +231,72 @@
     <tr>
       <td>Density:</td>
       <td>
-        <input type="text" id="rho_lq" readonly />
+        <input type="text" id="rho_liq" readonly />
       </td>
       <td>
         <input type="text" id="rho_vap" readonly />
       </td>
       <td>
         <select id="rho_unit">
+          <option value="kg$m3">kg/m³</option>
+          <option value="g$cm3">g/cm³</option>
+          <option value="g$l">g/l</option>
+          <option value="kg$l">kg/l</option>
+          <option value="lb$in3">lb/in³</option>
+          <option value="lb$ft3">lb/ft³</option>
+          <option value="slug$ft3">slug/ft³</option>
+          <option value="m3$kg">m³/kg</option>
+          <option value="cm3$g">cm³/g</option>
+          <option value="l$g">l/g</option>
+          <option value="l$kg">l/kg</option>
+          <option value="in3$lb">in³/lb</option>
+          <option value="ft3$lb">ft³/lb</option>
+          <option value="ft3$slug">ft³/slug</option>
         </select>
       </td>
     </tr>
     <tr>
       <td>Specific Internal Energy:</td>
       <td>
-        <input type="text" id="u_lq" readonly />
+        <input type="text" id="u_liq" readonly />
       </td>
       <td>
         <input type="text" id="u_vap" readonly />
       </td>
       <td>
         <select id="u_unit">
+          <option value="kJ$kg">kJ/kg</option>
+          <option value="J$kg">J/kg</option>
         </select>
       </td>
     </tr>
     <tr>
       <td>Specific Enthalpy:</td>
       <td>
-        <input type="text" id="h_lq" readonly />
+        <input type="text" id="h_liq" readonly />
       </td>
       <td>
         <input type="text" id="h_vap" readonly />
       </td>
       <td>
         <select id="h_unit">
+          <option value="kJ$kg">kJ/kg</option>
+          <option value="J$kg">J/kg</option>
         </select>
       </td>
     </tr>
     <tr>
       <td>Specific Entropy:</td>
       <td>
-        <input type="text" id="s_lq" readonly />
+        <input type="text" id="s_liq" readonly />
       </td>
       <td>
         <input type="text" id="s_vap" readonly />
       </td>
       <td>
         <select id="s_unit">
+          <option value="kJ$kg$K">kJ/(kg·K)</option>
+          <option value="J$kg$K">J/(kg·K)</option>
         </select>
       </td>
     </tr>

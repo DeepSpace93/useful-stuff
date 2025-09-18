@@ -443,6 +443,9 @@ function convertSpecificHeatCapacity(valueIn, unitIn, unitOut) {
   const convFactors = {
     J$kg$K: 1,
     kJ$kg$K: 1e-3,
+    BTU$lb$R: 1/4186.8,
+    cal$C$g: 1/4184,
+    kcal$C$g: 1/4.184,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

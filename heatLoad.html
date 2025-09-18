@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Heat Load</title>
+	<meta charset="UTF-8" />
+</head>
+
+<body>
+	<script src="./js/modules/unitConversion.js"></script>
+	<script src="./js/pipeFlowIO.js"></script>
+	<h1>Heat Load</h1>
+
+	<form>
+		<table>
+			<tr>
+				<td>Spec. heat capacity</td>
+				<td>
+					<input type="number" id="c_val" value="10" />
+				</td>
+				<td>
+					<select id="c_unit">
+						<option value="kJ$kg$K">kJ/(kg·K)</option>
+						<option value="J$kg$K">J/(kg·K)</option>
+					</select>
+				</td>
+			</tr>
+			<tr height=20px></tr <tr>
+			<tr>
+				<td>Temperature inlet</td>
+				<td>
+					<input type="number" id="T_in_val" value="5" />
+				</td>
+				<td>
+					<select id="T_in_unit">
+						<option value="C">°C</option>
+						<option value="K">K</option>
+						<option value="F">°F</option>
+						<option value="R">°R</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Temperature outlet</td>
+				<td>
+					<input type="number" id="T_out_val" value="5" />
+				</td>
+				<td>
+					<select id="T_out_unit">
+						<option value="C">°C</option>
+						<option value="K">K</option>
+						<option value="F">°F</option>
+						<option value="R">°R</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Temperature difference</td>
+				<td>
+					<input type="text" id="T_delta_val" value="5" />
+				</td>
+				<td>
+					<select id="T_delta_unit">
+						<option value="C">°C</option>
+						<option value="K">K</option>
+						<option value="F">°F</option>
+						<option value="R">°R</option>
+					</select>
+				</td>
+				<td>
+					<button type="button" onclick="heatLoadIO(1)">Calculate</button>
+				</td>
+			</tr>
+			<tr height=20px></tr <tr>
+			<tr>
+				<td>Volumetric flow rate:</td>
+				<td>
+					<input type="number" id="vf_val" value="1" />
+				</td>
+				<td>
+					<select id="vf_unit">
+						<option value="m3$h">m³/h</option>
+						<option value="m3$min">m³/min</option>
+						<option value="m3$s">m³/s</option>
+						<option value="l$h">l/h</option>
+						<option value="l$min">l/min</option>
+						<option value="l$s">l/s</option>
+						<option value="ft$min">ft³/min</option>
+						<option value="gal$min">gal/min</option>
+					</select>
+				</td>
+				<td>
+					<button type="button" onclick="heatLoadIO(2)">Calculate</button>
+				</td>
+			</tr>
+			<tr height=20px></tr <tr>
+			<tr>
+				<td>Rate of heat flow</td>
+				<td>
+					<input type="number" id="qf_val" value="5" />
+				</td>
+				<td>
+					<select id="qf_unit">
+						<option value="W">W</option>
+						<option value="nW">nW</option>
+						<option value="mW">mW</option>
+						<option value="kW">kW</option>
+						<option value="MW">MW</option>
+						<option value="GW">GW</option>
+						<option value="TW">TW</option>
+						<option value="PW">PW</option>
+						<option value="BTU$h">BTU/h</option>
+						<option value="PS">PS</option>
+						<option value="hp">hp</option>
+						<option value="RT">RT</option>
+						<option value="cal$h">cal/h</option>
+						<option value="kcal$h">kcal/h</option>
+					</select>
+				</td>
+				<td>
+					<button type="button" onclick="heatLoadIO(3)">Calculate</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+
+	<br />
+
+	<p><a href="index.html">Index</a></p>
+
+	<br />
+</body>
+
+</html>

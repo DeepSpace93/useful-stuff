@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Specific Heat Capacity Unit Conversion</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script src="../js/unitConversionIO.js"></script>
+  <script src="../js/modules/unitConversion.js"></script>
+  <h1>Unit Conversion</h1>
+  <h2>Specific Heat Capacity Unit Conversion</h2>
+  <form>
+    <input type="checkbox" id="round" checked />
+    Round to
+    <input type="number" id="decimals" min="0" max="10" value="2" step="1" />
+    decimals.
+    <br />
+    <input type="checkbox" id="sci" />
+    Use scientific notation.
+  </form>
+  <br />
+  <form>
+    <input type="hidden" id="quantity" value="specific_heat_capacity" />
+    <input type="number" id="value_in" value="1" />
+    <select id="unit_in">
+      <option value="kJ$kg$K">kJ/(kg·K)</option>
+      <option value="J$kg$K">J/(kg·K)</option>
+      <option value="BTU$lb$R">BTU/(lb·°R)</option>
+      <option value="cal$C$g">cal/(g·°C)</option>
+      <option value="kcal$C$g">kcal/(g·°C)</option>
+    </select>
+    =
+    <input type="text" id="value_out" readonly />
+    <select id="unit_out">
+      <option value="kJ$kg$K">kJ/(kg·K)</option>
+      <option value="J$kg$K">J/(kg·K)</option>
+      <option value="BTU$lb$R">BTU/(lb·°R)</option>
+      <option value="cal$C$g">cal/(g·°C)</option>
+      <option value="kcal$C$g">kcal/(g·°C)</option>
+    </select>
+  </form>
+  <br />
+  <button type="button" onclick="unitConversionIO()">Convert</button>
+  <p><a href="../index.html">Index</a></p>
+</body>
+
+</html>

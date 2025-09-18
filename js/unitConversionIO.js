@@ -10,11 +10,11 @@ function unitConversionIO() {
   let valueOut = 666;
 
   switch (quantity) {
-    case "angle":
-      valueOut = convertAngle(valueIn, unitIn, unitOut);
-      break;
     case "amount_of_substance":
       valueOut = convertAmountOfSubstance(valueIn, unitIn, unitOut);
+      break;
+    case "angle":
+      valueOut = convertAngle(valueIn, unitIn, unitOut);
       break;
     case "area":
       valueOut = convertArea(valueIn, unitIn, unitOut);
@@ -78,6 +78,9 @@ function unitConversionIO() {
     case "slope":
       valueOut = convertSlope(valueIn, unitIn, unitOut);
       break;
+    case "specific_heat_capacity":
+      valueOut = convertSpecificHeatCapacity(valueIn, unitIn, unitOut);
+      break;      
     case "specific_resistance_conductance":
       valueOut = convertSpecificResistanceConductance(valueIn, unitIn, unitOut);
       break;

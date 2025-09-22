@@ -28,6 +28,9 @@ function coolPropIO() {
 	let rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
 	let cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
 	let cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
+	let TCritOut = Module.PropsSI("TCRIT", "T", TIn, "P", pIn, fluid);
+	let pCritOut = Module.PropsSI("PCRIT", "T", TIn, "P", pIn, fluid);
+	let rhoCritOut = Module.PropsSI("RHOCRIT", "T", TIn, "P", pIn, fluid);
 	let muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
 	let lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
 	let csOut = Module.PropsSI("A", "T", TIn, "P", pIn, fluid);
@@ -117,6 +120,27 @@ function coolPropIO() {
 
 	// ratio of specific heats
 	document.getElementById("gamma_out").value = gammaOut.toFixed(decimals);
+
+	// critical temperature
+	document.getElementById("T_crit_out").value = convertTemperature(
+		TCritOut,
+		"K",
+		document.getElementById("T_crit_unit_out").value
+	).toFixed(decimals);
+
+	// critical pressure
+	document.getElementById("p_crit_out").value = convertPressure(
+		pCritOut,
+		"Pa",
+		document.getElementById("p_crit_unit_out").value
+	).toFixed(decimals);
+
+	// critical density and specific volume
+	document.getElementById("rho_crit_out").value = convertDensitySpecificVolume(
+		rhoCritOut,
+		"kg$m3",
+		document.getElementById("rho_crit_unit_out").value
+	).toFixed(decimals);
 
 	// dynamic viscosity
 	document.getElementById("mu_out").value = convertDynamicViscosity(

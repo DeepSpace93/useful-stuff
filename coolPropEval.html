@@ -270,7 +270,7 @@
       </tr>
       <tr>
         <td>
-          Density / specific volume:
+          Density / Specific volume:
         </td>
         <td>
           <input type="text" id="rho_out" readonly />
@@ -305,6 +305,9 @@
           <select id="cv_unit_out">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
             <option value="J$kg$K">J/(kg·K)</option>
+            <option value="BTU$lb$R">BTU/(lb·°R)</option>
+            <option value="cal$C$g">cal/(g·°C)</option>
+            <option value="kcal$C$g">kcal/(g·°C)</option>
           </select>
         </td>
       </tr>
@@ -319,6 +322,9 @@
           <select id="cp_unit_out">
             <option value="kJ$kg$K">kJ/(kg·K)</option>
             <option value="J$kg$K">J/(kg·K)</option>
+            <option value="BTU$lb$R">BTU/(lb·°R)</option>
+            <option value="cal$C$g">cal/(g·°C)</option>
+            <option value="kcal$C$g">kcal/(g·°C)</option>
           </select>
         </td>
       </tr>
@@ -330,6 +336,73 @@
           <input type="text" id="gamma_out" readonly />
         </td>
       </tr>
+      <tr>
+        <td>
+          Crit. Temperature:
+        <td>
+          <input type="text" id="T_crit_out" readonly />
+        </td>
+        <td>
+          <select id="T_crit_unit_out">
+            <option value="C">°C</option>
+            <option value="K">K</option>
+            <option value="F">°F</option>
+            <option value="R">°R</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Crit. Pressure:
+        <td>
+          <input type="text" id="p_crit_out" readonly />
+        </td>
+        <td>
+          <select id="p_crit_unit_out">
+            <option value="bar">bar</option>            
+            <option value="Pa">Pa</option>
+            <option value="hPa">hpa</option>
+            <option value="kPa">kPa</option>
+            <option value="MPa">MPa</option>
+            <option value="GPa">GPa</option>
+            <option value="mbar">mbar</option>
+            <option value="mmHg">mmHg</option>
+            <option value="mTorr">mTorr</option>
+            <option value="Torr">Torr</option>
+            <option value="psi">psi</option>
+            <option value="mWC">mWC</option>
+            <option value="inWC">inWC</option>
+            <option value="inHg">inHg</option>
+            <option value="at">at</option>
+            <option value="atm">atm</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Crit. Density / Spec. Volume:
+        <td>
+          <input type="text" id="rho_crit_out" readonly />
+        </td>
+        <td>
+          <select id="rho_crit_unit_out">
+            <option value="kg$m3">kg/m³</option>
+            <option value="g$cm3">g/cm³</option>
+            <option value="g$l">g/l</option>
+            <option value="kg$l">kg/l</option>
+            <option value="lb$in3">lb/in³</option>
+            <option value="lb$ft3">lb/ft³</option>
+            <option value="slug$ft3">slug/ft³</option>
+            <option value="m3$kg">m³/kg</option>
+            <option value="cm3$g">cm³/g</option>
+            <option value="l$g">l/g</option>
+            <option value="l$kg">l/kg</option>
+            <option value="in3$lb">in³/lb</option>
+            <option value="ft3$lb">ft³/lb</option>
+            <option value="ft3$slug">ft³/slug</option>
+          </select>
+        </td>
+      </tr>      
       <tr>
         <td>
           Dynamic Viscosity:

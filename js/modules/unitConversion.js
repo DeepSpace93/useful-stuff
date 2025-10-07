@@ -443,9 +443,9 @@ function convertSpecificHeatCapacity(valueIn, unitIn, unitOut) {
   const convFactors = {
     J$kg$K: 1,
     kJ$kg$K: 1e-3,
-    BTU$lb$R: 1/4186.8,
-    cal$C$g: 1/4184,
-    kcal$C$g: 1/4.184,
+    BTU$lb$R: 1 / 4186.8,
+    cal$C$g: 1 / 4184,
+    kcal$C$g: 1 / 4.184,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }
@@ -507,6 +507,9 @@ function convertTemperature(valueIn, unitIn, unitOut) {
     case "R":
       tempK = (5 / 9) * valueIn;
       break;
+    case "Re":
+      tempK = 1.25 * valueIn + 273.15;
+      break;
   }
 
   //convert from Kelvin to unitOut
@@ -519,6 +522,8 @@ function convertTemperature(valueIn, unitIn, unitOut) {
       return (9 / 5) * tempK - 459.67;
     case "R":
       return (9 / 5) * tempK;
+    case "Re":
+      return (tempK - 273.15) * 0.8;
   }
 }
 

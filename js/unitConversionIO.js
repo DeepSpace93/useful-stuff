@@ -49,6 +49,10 @@ function unitConversionIO() {
     case "force":
       valueOut = convertForce(valueIn, unitIn, unitOut);
       break;
+    case "fuel_consumption":
+      //valueOut = convertFuelConsumption(valueIn, unitIn, unitOut);
+      valueOut = 420;
+      break;      
     case "kinematic_viscosity":
       valueOut = convertKinematicViscosity(valueIn, unitIn, unitOut);
       break;

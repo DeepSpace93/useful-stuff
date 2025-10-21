@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Fuel Consumption Unit Conversion</title>
+  <meta charset="UTF-8" />
+</head>
+
+<body>
+  <script src="../js/unitConversionIO.js"></script>
+  <script src="../js/modules/unitConversion.js"></script>
+  <h1>Unit Conversion</h1>
+  <h2>Fuel Consumption</h2>
+  <form>
+    <input type="checkbox" id="round" checked />
+    Round to
+    <input type="number" id="decimals" min="0" max="10" value="2" step="1" />
+    decimals.
+    <br />
+    <input type="checkbox" id="sci" />
+    Use scientific notation.
+  </form>
+  <br />
+  <form>
+    <input type="hidden" id="quantity" value="fuel_consumption" />
+    <input type="number" id="value_in" value="1" />
+    <select id="unit_in">
+      <option value="l$100km">l/100km</option>
+      <option value="km$l">km/l</option>
+      <option value="mi$gal_US">mi/gal-US</option>
+      <option value="mi$gal_imp">mi/gal-imp</option>
+      <option value="kW$100km">kW/100km</option>
+    </select>
+    =
+    <input type="text" id="value_out" readonly />
+    <select id="unit_out">
+      <option value="l$100km">l/100km</option>
+      <option value="km$l">km/l</option>
+      <option value="mi$gal_US">mi/gal-US</option>
+      <option value="mi$gal_imp">mi/gal-imp</option>
+      <option value="kW$100km">kW/100km</option>
+    </select>
+  </form>
+  <br />
+  <button type="button" onclick="unitConversionIO()">Convert</button>
+  <p><a href="../index.html">Index</a></p>
+</body>
+
+</html>

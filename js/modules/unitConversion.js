@@ -601,7 +601,8 @@ function convertVolume(valueIn, unitIn, unitOut) {
     floz: 1 / 29.5735295625e-6,
     pt: 1 / 473.176473e-6,
     qt: 1 / 0.946352946e-3,
-    gal: 1 / 3.785411784e-3,
+    gal_US: 1 / 3.785411784e-3,
+    gal_imp: 1 / 4.54609e-3,
     bbl: 1 / 158.987e-3,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];

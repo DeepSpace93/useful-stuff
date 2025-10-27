@@ -1,3 +1,58 @@
+function applyFluid() {
+  let fluid = document.getElementById("ref_fluid").value;
+
+  let pRef = convertPressure(
+    parseFloat(document.getElementById("p_ref_val").value),
+    document.getElementById("p_ref_unit").value,
+    "Pa",
+    document.getElementById("p_ref_abs").value,
+    "abs"
+  );
+
+  let TRef = convertTemperature(
+    parseFloat(document.getElementById("T_ref_val").value),
+    document.getElementById("T_ref_unit").value,
+    "K"
+  );
+
+  let phaseIdx = Module.PropsSI("PHASE", "T", TRef, "P", pRef, fluid);
+  let rho = Module.PropsSI("D", "T", TRef, "P", pRef, fluid);
+  let mu = Module.PropsSI("V", "T", TRef, "P", pRef, fluid);
+
+  document.getElementById("rho_val").value = rho.toPrecision(5);
+  document.getElementById("rho_unit").value = "kg$m3";
+
+  document.getElementById("mu_val").value = (mu * 1e3).toPrecision(5);;
+  document.getElementById("mu_unit").value = "mPa_s";
+  document.getElementById("mu_use").checked = true;
+
+  let phase = "undefined";
+
+  switch (phaseIdx) {
+    case 0:
+      phase = "liquid";
+      break;
+    case 1:
+      phase = "supercritical";
+      break;
+    case 2:
+      phase = "supercritical-gas";
+      break;
+    case 3:
+      phase = "supercritical-liquid";
+      break;
+    case 5:
+      phase = "gas";
+      break;
+    case 6:
+      phase = "two-phase";
+      break;
+  }
+
+  document.getElementById("ref_fluid_state").value = phase;
+
+}
+
 function pressureDropIO() {
   // data input and unit conversion to SI units
   let cUse = document.getElementById("c_use").checked;

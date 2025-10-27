@@ -21,16 +21,22 @@ function coolPropIO() {
 	);
 
 	// calculations by CoolProp
+	// phase
 	let phaseIdx = Module.PropsSI("PHASE", "T", TIn, "P", pIn, fluid);
+	// specific internal energy
 	let uOut = Module.PropsSI("U", "T", TIn, "P", pIn, fluid);
+	// specific enthalpy
 	let hOut = Module.PropsSI("H", "T", TIn, "P", pIn, fluid);
+	// specific entropy
 	let sOut = Module.PropsSI("S", "T", TIn, "P", pIn, fluid);
+	// density
 	let rhoOut = Module.PropsSI("D", "T", TIn, "P", pIn, fluid);
 	let cvOut = Module.PropsSI("CVMASS", "T", TIn, "P", pIn, fluid);
 	let cpOut = Module.PropsSI("CPMASS", "T", TIn, "P", pIn, fluid);
 	let TCritOut = Module.PropsSI("TCRIT", "T", TIn, "P", pIn, fluid);
 	let pCritOut = Module.PropsSI("PCRIT", "T", TIn, "P", pIn, fluid);
 	let rhoCritOut = Module.PropsSI("RHOCRIT", "T", TIn, "P", pIn, fluid);
+	// dynamic viscosity
 	let muOut = Module.PropsSI("V", "T", TIn, "P", pIn, fluid);
 	let lambdaOut = Module.PropsSI("L", "T", TIn, "P", pIn, fluid);
 	let csOut = Module.PropsSI("A", "T", TIn, "P", pIn, fluid);

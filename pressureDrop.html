@@ -3,7 +3,7 @@
 
 <head>
   <title>Pressure Drop</title>
-  <meta charset="UTF-8"/>
+  <meta charset="UTF-8" />
   <style>
     table {
       border-collapse: collapse;
@@ -12,69 +12,90 @@
     td,
     th {
       text-align: left;
-      padding: 8px;
+      padding: 3px;
     }
   </style>
 
 </head>
 
 <body>
+  <script src="./js/modules/coolProp.js"></script>
   <script src="./js/pressureDropIO.js"></script>
   <script src="./js/modules/unitConversion.js"></script>
   <script src="./js/modules/frictionFactor.js"></script>
   <h1>Pressure Drop</h1>
-  <h2>Medium</h2>
+  <h2>Fluid</h2>
 
-  <form>
-    <table>
-
-      <tr>
-        <td>Fluid:</td>
-        <td>
-          <select id="fluid">
-            <option value="Water">Water</option>
-            <option value="Air">Air</option>
-          </select>
-        </td>
-        <td></td>
-      </tr>
-      <tr>
-        <td>Pressure:</td>
-        <td>
-          <input type="number" id="p_ref_val" value="0" />
-        </td>
-        <td>
-          <select id="p_ref_unit">
-            <option value="m$s">m/s</option>
-            <option value="km$h">km/h</option>
-            <option value="ft$s">ft/s</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Temperature:</td>
-        <td>
-          <input type="number" id="T_ref_val" value="0" />
-        </td>
-        <td>
-          <select id="T_ref_unit">
-            <option value="m$s">m/s</option>
-            <option value="km$h">km/h</option>
-            <option value="ft$s">ft/s</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>Fluid state:</td>
-        <td>
-          <input type="text" id="fluid_state_val" size="5" readonly />
-        </td>
-        <td></td>
-      </tr>
-    </table>
-  </form>
-
-  <button type="button" onclick="">Apply</button>
+  <div class="box">
+    <form>
+      <table>
+        <tr>
+          <td>Fluid:</td>
+          <td>
+            <select id="ref_fluid">
+              <option value="Water">Water</option>
+              <option value="Air">Air</option>
+            </select>
+          </td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Pressure:</td>
+          <td>
+            <input type="number" id="p_ref_val" value="0" style="width: 10em" />
+          </td>
+          <td>
+            <select id="p_ref_unit">
+              <option value="Pa">Pa</option>
+              <option value="hPa">hPa</option>
+              <option value="kPa">kPa</option>
+              <option value="MPa">MPa</option>
+              <option value="GPa">GPa</option>
+              <option value="mbar">mbar</option>
+              <option value="bar">bar</option>
+              <option value="uHg">µHg</option>
+              <option value="mmHg">mmHg</option>
+              <option value="inHg">inHg</option>
+              <option value="mTorr">mTorr</option>
+              <option value="Torr">Torr</option>
+              <option value="psi">psi</option>
+              <option value="mWC">mWC</option>
+              <option value="mmWC">mmWC</option>
+              <option value="inWC">inWC</option>
+              <option value="at">at</option>
+              <option value="atm">atm</option>
+            </select>
+            <select id="p_ref_abs">
+              <option value="rel">rel</option>
+              <option value="abs">abs</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Temperature:</td>
+          <td>
+            <input type="number" id="T_ref_val" value="20" style="width: 10em" />
+          </td>
+          <td>
+            <select id="T_ref_unit">
+              <option value="C">°C</option>
+              <option value="K">K</option>
+              <option value="F">°F</option>
+              <option value="R">°R</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>Fluid state:</td>
+          <td>
+            <input type="text" id="ref_fluid_state" style="width: 10em" readonly />
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </form>
+    <button type="button" onclick="applyFluid()">Apply</button>
+  </div>
 
   <h2>Input</h2>
 
@@ -278,7 +299,7 @@
       <tr>
         <td>Cross section:</td>
         <td>
-          <input type="text" id="a_val" size="5" readonly />
+          <input type="text" id="a_val" style="width: 10em" readonly />
         </td>
         <td>
           <select id="a_unit">
@@ -295,7 +316,7 @@
       <tr>
         <td>Reynolds number:</td>
         <td>
-          <input type="text" id="re_val" size="5" readonly />
+          <input type="text" id="re_val" style="width: 10em" readonly />
         </td>
         <td></td>
       </tr>
@@ -303,7 +324,7 @@
       <tr>
         <td>Friction coefficient:</td>
         <td>
-          <input type="text" id="f_val" size="10" readonly />
+          <input type="text" id="f_val" style="width: 10em" readonly />
         </td>
         <td></td>
       </tr>
@@ -311,7 +332,7 @@
       <tr>
         <td>Zeta coefficient:</td>
         <td>
-          <input type="text" id="zeta_val" size="20" readonly />
+          <input type="text" id="zeta_val" style="width: 10em" readonly />
         </td>
         <td></td>
       </tr>
@@ -319,7 +340,7 @@
       <tr>
         <td>Iterations:</td>
         <td>
-          <input type="text" id="f_iter_val" size="20" readonly />
+          <input type="text" id="f_iter_val" style="width: 10em" readonly />
         </td>
         <td></td>
       </tr>
@@ -327,7 +348,7 @@
       <tr>
         <td>Flow regime:</td>
         <td>
-          <input type="text" id="reg_val" size="20" readonly />
+          <input type="text" id="reg_val" style="width: 10em" readonly />
         </td>
         <td></td>
       </tr>
@@ -335,7 +356,7 @@
       <tr>
         <td>Rel. pressure drop:</td>
         <td>
-          <input type="text" id="dp$l_val" size="8" readonly />
+          <input type="text" id="dp$l_val" style="width: 10em" readonly />
         </td>
         <td>
           <select id="dp$l_unit">
@@ -347,7 +368,7 @@
       <tr>
         <td>Abs. pressure drop:</td>
         <td>
-          <input type="text" id="dp_val" size="8" readonly />
+          <input type="text" id="dp_val" style="width: 10em" readonly />
         </td>
         <td>
           <select id="dp_unit">
@@ -364,7 +385,7 @@
       <tr>
         <td>Power dissipation:</td>
         <td>
-          <input type="text" id="P_loss_val" size="8" readonly />
+          <input type="text" id="P_loss_val" style="width: 10em" readonly />
         </td>
         <td>
           <select id="P_loss_unit">

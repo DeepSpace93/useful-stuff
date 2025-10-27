@@ -62,6 +62,7 @@ function pressureDropIO() {
 
   let c, vf, mf, mfx;
 
+  // flow velocity
   if (cUse) {
     c = convertVelocity(
       parseFloat(document.getElementById("c_val").value),
@@ -70,6 +71,7 @@ function pressureDropIO() {
     );
   }
 
+  // volumetric flow rate
   if (vfUse) {
     vf = convertVolumetricFlowRate(
       parseFloat(document.getElementById("vf_val").value),
@@ -78,6 +80,7 @@ function pressureDropIO() {
     );
   }
 
+  // mass flow rate
   if (mfUse) {
     mf = convertMassFlowRate(
       parseFloat(document.getElementById("mf_val").value),
@@ -86,6 +89,7 @@ function pressureDropIO() {
     );
   }
 
+  // mass flux
   if (mfxUse) {
     mfx = convertMassFlux(
       parseFloat(document.getElementById("mfx_val").value),
@@ -94,6 +98,7 @@ function pressureDropIO() {
     );
   }
 
+  // density or specific volume
   let rho = convertDensitySpecificVolume(
     parseFloat(document.getElementById("rho_val").value),
     document.getElementById("rho_unit").value,
@@ -105,6 +110,7 @@ function pressureDropIO() {
 
   let mu, nu;
 
+  // dynamic viscosity
   if (muUse) {
     mu = convertDynamicViscosity(
       parseFloat(document.getElementById("mu_val").value),
@@ -113,6 +119,7 @@ function pressureDropIO() {
     );
   }
 
+  // kinematic viscosity
   if (nuUse) {
     nu = convertKinematicViscosity(
       parseFloat(document.getElementById("nu_val").value),
@@ -121,53 +128,74 @@ function pressureDropIO() {
     );
   }
 
+  // pipe length
   let l = convertLength(
     parseFloat(document.getElementById("l_val").value),
     document.getElementById("l_unit").value,
     "m"
   );
 
+  // pipe diameter
   let d = convertLength(
     parseFloat(document.getElementById("d_val").value),
     document.getElementById("d_unit").value,
     "m"
   );
 
+  // pipe roughness
   let k = convertLength(
     parseFloat(document.getElementById("k_val").value),
     document.getElementById("k_unit").value,
     "m"
   );
 
+  // component 1 - pressure loss coefficient
+  let zetaComp1 = parseFloat(document.getElementById("zeta_comp_1").value)
+
+  // component 1 - number
+  let numComp1 = parseFloat(document.getElementById("num_comp_1").value)
+
+  // component 2 - pressure loss coefficient
+  let zetaComp2 = parseFloat(document.getElementById("zeta_comp_2").value)
+
+  // component 2 - number
+  let numComp2 = parseFloat(document.getElementById("num_comp_2").value)
+
+  // component 3 - pressure loss coefficient
+  let zetaComp3 = parseFloat(document.getElementById("zeta_comp_3").value)
+
+  // component 3 - number
+  let numComp3 = parseFloat(document.getElementById("num_comp_3").value)
+
   // convert into other quantities
-  let a = (Math.PI / 4) * d ** 2;
+  let A = (Math.PI / 4) * d ** 2;
 
   if (cUse) {
     // flow velocity given
-    vf = a * c;
-    mf = a * c * rho;
+    vf = A * c;
+    mf = A * c * rho;
     mfx = c * rho;
   }
 
   if (vfUse) {
     // volumetric flow rate given
-    c = vf / a;
-    mf = a * c * rho;
+    c = vf / A;
+    mf = A * c * rho;
     mfx = c * rho;
   }
 
   if (mfUse) {
     // mass flow rate given
-    c = mf / (a * rho);
-    vf = a * c;
+    c = mf / (A * rho);
+    vf = A * c;
     mfx = c * rho;
   }
 
   if (mfxUse) {
     // mass flux given
     c = mfx / rho;
-    vf = a * c;
-    mf = a * c * rho;
+    vf = A * c;
+    mf = A * c * rho;
   }
 
   if (muUse) {
@@ -201,19 +229,28 @@ function pressureDropIO() {
   }
 
   // calculation - relative pressure drop (Darcy–Weisbach)
-  let dp$l = (f * rho * c ** 2) / (2 * d);
+  let dp$lPipe = (f * rho * c ** 2) / (2 * d);
 
   // calculation - absolute pressure drop
-  let dp = dp$l * l;
+  let dpPipe = dp$lPipe * l;
 
   // calculation - zeta coefficient
-  let zeta = (f * l) / d;
+  let zetaPipe = (f * l) / d;
+
+  // calculation - component pressure drop
+  let dpComp1 = (1 / 2 * zetaComp1 * rho * c ** 2) * numComp1
+  let dpComp2 = (1 / 2 * zetaComp2 * rho * c ** 2) * numComp2
+  let dpComp3 = (1 / 2 * zetaComp3 * rho * c ** 2) * numComp3
+
+  let dpCompTot = dpComp1 + dpComp2 + dpComp3
+
+  // total pressure drop
+  let dpTot = dpPipe + dpCompTot
 
   // calculation - power dissipation
-  let pow_loss = vf * dp;
+  let pow_loss = vf * dpTot;
 
   // data output
-
   document.getElementById("c_val").value = convertVelocity(
     c,
     "m$s",
@@ -251,7 +288,7 @@ function pressureDropIO() {
   ).toPrecision(5);
 
   document.getElementById("a_val").value = convertArea(
-    a,
+    A,
     "m2",
     document.getElementById("a_unit").value
   ).toPrecision(5);
@@ -263,16 +300,16 @@ function pressureDropIO() {
   }
 
   document.getElementById("f_val").value = f.toFixed(5);
-  document.getElementById("zeta_val").value = zeta.toFixed(8);
+  document.getElementById("zeta_val").value = zetaPipe.toFixed(8);
   document.getElementById("f_iter_val").value = iter;
   document.getElementById("reg_val").value = regime;
 
-  document.getElementById("dp$l_val").value = dp$l.toFixed(0);
+  document.getElementById("dp$l_val").value = dp$lPipe.toFixed(0);
 
-  document.getElementById("dp_val").value = convertPressure(
-    dp,
+  document.getElementById("dp_pipe_val").value = convertPressure(
+    dpPipe,
     "Pa",
-    document.getElementById("dp_unit").value,
+    document.getElementById("dp_pipe_unit").value,
     "rel",
     "rel"
   ).toPrecision(5);
@@ -282,4 +319,21 @@ function pressureDropIO() {
     "W",
     document.getElementById("P_loss_unit").value
   ).toPrecision(5);
+
+  document.getElementById("dp_comp_val").value = convertPressure(
+    dpCompTot,
+    "Pa",
+    document.getElementById("dp_comp_unit").value,
+    "rel",
+    "rel"
+  ).toPrecision(5);
+
+  document.getElementById("dp_tot_val").value = convertPressure(
+    dpTot,
+    "Pa",
+    document.getElementById("dp_tot_unit").value,
+    "rel",
+    "rel"
+  ).toPrecision(5);
+
 }

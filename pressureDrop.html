@@ -14,6 +14,10 @@
       text-align: left;
       padding: 3px;
     }
+
+    legend {
+      font-weight: bold;
+    }
   </style>
 
 </head>
@@ -24,10 +28,11 @@
   <script src="./js/modules/unitConversion.js"></script>
   <script src="./js/modules/frictionFactor.js"></script>
   <h1>Pressure Drop</h1>
-  <h2>Fluid</h2>
+  <h2>Input</h2>
 
-  <div class="box">
-    <form>
+  <form>
+    <fieldset>
+      <legend>Fluid</legend>
       <table>
         <tr>
           <td>Fluid:</td>
@@ -35,6 +40,18 @@
             <select id="ref_fluid">
               <option value="Water">Water</option>
               <option value="Air">Air</option>
+              <option value="Ammonia">Ammonia</option>
+              <option value="Argon">Argon</option>
+              <option value="CarbonDioxide">CarbonDioxide</option>
+              <option value="Helium">Helium</option>
+              <option value="Methane">Methane</option>
+              <option value="Hydrogen">Hydrogen</option>
+              <option value="Nitrogen">Nitrogen</option>
+              <option value="Oxygen">Oxygen</option>
+              <option value="1-Butene">1-Butene</option>
+              <option value="Acetone">Acetone</option>
+              <option value="Benzene">Benzene</option>
+              <option value="CarbonMonoxide">CarbonMonoxide</option>
             </select>
           </td>
           <td></td>
@@ -93,197 +110,246 @@
           <td></td>
         </tr>
       </table>
-    </form>
-    <button type="button" onclick="applyFluid()">Apply</button>
-  </div>
-
-  <h2>Input</h2>
+      <button type="button" onclick="applyFluid()">Apply</button>
+    </fieldset>
+  </form>
 
   <form>
-    <table>
-      <tr>
-        <td>
-          <input type="radio" id="c_use" name="flow" checked />
-        </td>
-        <td>Flow velocity:</td>
-        <td>
-          <input type="number" id="c_val" value="5" />
-        </td>
-        <td>
-          <select id="c_unit">
-            <option value="m$s">m/s</option>
-            <option value="km$h">km/h</option>
-            <option value="ft$s">ft/s</option>
-          </select>
-        </td>
-      </tr>
+    <fieldset>
+      <legend>Flow</legend>
+      <table>
+        <tr>
+          <td>
+            <input type="radio" id="c_use" name="flow" checked />
+          </td>
+          <td>Flow velocity:</td>
+          <td>
+            <input type="number" id="c_val" value="5" style="width: 10em" />
+          </td>
+          <td>
+            <select id="c_unit">
+              <option value="m$s">m/s</option>
+              <option value="km$h">km/h</option>
+              <option value="ft$s">ft/s</option>
+            </select>
+          </td>
+        </tr>
 
-      <tr>
-        <td>
-          <input type="radio" id="vf_use" name="flow" />
-        </td>
-        <td>Volumetric flow rate:</td>
-        <td>
-          <input type="number" id="vf_val" />
-        </td>
-        <td>
-          <select id="vf_unit">
-            <option value="m3$h">m³/h</option>
-            <option value="m3$min">m³/min</option>
-            <option value="m3$s">m³/s</option>
-            <option value="l$h">l/h</option>
-            <option value="l$min">l/min</option>
-            <option value="l$s">l/s</option>
-            <option value="ft$min">ft³/min</option>
-            <option value="gal$min">gal/min</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="radio" id="mf_use" name="flow" />
-        </td>
-        <td>Mass flow rate:</td>
-        <td>
-          <input type="number" id="mf_val" />
-        </td>
-        <td>
-          <select id="mf_unit">
-            <option value="kg$h">kg/h</option>
-            <option value="kg$min">kg/min</option>
-            <option value="kg$s">kg/s</option>
-            <option value="g$h">g/h</option>
-            <option value="g$min">g/min</option>
-            <option value="g$s">g/s</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="radio" id="mfx_use" name="flow" />
-        </td>
-        <td>Mass flux:</td>
-        <td>
-          <input type="number" id="mfx_val" />
-        </td>
-        <td>
-          <select id="mfx_unit">
-            <option value="kg$m2$s">kg/(m²·s)</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td>Density:</td>
-        <td>
-          <input type="number" id="rho_val" value="1000" />
-        </td>
-        <td>
-          <select id="rho_unit">
-            <option value="kg$m3">kg/m³</option>
-            <option value="g$cm3">g/cm³</option>
-            <option value="g$l">g/l</option>
-            <option value="kg$l">kg/l</option>
-            <option value="lb$in3">lb/in³</option>
-            <option value="lb$ft3">lb/ft³</option>
-            <option value="slug$ft3">slug/ft³</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td>
-          <input type="radio" id="mu_use" name="viscosity" checked />
-        </td>
-        <td>Dynamic viscosity:</td>
-        <td>
-          <input type="number" id="mu_val" value="1" />
-        </td>
-        <td>
-          <select id="mu_unit">
-            <option value="mPa_s">mPa·s</option>
-            <option value="Pa_s">Pa·s</option>
-            <option value="cP">cP</option>
-            <option value="P">P</option>
-          </select>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <input type="radio" id="nu_use" name="viscosity" />
-        </td>
-        <td>Kinematic viscosity:</td>
-        <td>
-          <input type="number" id="nu_val" />
-        </td>
-        <td>
-          <select id="nu_unit">
-            <option value="mm2$s">mm²/s</option>
-            <option value="m2$s">m²/s</option>
-            <option value="cm2$s">cm²/s</option>
-            <option value="cSt">cSt</option>
-            <option value="St">St</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td>Pipe length:</td>
-        <td>
-          <input type="number" id="l_val" value="10" />
-        </td>
-        <td>
-          <select id="l_unit">
-            <option value="m">m</option>
-            <option value="mm">mm</option>
-            <option value="cm">cm</option>
-            <option value="km">km</option>
-            <option value="in">in</option>
-            <option value="ft">ft</option>
-            <option value="yd">yd</option>
-            <option value="mi">mi</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td>Pipe diameter:</td>
-        <td>
-          <input type="number" id="d_val" value="10" />
-        </td>
-        <td>
-          <select id="d_unit">
-            <option value="mm">mm</option>
-            <option value="cm">cm</option>
-            <option value="m">m</option>
-            <option value="in">in</option>
-            <option value="ft">ft</option>
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <td></td>
-        <td>Pipe roughness:</td>
-        <td>
-          <input type="number" id="k_val" value="0.1" step="0.1" />
-        </td>
-        <td>
-          <select id="k_unit">
-            <option value="mm">mm</option>
-            <option value="um">µm</option>
-            <option value="thou">thou</option>
-            <option value="in">in</option>
-          </select>
-        </td>
-      </tr>
-
-    </table>
+        <tr>
+          <td>
+            <input type="radio" id="vf_use" name="flow" />
+          </td>
+          <td>Volumetric flow rate:</td>
+          <td>
+            <input type="number" id="vf_val" style="width: 10em" />
+          </td>
+          <td>
+            <select id="vf_unit">
+              <option value="m3$h">m³/h</option>
+              <option value="m3$min">m³/min</option>
+              <option value="m3$s">m³/s</option>
+              <option value="l$h">l/h</option>
+              <option value="l$min">l/min</option>
+              <option value="l$s">l/s</option>
+              <option value="ft$min">ft³/min</option>
+              <option value="gal$min">gal/min</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="mf_use" name="flow" />
+          </td>
+          <td>Mass flow rate:</td>
+          <td>
+            <input type="number" id="mf_val" style="width: 10em" />
+          </td>
+          <td>
+            <select id="mf_unit">
+              <option value="kg$h">kg/h</option>
+              <option value="kg$min">kg/min</option>
+              <option value="kg$s">kg/s</option>
+              <option value="g$h">g/h</option>
+              <option value="g$min">g/min</option>
+              <option value="g$s">g/s</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="mfx_use" name="flow" />
+          </td>
+          <td>Mass flux:</td>
+          <td>
+            <input type="number" id="mfx_val" style="width: 10em" />
+          </td>
+          <td>
+            <select id="mfx_unit">
+              <option value="kg$m2$s">kg/(m²·s)</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <form>
+    <fieldset>
+      <legend>Substance properites</legend>
+      <table>
+        <tr>
+          <td></td>
+          <td>Density:</td>
+          <td>
+            <input type="number" id="rho_val" value="1000" style="width: 10em" />
+          </td>
+          <td>
+            <select id="rho_unit">
+              <option value="kg$m3">kg/m³</option>
+              <option value="g$cm3">g/cm³</option>
+              <option value="g$l">g/l</option>
+              <option value="kg$l">kg/l</option>
+              <option value="lb$in3">lb/in³</option>
+              <option value="lb$ft3">lb/ft³</option>
+              <option value="slug$ft3">slug/ft³</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="mu_use" name="viscosity" checked />
+          </td>
+          <td>Dynamic viscosity:</td>
+          <td>
+            <input type="number" id="mu_val" value="1" style="width: 10em" />
+          </td>
+          <td>
+            <select id="mu_unit">
+              <option value="mPa_s">mPa·s</option>
+              <option value="Pa_s">Pa·s</option>
+              <option value="cP">cP</option>
+              <option value="P">P</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type="radio" id="nu_use" name="viscosity" />
+          </td>
+          <td>Kinematic viscosity:</td>
+          <td>
+            <input type="number" id="nu_val" style="width: 10em" />
+          </td>
+          <td>
+            <select id="nu_unit">
+              <option value="mm2$s">mm²/s</option>
+              <option value="m2$s">m²/s</option>
+              <option value="cm2$s">cm²/s</option>
+              <option value="cSt">cSt</option>
+              <option value="St">St</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <form>
+    <fieldset>
+      <legend>Pipe</legend>
+      <table>
+        <tr>
+          <td></td>
+          <td>Length:</td>
+          <td>
+            <input type="number" id="l_val" value="10" style="width: 10em" />
+          </td>
+          <td>
+            <select id="l_unit">
+              <option value="m">m</option>
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="km">km</option>
+              <option value="in">in</option>
+              <option value="ft">ft</option>
+              <option value="yd">yd</option>
+              <option value="mi">mi</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Diameter:</td>
+          <td>
+            <input type="number" id="d_val" value="10" style="width: 10em" />
+          </td>
+          <td>
+            <select id="d_unit">
+              <option value="mm">mm</option>
+              <option value="cm">cm</option>
+              <option value="m">m</option>
+              <option value="in">in</option>
+              <option value="ft">ft</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Roughness:</td>
+          <td>
+            <input type="number" id="k_val" value="0.1" step="0.1" style="width: 10em" />
+          </td>
+          <td>
+            <select id="k_unit">
+              <option value="mm">mm</option>
+              <option value="um">µm</option>
+              <option value="thou">thou</option>
+              <option value="in">in</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <form>
+    <fieldset>
+      <legend>Components</legend>
+      <table>
+        <tr>
+          <td></td>
+          <td>Zeta</td>
+          <td>Number</td>
+        </tr>
+        <tr>
+          <td>
+            #1
+          <td>
+            <input type="number" id="zeta_comp_1" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="num_comp_1" value="1" min="0" step="1" style="width: 5em" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            #2
+          <td>
+            <input type="number" id="zeta_comp_2" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="num_comp_2" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            #3
+          <td>
+            <input type="number" id="zeta_comp_3" value="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="num_comp_3" value="0" step="1" style="width: 5em" />
+          </td>
+        </tr>
+      </table>
+    </fieldset>
   </form>
 
   <br />
@@ -368,10 +434,10 @@
       <tr>
         <td>Abs. pressure drop:</td>
         <td>
-          <input type="text" id="dp_val" style="width: 10em" readonly />
+          <input type="text" id="dp_pipe_val" style="width: 10em" readonly />
         </td>
         <td>
-          <select id="dp_unit">
+          <select id="dp_pipe_unit">
             <option value="Pa">Pa</option>
             <option value="kPa">kPa</option>
             <option value="MPa">MPa</option>
@@ -404,7 +470,51 @@
     </table>
   </form>
 
+  <form>
+    <table>
+      <tr>
+        <td>Component pressure drop</td>
+        <td>
+          <input type="text" id="dp_comp_val" style="width: 10em" readonly />
+        </td>
+        <td>
+          <select id="dp_comp_unit">
+            <option value="Pa">Pa</option>
+            <option value="kPa">kPa</option>
+            <option value="MPa">MPa</option>
+            <option value="mbar">mbar</option>
+            <option value="bar">bar</option>
+            <option value="psi">psi</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <form>
+    <table>
+      <tr>
+        <td>Total pressure drop</td>
+        <td>
+          <input type="text" id="dp_tot_val" style="width: 10em" readonly />
+        </td>
+        <td>
+          <select id="dp_tot_unit">
+            <option value="Pa">Pa</option>
+            <option value="kPa">kPa</option>
+            <option value="MPa">MPa</option>
+            <option value="mbar">mbar</option>
+            <option value="bar">bar</option>
+            <option value="psi">psi</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+
   <p><a href="index.html">Index</a></p>
+
+
 </body>
 
 </html>

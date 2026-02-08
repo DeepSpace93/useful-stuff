@@ -28,6 +28,8 @@
       <option value="rad">rad</option>
       <option value="deg">deg</option>
       <option value="rev">rev</option>
+      <option value="arcmin">arcmin</option>
+      <option value="arcsec">arcsec</option>
     </select>
     =
     <input type="text" id="value_out" readonly />
@@ -35,10 +37,17 @@
       <option value="rad">rad</option>
       <option value="deg">deg</option>
       <option value="rev">rev</option>
+      <option value="arcmin">arcmin</option>
+      <option value="arcsec">arcsec</option>
     </select>
   </form>
   <br />
   <button type="button" onclick="unitConversionIO()">Convert</button>
+  <ul>
+    <li>1 rad = 180°/π
+    <li>1&#8242; = 1 arcmin = 1°/60</li>
+    <li>1&#8243; = 1 arcsec = 1°/3600</li>
+  </ul>
   <p><a href="../index.html">Index</a></p>
 </body>
 

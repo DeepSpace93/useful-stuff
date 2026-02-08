@@ -13,6 +13,8 @@ function convertAngle(valueIn, unitIn, unitOut) {
     rad: 1,
     deg: 180 / Math.PI,
     rev: 1 / (2 * Math.PI),
+    arcmin: 180*60 / Math.PI,
+    arcsec: 180*3600 / Math.PI,
   };
   return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
 }

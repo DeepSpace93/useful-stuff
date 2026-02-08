@@ -19,54 +19,39 @@
 
 <body>
     <h1>Equations</h1>
-    <h2>Heat Flow Equation</h2>
 
-    <p>
-        The heat flow rate \( \dot{Q} \) is calculated using \( \dot{Q} = \frac{Q}{t} \), where \( Q \) is the total
-        heat and \( t \) is the time in seconds.
-        The average heat flow is given by:
-        \[
-        \dot{Q} = \frac{Q}{t}
-        \]
-    </p>
+    <h2>Pressure drop</h2>
+    <!-- #region Pressure drop -->
+
+    <h3>Darcy–Weisbach equation</h3>
+    empirical equation that relates the pressure loss, due to viscous shear forces along a given length of pipe to the
+    average velocity of the fluid flow for an incompressible fluid using the Darcy friction factor \( f_{D} \) (also
+    called flow coefficient \( \lambda \))
+    \[
+    \frac{\Delta\,p}{l_{pipe}} = \frac{f_{D}\,\rho\,c_{avg}^{2}}{2\,d_{hyd}}
+    \]
+
+    <h3>Poiseuille's law</h3>
+    exact solution of the Darcy friction factor for laminar flows (Re < 2300)
+    \[
+    f_{D} = \frac{64}{Re}
+    \]
+
+    <h3>Colebrook–White equation</h3>
+    expresses the Darcy friction factor as a function of Reynolds number and pipe relative roughness for
+    turbulent flow (Re > 4000) in smooth and rough pipes
+    \[
+    \frac{1}{\sqrt{f_{D}}} = -2\log_{10}\left(\frac{2.51}{Re\sqrt{f_{D}}}+\frac{k}{3.7d_{hyd}}\right)
+    \]
+
 
     <h2>Dimensionless numbers</h2>
+    <!-- #region Dimensionless numbers -->
 
     <h3>Reynolds number</h3>
     forced convection
     \[
     Re = \frac{\rho\,u\,L_{c}}{\mu} = \frac{G\,L_{c}}{\mu} = \frac{u\,L_{c}}{\nu}
-    \]
-
-    <h3>Biot number</h3>
-    steady- and unsteady conduction
-    \[
-    Bi = \frac{h\,Y}{k}
-    \]
-
-
-    <h3>Fourier number</h3>
-    unsteady conduction
-    \[
-    Fo = \frac{a\,t}{Y^2}
-    \]
-
-    <h3>Graetz number</h3>
-    laminar convection
-    \[
-    Gz = \frac{G\,Y^2\,c_{p}}{k}
-    \]
-
-    <h3>Grashof number</h3>
-    natural convection
-    \[
-    Gr = \frac{g\,\beta\,\Delta T\,Y^{3}}{\nu^{2}}
-    \]
-
-    <h3>Rayleigh number</h3>
-    natural convection
-    \[
-    Ra = Gr\,Pr
     \]
 
     <h3>Nusselt number</h3>
@@ -75,22 +60,10 @@
     Nu = \frac{h\,Y}{k_{f}}
     \]
 
-    <h3>Peclet number</h3>
-    forced convection (for small Pr)
-    \[
-    Pe = \frac{U\,Y}{a} = Re\,Pr
-    \]
-
     <h3>Prandtl number</h3>
     natural or forced convection, boiling, or condensation
     \[
     Pr = \frac{c_{p}\,\mu}{k} = \frac{\nu}{a}
-    \]
-
-    <h3>Stanton number</h3>
-    forced convection
-    \[
-    St = \frac{h}{\rho\,U\,c_{p}} = \frac{Nu}{Re\,Pr}
     \]
 
     <h3>Knudsen number</h3>
@@ -102,6 +75,7 @@
     \[
     Ma = \frac{u}{c}
     \]
+    <!-- #endregion -->
 
     <p><a href="index.html">Index</a></p>
 </body>

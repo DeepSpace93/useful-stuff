@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Solids</title>
+    <meta charset="UTF-8" />
+    <script>
+        window.MathJax = {
+            tex: {
+                displayMath: [['\\[', '\\]'], ['$$', '$$']]
+            },
+            chtml: {
+                displayAlign: 'left'   // Align equations to the left
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+    <h1>Equations</h1>
+    <h2>Heat Flow Equation</h2>
+
+    <p>
+        The heat flow rate \( \dot{Q} \) is calculated using \( \dot{Q} = \frac{Q}{t} \), where \( Q \) is the total
+        heat and \( t \) is the time in seconds.
+        The average heat flow is given by:
+        \[
+        \dot{Q} = \frac{Q}{t}
+        \]
+    </p>
+
+    <h2>Dimensionless numbers</h2>
+
+    <h3>Reynolds number</h3>
+    forced convection
+    \[
+    Re = \frac{\rho\,u\,L_{c}}{\mu} = \frac{G\,L_{c}}{\mu} = \frac{u\,L_{c}}{\nu}
+    \]
+
+    <h3>Biot number</h3>
+    steady- and unsteady conduction
+    \[
+    Bi = \frac{h\,Y}{k}
+    \]
+
+
+    <h3>Fourier number</h3>
+    unsteady conduction
+    \[
+    Fo = \frac{a\,t}{Y^2}
+    \]
+
+    <h3>Graetz number</h3>
+    laminar convection
+    \[
+    Gz = \frac{G\,Y^2\,c_{p}}{k}
+    \]
+
+    <h3>Grashof number</h3>
+    natural convection
+    \[
+    Gr = \frac{g\,\beta\,\Delta T\,Y^{3}}{\nu^{2}}
+    \]
+
+    <h3>Rayleigh number</h3>
+    natural convection
+    \[
+    Ra = Gr\,Pr
+    \]
+
+    <h3>Nusselt number</h3>
+    natural or forced convection, boiling, or condensation
+    \[
+    Nu = \frac{h\,Y}{k_{f}}
+    \]
+
+    <h3>Peclet number</h3>
+    forced convection (for small Pr)
+    \[
+    Pe = \frac{U\,Y}{a} = Re\,Pr
+    \]
+
+    <h3>Prandtl number</h3>
+    natural or forced convection, boiling, or condensation
+    \[
+    Pr = \frac{c_{p}\,\mu}{k} = \frac{\nu}{a}
+    \]
+
+    <h3>Stanton number</h3>
+    forced convection
+    \[
+    St = \frac{h}{\rho\,U\,c_{p}} = \frac{Nu}{Re\,Pr}
+    \]
+
+    <h3>Knudsen number</h3>
+    \[
+    Kn = \frac{\lambda}{L} = \frac{k_{B}\,T}{\sqrt{2}\,\pi\,d^{2}\,p\,L}
+    \]
+
+    <h3>Mach number</h3>
+    \[
+    Ma = \frac{u}{c}
+    \]
+
+    <p><a href="index.html">Index</a></p>
+</body>
+
+</html>

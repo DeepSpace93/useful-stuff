@@ -53,7 +53,7 @@ function applyFluid() {
 
 }
 
-function pressureDropIO() {
+function pressureDropPipeIO() {
   // data input and unit conversion to SI units
   let cUse = document.getElementById("c_use").checked;
   let vfUse = document.getElementById("vf_use").checked;
@@ -149,24 +149,6 @@ function pressureDropIO() {
     "m"
   );
 
-  // component 1 - pressure loss coefficient
-  let zetaComp1 = parseFloat(document.getElementById("zeta_comp_1").value)
-
-  // component 1 - number
-  let numComp1 = parseFloat(document.getElementById("num_comp_1").value)
-
-  // component 2 - pressure loss coefficient
-  let zetaComp2 = parseFloat(document.getElementById("zeta_comp_2").value)
-
-  // component 2 - number
-  let numComp2 = parseFloat(document.getElementById("num_comp_2").value)
-
-  // component 3 - pressure loss coefficient
-  let zetaComp3 = parseFloat(document.getElementById("zeta_comp_3").value)
-
-  // component 3 - number
-  let numComp3 = parseFloat(document.getElementById("num_comp_3").value)
-
   // convert into other quantities
   let A = (Math.PI / 4) * d ** 2;
 
@@ -237,18 +219,8 @@ function pressureDropIO() {
   // calculation - zeta coefficient
   let zetaPipe = (f * l) / d;
 
-  // calculation - component pressure drop
-  let dpComp1 = (1 / 2 * zetaComp1 * rho * c ** 2) * numComp1
-  let dpComp2 = (1 / 2 * zetaComp2 * rho * c ** 2) * numComp2
-  let dpComp3 = (1 / 2 * zetaComp3 * rho * c ** 2) * numComp3
-
-  let dpCompTot = dpComp1 + dpComp2 + dpComp3
-
-  // total pressure drop
-  let dpTot = dpPipe + dpCompTot
-
   // calculation - power dissipation
-  let pow_loss = vf * dpTot;
+  let pow_loss = vf * dpPipe;
 
   // data output
   document.getElementById("c_val").value = convertVelocity(
@@ -318,22 +290,6 @@ function pressureDropIO() {
     pow_loss,
     "W",
     document.getElementById("P_loss_unit").value
-  ).toPrecision(5);
-
-  document.getElementById("dp_comp_val").value = convertPressure(
-    dpCompTot,
-    "Pa",
-    document.getElementById("dp_comp_unit").value,
-    "rel",
-    "rel"
-  ).toPrecision(5);
-
-  document.getElementById("dp_tot_val").value = convertPressure(
-    dpTot,
-    "Pa",
-    document.getElementById("dp_tot_unit").value,
-    "rel",
-    "rel"
   ).toPrecision(5);
 
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Solids</title>
+    <title>Equations</title>
     <meta charset="UTF-8" />
     <script>
         window.MathJax = {
@@ -28,22 +28,30 @@
     average velocity of the fluid flow for an incompressible fluid using the Darcy friction factor \( f_{D} \) (also
     called flow coefficient \( \lambda \))
     \[
-    \frac{\Delta\,p}{l_{pipe}} = \frac{f_{D}\,\rho\,c_{avg}^{2}}{2\,d_{hyd}}
+    \frac{\Delta p}{l_{pipe}} = \frac{f_{D}\,\rho\,c_{avg}^{2}}{2\,d_{hyd}}
     \]
 
     <h3>Poiseuille's law</h3>
     exact solution of the Darcy friction factor for laminar flows (Re < 2300)
     \[
-    f_{D} = \frac{64}{Re}
+    f_{D}=\frac{64}{Re}
     \]
 
     <h3>Colebrook–White equation</h3>
     expresses the Darcy friction factor as a function of Reynolds number and pipe relative roughness for
-    turbulent flow (Re > 4000) in smooth and rough pipes
+    turbulent flows (Re > 4000) in smooth and rough pipes
     \[
     \frac{1}{\sqrt{f_{D}}} = -2\log_{10}\left(\frac{2.51}{Re\sqrt{f_{D}}}+\frac{k}{3.7d_{hyd}}\right)
     \]
 
+    <h3>Component pressure drop</h3>
+    quantify the energy pressure drop of fluid flow through fittings, valves, and restrictions
+    \[
+    \Delta p = \frac{\zeta\,\rho\,c^{2}}{2}
+    \]
+
+
+    <!-- #endregion -->
 
     <h2>Dimensionless numbers</h2>
     <!-- #region Dimensionless numbers -->
@@ -75,6 +83,7 @@
     \[
     Ma = \frac{u}{c}
     \]
+
     <!-- #endregion -->
 
     <p><a href="index.html">Index</a></p>

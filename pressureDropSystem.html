@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>System Pressure Drop</title>
+  <meta charset="UTF-8" />
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      text-align: left;
+      padding: 3px;
+    }
+
+    fieldset {
+      display: inline;
+    }
+
+    legend {
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+<body>
+  <script src="./js/modules/coolProp.js"></script>
+  <script src="./js/pressureDropSystemIO.js"></script>
+  <script src="./js/modules/unitConversion.js"></script>
+  <script src="./js/modules/frictionFactor.js"></script>
+  <h1>System Pressure Drop</h1>
+
+  <form>
+    <fieldset>
+      <legend>Substance properites</legend>
+      <table>
+        <tr>
+          <td>ρ</td>
+          <td>Density</td>
+          <td>
+            <input type="number" id="rho_val" value="1000" style="width: 10em" />
+          </td>
+          <td>
+            <select id="rho_unit">
+              <option value="kg$m3">kg/m³</option>
+              <option value="g$cm3">g/cm³</option>
+              <option value="g$l">g/l</option>
+              <option value="kg$l">kg/l</option>
+              <option value="lb$in3">lb/in³</option>
+              <option value="lb$ft3">lb/ft³</option>
+              <option value="slug$ft3">slug/ft³</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+  <form>
+    <fieldset>
+      <legend>Components</legend>
+      <table>
+        <tr>
+          <td>i</td>
+          <td>ζ</td>
+          <td>count</td>
+          <td>c (m/s)</td>
+          <td>Δp<sub>i</sub> (bar)</td>
+          <td>Δp<sub>i</sub>/Δp<sub>tot</sub></td>
+        </tr>
+        <tr>
+          <td>
+            1
+          <td>
+            <input type="number" id="zeta_comp_1" value="0.1" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="count_comp_1" value="1" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="c_comp_1" value="1" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="dp_comp_1" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+          <td>
+            <input type="text" id="dp$dp_tot_1" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            2
+          <td>
+            <input type="number" id="zeta_comp_2" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="count_comp_2" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="c_comp_2" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="dp_comp_2" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+          <td>
+            <input type="text" id="dp$dp_tot_2" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            3
+          <td>
+            <input type="number" id="zeta_comp_3" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="count_comp_3" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="c_comp_3" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="dp_comp_3" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+          <td>
+            <input type="text" id="dp$dp_tot_3" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            4
+          <td>
+            <input type="number" id="zeta_comp_4" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="count_comp_4" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="c_comp_4" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="dp_comp_4" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+          <td>
+            <input type="text" id="dp$dp_tot_4" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            5
+          <td>
+            <input type="number" id="zeta_comp_5" value="0" min="0" step="0.05" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="count_comp_5" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="c_comp_5" value="0" min="0" step="1" style="width: 5em" />
+          </td>
+          <td>
+            <input type="number" id="dp_comp_5" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+          <td>
+            <input type="text" id="dp$dp_tot_5" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        <tr>
+          <td colspan="4">
+            Δp<sub>tot</sub> - Totoal pressure drop:
+          </td>
+          <td>
+            <input type="number" id="dp_tot" style="width: 5em; background-color: lightgrey" readonly />
+          </td>
+        </tr>
+        </tr>
+      </table>
+    </fieldset>
+  </form>
+
+  <br />
+
+  <button type="button" onclick="pressureDropSystemIO()">Calculate</button>
+
+  <br />
+
+  <p><a href="index.html">Index</a></p>
+
+
+</body>
+
+</html>

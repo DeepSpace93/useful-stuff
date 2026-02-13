@@ -10,6 +10,9 @@ function unitConversionIO() {
   let valueOut = 666;
 
   switch (quantity) {
+    case "acceleration":
+      valueOut = convertAcceleration(valueIn, unitIn, unitOut);
+      break;
     case "amount_of_substance":
       valueOut = convertAmountOfSubstance(valueIn, unitIn, unitOut);
       break;
@@ -52,7 +55,7 @@ function unitConversionIO() {
     case "fuel_consumption":
       //valueOut = convertFuelConsumption(valueIn, unitIn, unitOut);
       valueOut = 420;
-      break;      
+      break;
     case "kinematic_viscosity":
       valueOut = convertKinematicViscosity(valueIn, unitIn, unitOut);
       break;
@@ -84,7 +87,7 @@ function unitConversionIO() {
       break;
     case "specific_heat_capacity":
       valueOut = convertSpecificHeatCapacity(valueIn, unitIn, unitOut);
-      break;      
+      break;
     case "specific_resistance_conductance":
       valueOut = convertSpecificResistanceConductance(valueIn, unitIn, unitOut);
       break;

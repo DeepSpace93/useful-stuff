@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Kinematic Viscosity Unit Conversion</title>
+  <title>Acceleration Unit Conversion</title>
   <meta charset="UTF-8" />
 </head>
 
@@ -10,7 +10,7 @@
   <script src="../js/unitConversionIO.js"></script>
   <script src="../js/modules/unitConversion.js"></script>
   <h1>Unit Conversion</h1>
-  <h2>Kinematic Viscosity</h2>
+  <h2>Acceleration</h2>
   <form>
     <input type="checkbox" id="round" checked />
     Round to
@@ -22,30 +22,28 @@
   </form>
   <br />
   <form>
-    <input type="hidden" id="quantity" value="kinematic_viscosity" />
+    <input type="hidden" id="quantity" value="acceleration" />
     <input type="number" id="value_in" value="1" />
     <select id="unit_in">
-      <option value="mm2$s">mm²/s</option>
-      <option value="m2$s">m²/s</option>
-      <option value="cm2$s">cm²/s</option>
-      <option value="cSt">cSt</option>
-      <option value="St">St</option>
+      <option value="m$s2">m/s²</option>
+      <option value="ft$s2">ft/s²</option>
+      <option value="g0">g0</option>
+      <option value="gal">Gal</option>
     </select>
     =
     <input type="text" id="value_out" readonly />
     <select id="unit_out">
-      <option value="mm2$s">mm²/s</option>
-      <option value="m2$s">m²/s</option>
-      <option value="cm2$s">cm²/s</option>
-      <option value="cSt">cSt</option>
-      <option value="St">St</option>
+      <option value="m$s2">m/s²</option>
+      <option value="ft$s2">ft/s²</option>
+      <option value="g0">g0</option>
+      <option value="gal">Gal</option>
     </select>
   </form>
   <br />
   <button type="button" onclick="unitConversionIO()">Convert</button>
   <br />
   <br />
-  St = cm²/s (Stokes, cgs)
+  Gal = cm/s² (Galileo, cgs)
   <br />
   <p><a href="../index.html">Index</a></p>
 </body>

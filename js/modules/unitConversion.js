@@ -1,3 +1,13 @@
+function convertAcceleration(valueIn, unitIn, unitOut) {
+  const convFactors = {
+    m$s2: 1,
+    ft$s2: 1/0.3048,
+    g0: 1/9.80665,
+    gal: 100,
+  };
+  return (valueIn * convFactors[unitOut]) / convFactors[unitIn];
+}
+
 function convertAmountOfSubstance(valueIn, unitIn, unitOut) {
   const convFactors = {
     mol: 1,

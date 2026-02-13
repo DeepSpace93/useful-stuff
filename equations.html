@@ -32,61 +32,73 @@
     \]
 
     <h3>Poiseuille's law</h3>
-    exact solution of the Darcy friction factor for laminar flows (Re < 2300)
-    \[
-    f_{D}=\frac{64}{Re}
-    \]
+    exact solution of the Darcy friction factor for laminar flows (Re < 2300) \[ f_{D}=\frac{64}{Re} \] <h3>
+        Colebrook–White equation</h3>
+        expresses the Darcy friction factor as a function of Reynolds number and pipe relative roughness for
+        turbulent flows (Re > 4000) in smooth and rough pipes
+        \[
+        \frac{1}{\sqrt{f_{D}}} = -2\log_{10}\left(\frac{2.51}{Re\sqrt{f_{D}}}+\frac{k}{3.7d_{hyd}}\right)
+        \]
 
-    <h3>Colebrook–White equation</h3>
-    expresses the Darcy friction factor as a function of Reynolds number and pipe relative roughness for
-    turbulent flows (Re > 4000) in smooth and rough pipes
-    \[
-    \frac{1}{\sqrt{f_{D}}} = -2\log_{10}\left(\frac{2.51}{Re\sqrt{f_{D}}}+\frac{k}{3.7d_{hyd}}\right)
-    \]
+        <h3>Component pressure drop</h3>
+        quantify the energy pressure drop of fluid flow through fittings, valves, and restrictions
+        \[
+        \Delta p = \frac{\zeta\,\rho\,c^{2}}{2}
+        \]
 
-    <h3>Component pressure drop</h3>
-    quantify the energy pressure drop of fluid flow through fittings, valves, and restrictions
-    \[
-    \Delta p = \frac{\zeta\,\rho\,c^{2}}{2}
-    \]
+        <h2>Orifice plates</h2>
+
+        <h3>Compressible flow</h3>
+
+        choked
+
+        \[
+        \dot{m} = p_{up}\,A\,C\sqrt{\frac{\gamma}{R\,T}\left(\frac{2}{\gamma+1}\right)^{\frac{\gamma+1}{\gamma-1}}}
+        \]
+
+        non-choked
+
+        \[
+        \dot{m} = p_{up}\,A\,C\sqrt{\frac{2\gamma}{R\,T\left(\gamma-1\right)}\left[\left(\frac{p_{down}}{p_{up}}\right)^{\frac{2}{\gamma}}-\left(\frac{p_{down}}{p_{up}}\right)^{\frac{\gamma+1}{\gamma}}\right]}
+        \]
 
 
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <h2>Dimensionless numbers</h2>
-    <!-- #region Dimensionless numbers -->
+        <h2>Dimensionless numbers</h2>
+        <!-- #region Dimensionless numbers -->
 
-    <h3>Reynolds number</h3>
-    forced convection
-    \[
-    Re = \frac{\rho\,u\,L_{c}}{\mu} = \frac{G\,L_{c}}{\mu} = \frac{u\,L_{c}}{\nu}
-    \]
+        <h3>Reynolds number</h3>
+        forced convection
+        \[
+        Re = \frac{\rho\,u\,L_{c}}{\mu} = \frac{G\,L_{c}}{\mu} = \frac{u\,L_{c}}{\nu}
+        \]
 
-    <h3>Nusselt number</h3>
-    natural or forced convection, boiling, or condensation
-    \[
-    Nu = \frac{h\,Y}{k_{f}}
-    \]
+        <h3>Nusselt number</h3>
+        natural or forced convection, boiling, or condensation
+        \[
+        Nu = \frac{h\,Y}{k_{f}}
+        \]
 
-    <h3>Prandtl number</h3>
-    natural or forced convection, boiling, or condensation
-    \[
-    Pr = \frac{c_{p}\,\mu}{k} = \frac{\nu}{a}
-    \]
+        <h3>Prandtl number</h3>
+        natural or forced convection, boiling, or condensation
+        \[
+        Pr = \frac{c_{p}\,\mu}{k} = \frac{\nu}{a}
+        \]
 
-    <h3>Knudsen number</h3>
-    \[
-    Kn = \frac{\lambda}{L} = \frac{k_{B}\,T}{\sqrt{2}\,\pi\,d^{2}\,p\,L}
-    \]
+        <h3>Knudsen number</h3>
+        \[
+        Kn = \frac{\lambda}{L} = \frac{k_{B}\,T}{\sqrt{2}\,\pi\,d^{2}\,p\,L}
+        \]
 
-    <h3>Mach number</h3>
-    \[
-    Ma = \frac{u}{c}
-    \]
+        <h3>Mach number</h3>
+        \[
+        Ma = \frac{u}{c}
+        \]
 
-    <!-- #endregion -->
+        <!-- #endregion -->
 
-    <p><a href="index.html">Index</a></p>
+        <p><a href="index.html">Index</a></p>
 </body>
 
 </html>

@@ -67,7 +67,7 @@ function orificeIO() {
 
     if ((pDown / pUp) < ((2 / (gamma + 1)) ** (gamma / (gamma - 1)))) {
         cond = "choked"
-        mf = pUp * A * C * Math.sqrt(gamma / (Rs * T) * (2 / gamma + 1) ** ((gamma + 1) / (gamma - 1)))
+        mf = pUp * A * C * Math.sqrt(gamma / (Rs * T) * (2 / (gamma + 1)) ** ((gamma + 1) / (gamma - 1)))
     }
     else {
         cond = "non-choked"

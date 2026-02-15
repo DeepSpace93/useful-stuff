@@ -3,6 +3,6 @@
     "editor.selectionHighlight": false,
     "editor.matchBrackets": "never",
     "editor.occurrencesHighlightDelay": 1000,
-    "editor.quickSuggestionsDelay": 30000,
-    "editor.hover.enabled": "off"
+    "editor.quickSuggestionsDelay": 1000,
+    "editor.hover.enabled": "off",
 }

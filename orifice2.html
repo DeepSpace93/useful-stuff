@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Orifice</title>
+  <title>Orifice 2</title>
   <meta charset="UTF-8" />
   <style>
     table {
@@ -19,38 +19,25 @@
 </head>
 
 <body>
-  <script src="./js/orificeIO.js"></script>
+  <script src="./js/orificeIO2.js"></script>
   <script src="./js/modules/unitConversion.js"></script>
   <h1>Orifice</h1>
-  <h2>Input</h2>
-
   <form>
     <table>
       <tr>
+        <td>p<sub>up</sub></td>
         <td>Pressure upstream:</td>
         <td>
-          <input type="number" id="p_up_val" value="0" />
+          <input type="number" id="p_up_val" value="1" />
         </td>
         <td>
           <select id="p_up_unit">
+            <option value="bar">bar</option>
             <option value="Pa">Pa</option>
             <option value="hPa">hPa</option>
             <option value="kPa">kPa</option>
             <option value="MPa">MPa</option>
-            <option value="GPa">GPa</option>
-            <option value="mbar">mbar</option>
             <option value="bar">bar</option>
-            <option value="uHg">µHg</option>
-            <option value="mmHg">mmHg</option>
-            <option value="inHg">inHg</option>
-            <option value="mTorr">mTorr</option>
-            <option value="Torr">Torr</option>
-            <option value="psi">psi</option>
-            <option value="mWC">mWC</option>
-            <option value="mmWC">mmWC</option>
-            <option value="inWC">inWC</option>
-            <option value="at">at</option>
-            <option value="atm">atm</option>
           </select>
         </td>
         <td>
@@ -61,30 +48,19 @@
         </td>
       </tr>
       <tr>
+        <td>p<sub>down</sub></td>
         <td>Pressure downstream:</td>
         <td>
           <input type="number" id="p_down_val" value="0" />
         </td>
         <td>
           <select id="p_down_unit">
+            <option value="bar">bar</option>
             <option value="Pa">Pa</option>
             <option value="hPa">hPa</option>
             <option value="kPa">kPa</option>
             <option value="MPa">MPa</option>
-            <option value="GPa">GPa</option>
-            <option value="mbar">mbar</option>
             <option value="bar">bar</option>
-            <option value="uHg">µHg</option>
-            <option value="mmHg">mmHg</option>
-            <option value="inHg">inHg</option>
-            <option value="mTorr">mTorr</option>
-            <option value="Torr">Torr</option>
-            <option value="psi">psi</option>
-            <option value="mWC">mWC</option>
-            <option value="mmWC">mmWC</option>
-            <option value="inWC">inWC</option>
-            <option value="at">at</option>
-            <option value="atm">atm</option>
           </select>
         </td>
         <td>
@@ -95,6 +71,7 @@
         </td>
       </tr>
       <tr>
+        <td>T</td>
         <td>Temperature:</td>
         <td>
           <input type="number" id="T_val" value="20" />
@@ -103,12 +80,11 @@
           <select id="T_unit">
             <option value="C">°C</option>
             <option value="K">K</option>
-            <option value="F">°F</option>
-            <option value="R">°R</option>
           </select>
         </td>
       </tr>
       <tr>
+        <td>ρ</td>
         <td>Density:</td>
         <td>
           <input type="number" id="rho_val" value="1" />
@@ -119,42 +95,112 @@
             <option value="g$cm3">g/cm³</option>
             <option value="g$l">g/l</option>
             <option value="kg$l">kg/l</option>
-            <option value="lb$in3">lb/in³</option>
-            <option value="lb$ft3">lb/ft³</option>
-            <option value="slug$ft3">slug/ft³</option>
           </select>
         </td>
       </tr>
       <tr>
+        <td>γ</td>
         <td>Heat capacity ratio:</td>
         <td>
-          <input type="number" id="kappa_val" value="1.30" step="0.01"/>
+          <input type="number" id="gamma_val" value="1.30" step="0.01" />
         </td>
         <td>
         </td>
       </tr>
       <tr>
+        <td>R<sub>s</sub></td>
         <td>Specific gas constant:</td>
         <td>
-          <input type="number" id="R_spec_val" value="200"/>
+          <input type="number" id="R_s_val" value="200" />
         </td>
         <td>
-          <select id="R_spec_unit">
+          <select id="R_s_unit">
+            <option value="J$kg$K">J/(kg·K)</option>
+            <option value="kJ$kg$K">kJ/(kg·K)</option>
           </select>
         </td>
       </tr>
       <tr>
+        <td>C</td>
         <td>Discharge coefficient:</td>
         <td>
-          <input type="number" id="cd_val" value="0.80" step="0.01"/>
+          <input type="number" id="C_val" value="0.80" step="0.01" />
         </td>
         <td>
         </td>
       </tr>
       <tr>
+        <td>d</td>
+        <td>Orifice hole diameter:</td>
+        <td>
+          <input type="number" id="d_val" value="1.0" step="0.1" />
+        </td>
+        <td>
+          <select id="d_unit">
+            <option value="mm">mm</option>
+            <option value="um">µm</option>
+            <option value="cm">cm</option>
+            <option value="m">m</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>A</td>
+        <td>Orifice hole area:</td>
+        <td>
+          <input type="text" id="a_val" readonly />
+        </td>
+        <td>
+          <select id="a_unit">
+            <option value="mm2">mm²</option>
+            <option value="cm2">cm²</option>
+            <option value="dm2">dm²</option>
+            <option value="m2">m²</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </form>
+
+  <br />
+
+  <button type="button" onclick="orificeIO()">Calculate</button>
+
+  <br />
+
+  <h2>Output</h2>
+
+  <form>
+    <table>
+      <tr>
+        <td></td>
+        <td>Conditions</td>
+        <td>
+          <input type="text" id="cond" readonly />
+        </td>
+      </tr>
+      <tr>
+        <td>m*</td>
+        <td>Mass flow rate</td>
+        <td>
+          <input type="text" id="mf_val" readonly />
+        </td>
+        <td>
+          <select id="mf_unit">
+            <option value="g$s">g/s</option>
+            <option value="kg$h">kg/h</option>
+            <option value="kg$min">kg/min</option>
+            <option value="kg$s">kg/s</option>
+            <option value="g$h">g/h</option>
+            <option value="g$min">g/min</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>V*</td>
         <td>Volumetric flow rate</td>
         <td>
-          <input type="number" id="vf_val" value="10" />
+          <input type="text" id="vf_val" readonly />
         </td>
         <td>
           <select id="vf_unit">
@@ -172,54 +218,8 @@
             <option value="gal$s">gal/s</option>
           </select>
         </td>
-
-    </table>
-  </form>
-
-  <br />
-
-  <button type="button" onclick="orificeIO()">Calculate</button>
-
-  <br />
-
-  <h2>Output</h2>
-
-  <form>
-    <table>
-      <tr>
-        <td>Orifice hole area:</td>
-        <td>
-          <input type="text" id="a_val" readonly />
-        </td>
-        <td>
-          <select id="a_unit">
-            <option value="mm2">mm²</option>
-            <option value="cm2">cm²</option>
-            <option value="dm2">dm²</option>
-            <option value="m2">m²</option>
-            <option value="in2">in²</option>
-            <option value="ft2">ft²</option>
-          </select>
-        </td>
       </tr>
 
-      <tr>
-        <td>Orifice hole diameter:</td>
-        <td>
-          <input type="text" id="d_val" readonly />
-        </td>
-        <td>
-          <select id="d_unit">
-            <option value="mm">mm</option>
-            <option value="um">µm</option>
-            <option value="cm">cm</option>
-            <option value="m">m</option>
-            <option value="thou">thou</option>
-            <option value="in">in</option>
-            <option value="ft">ft</option>
-          </select>
-        </td>
-      </tr>
 
     </table>
   </form>

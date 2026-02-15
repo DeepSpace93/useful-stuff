@@ -21,73 +21,104 @@
             border-collapse: collapse;
 
         }
+
+        tbody tr:nth-child(even) {
+            background-color: #C0C0C0;
+        }
+
+        thead th {
+            background-color: #A9A9A9;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
     </style>
 </head>
 
 <body>
     <h1>Solids</h1>
     <h2>Coefficient of thermal expansion - linear</h2>
-    <table>
-        <tr>
-            <th>Material</th>
-            <th>α / 10<sup>-6</sup>/K</th>
-        </tr>
-        <tr>
-            <td>Aluminum</td>
-            <td>24</td>
-        </tr>
-        <tr>
-            <td>Concrete</td>
-            <td>12</td>
-        </tr>
-        <tr>
-            <td>Copper</td>
-            <td>16</td>
-        </tr>
-        <tr>
-            <td>Gold</td>
-            <td>14</td>
-        </tr>
-        <tr>
-            <td>Ice</td>
-            <td>51</td>
-        </tr>
-        <tr>
-            <td>Iron</td>
-            <td>12</td>
-        </tr>
-        <tr>
-            <td>Lead</td>
-            <td>29</td>
-        </tr>
-        <tr>
-            <td>Porcelain</td>
-            <td>4</td>
-        </tr>
-        <tr>
-            <td>PP</td>
-            <td>150 - 180</td>
-        </tr>
-        <tr>
-            <td>PVC</td>
-            <td>150</td>
-        </tr>
-        <tr>
-            <td>PVDF</td>
-            <td>120 - 180</td>
-        </tr>
-        <tr>
-            <td>Silver</td>
-            <td>19</td>
-        </tr>
-        <tr>
-            <td>Stainless steel</td>
-            <td>10-17</td>
-        </tr>
-        <tr>
-            <td>Steel</td>
-            <td>11-13</td>
-        </tr>
+    <table id="sortableTable">
+        <thead>
+            <tr>
+                <th>Material</th>
+                <th>α / 10<sup>-6</sup>/K</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aluminum</td>
+                <td>24</td>
+            </tr>
+            <tr>
+                <td>Borosilicate glass</td>
+                <td>3.3</td>
+            </tr>
+            <tr>
+                <td>Concrete</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Copper</td>
+                <td>16</td>
+            </tr>
+            <tr>
+                <td>Gold</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td>Ice</td>
+                <td>51</td>
+            </tr>
+            <tr>
+                <td>Iron</td>
+                <td>12</td>
+            </tr>
+            <tr>
+                <td>Lead</td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>Porcelain</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>PP</td>
+                <td>150 - 180</td>
+            </tr>
+            <tr>
+                <td>PVC</td>
+                <td>150</td>
+            </tr>
+            <tr>
+                <td>PVDF</td>
+                <td>120 - 180</td>
+            </tr>
+            <tr>
+                <td>Quartz glass</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td>Silver</td>
+                <td>19</td>
+            </tr>
+            <tr>
+                <td>Soda–lime glass</td>
+                <td>9 - 10</td>
+            </tr>
+            <tr>
+                <td>Stainless steel</td>
+                <td>10-17</td>
+            </tr>
+            <tr>
+                <td>Steel</td>
+                <td>11-13</td>
+            </tr>
+            <tr>
+                <td>Zerodur</td>
+                <td>0.05</td>
+            </tr>
+        </tbody>
     </table>
 
     <h2>Density</h2>
@@ -103,31 +134,42 @@
     </table>
 
     <h2>Electrical resistivity and conductivity</h2>
-    <table>
-        <tr>
-            <th>Material</th>
-            <th>κ / MS/m</th>
-        </tr>
-        <tr>
-            <td>Aluminum</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Copper</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Gold</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Silver</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Iron</td>
-            <td></td>
-        </tr>
+    at 20°C
+    <table id="sortableTable">
+        <thead>
+            <tr>
+                <th>Material</th>
+                <th>κ / MS/m</th>
+                <th>ρ / µΩ·m</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Aluminum</td>
+                <td>37.7</td>
+                <td>0.0265</td>
+            </tr>
+            <tr>
+                <td>Copper</td>
+                <td>59.6</td>
+                <td>0.0168</td>
+            </tr>
+            <tr>
+                <td>Gold</td>
+                <td>41.1</td>
+                <td>0.0243</td>
+            </tr>
+            <tr>
+                <td>Silver</td>
+                <td>63.0</td>
+                <td>0.0159</td>
+            </tr>
+            <tr>
+                <td>Iron</td>
+                <td>10.3</td>
+                <td>0.0970</td>
+            </tr>
+        </tbody>
     </table>
 
     <h2>Thermal conductivity</h2>
@@ -158,7 +200,7 @@
             <td></td>
         </tr>
 
-    <p><a href="index.html">Index</a></p>
+        <p><a href="index.html">Index</a></p>
 </body>
 
 </html>

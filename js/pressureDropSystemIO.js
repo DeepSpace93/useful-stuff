@@ -7,6 +7,13 @@ function pressureDropSystemIO() {
     "kg$m3"
   );
 
+  // input hydraulic head
+  let h = convertLength(
+    parseFloat(document.getElementById("head_val").value),
+    document.getElementById("head_unit").value,
+    "m"
+  );
+
   // input component 1
   let zetaComp1 = parseFloat(document.getElementById("zeta_comp_1").value)
   let nComp1 = parseFloat(document.getElementById("count_comp_1").value)
@@ -37,28 +44,36 @@ function pressureDropSystemIO() {
   let cComp5 = parseFloat(document.getElementById("c_comp_5").value)
   let dpComp5 = (1 / 2 * zetaComp5 * rho * cComp5 ** 2) * nComp5
 
-  // calculate total pressure drop
-  let dpTot = dpComp1 + dpComp2 + dpComp3 + dpComp4 + dpComp5
-  document.getElementById("dp_tot").value = (dpComp1 / 1e5).toFixed(4);
+  // calculate sum of component pressure drops
+  let dpCompSum = dpComp1 + dpComp2 + dpComp3 + dpComp4 + dpComp5
+  document.getElementById("dp_comp").value = (dpCompSum / 1e5).toFixed(4);
 
   // output component 1
   document.getElementById("dp_comp_1").value = (dpComp1 / 1e5).toFixed(4);
-  document.getElementById("dp$dp_tot_1").value = ((dpComp1 / dpTot * 100).toFixed(1)) + "%";
+  document.getElementById("dp$dp_1").value = ((dpComp1 / dpCompSum * 100).toFixed(1)) + "%";
 
   // output component 2
   document.getElementById("dp_comp_2").value = (dpComp2 / 1e5).toFixed(4);
-  document.getElementById("dp$dp_tot_2").value = ((dpComp2 / dpTot * 100).toFixed(1)) + "%";
+  document.getElementById("dp$dp_2").value = ((dpComp2 / dpCompSum * 100).toFixed(1)) + "%";
 
   // output component 3
   document.getElementById("dp_comp_3").value = (dpComp3 / 1e5).toFixed(4);
-  document.getElementById("dp$dp_tot_3").value = ((dpComp3 / dpTot * 100).toFixed(1)) + "%";
+  document.getElementById("dp$dp_3").value = ((dpComp3 / dpCompSum * 100).toFixed(1)) + "%";
 
   // output component 4
   document.getElementById("dp_comp_4").value = (dpComp4 / 1e5).toFixed(4);
-  document.getElementById("dp$dp_tot_4").value = ((dpComp4 / dpTot * 100).toFixed(1)) + "%";
+  document.getElementById("dp$dp_4").value = ((dpComp4 / dpCompSum * 100).toFixed(1)) + "%";
 
   // output component 5
   document.getElementById("dp_comp_5").value = (dpComp5 / 1e5).toFixed(4);
-  document.getElementById("dp$dp_tot_5").value = ((dpComp5 / dpTot * 100).toFixed(1)) + "%";
+  document.getElementById("dp$dp_5").value = ((dpComp5 / dpCompSum * 100).toFixed(1)) + "%";
+
+  // calculate static pressure drop
+  let dpStat = rho * h * 9.81
+  document.getElementById("dp_stat").value = (dpStat / 1e5).toFixed(4);
+
+  // calculate sum of pressure drops
+  let dpSum = dpCompSum + dpStat
+  document.getElementById("dp_sum").value = (dpSum / 1e5).toFixed(4);
 
 }

@@ -21,6 +21,8 @@ function convertAmountOfSubstance(valueIn, unitIn, unitOut) {
 function convertAngle(valueIn, unitIn, unitOut) {
   const convFactors = {
     rad: 1,
+    mrad: 1e3,
+    urad: 1e6,
     deg: 180 / Math.PI,
     rev: 1 / (2 * Math.PI),
     arcmin: 180*60 / Math.PI,
